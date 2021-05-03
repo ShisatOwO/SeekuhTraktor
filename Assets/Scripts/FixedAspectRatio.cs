@@ -18,7 +18,10 @@ public class FixedAspectRatio : MonoBehaviour
         {
         	current_ratio = (float)Screen.width / (float)Screen.height;
         } 
-        else current_ratio = debugWidth / debugHeight;
+        else { 
+        	current_ratio = debugWidth / debugHeight;
+        	Debug.Log("thisIsTheEditor");
+        }
         
         float scaling = (float)(current_ratio / ratio);
         cam = GetComponent<Camera>();
