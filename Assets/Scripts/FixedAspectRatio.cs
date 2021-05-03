@@ -5,11 +5,19 @@ using UnityEngine;
 public class FixedAspectRatio : MonoBehaviour
 {
     private Camera cam;
+    public bool debugEditor;
+    public float debugWidth;
+    public float debugHeight;
+    private float current_ratio;
     
     void Start()
     {
         float ratio = 16f / 9f;
-        float current_ratio = (float) (Screen.width / Screen.height);
+        if(debugEditor == false) {
+        		current_ratio = (float) (Screen.width / Screen.height);
+        	} else {
+        		current_ratio = (float) (debugWidth / debugHeight);
+        	}
         float scaling = (float)(current_ratio / ratio);
         cam = GetComponent<Camera>();
 
