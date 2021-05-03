@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneSwitcher : MonoBehaviour
 {
     public void toSceneGame() {SceneManager.LoadScene("Game");}
-    public void toSceneMenu() {SceneManager.LoadScene("Menu");}
+    public void toSceneMenu() {SceneManager.LoadScene("MainMenu");}
 
     public void toSceneScoreboard() {SceneManager.LoadScene("ScoreBoard");}
 
