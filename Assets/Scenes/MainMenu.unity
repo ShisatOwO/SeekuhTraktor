@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e2973971e0d1bea98cdba1ba54324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugWidth: 1920
+  debugWidth: 2000
   debugHeight: 1080
 --- !u!1 &1573651936
 GameObject:
