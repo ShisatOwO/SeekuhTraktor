@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: newLayerbetween
+    uniqueID: 3376212411
+    locked: 0
   - name: OnTop
     uniqueID: 1067890155
     locked: 0
