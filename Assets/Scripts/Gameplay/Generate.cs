@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Generate : MonoBehaviour
 {
 	public GameObject Spawn;
+    
 	public GameObject eIQ;
     public GameObject eMik;
     public GameObject eGan;

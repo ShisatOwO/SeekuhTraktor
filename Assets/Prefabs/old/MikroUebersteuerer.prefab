@@ -44,6 +44,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08b46956cc5747432b59fab9dbf89938, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ed04f20e9241ae408f196f31209aaa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,12 +94,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2934366914702373120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e744bb4bfe91f7318f2b006dfd94ac7, type: 3}
+  m_Script: {fileID: 11500000, guid: da31ee5972e07d44e868dda6d5ca8fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sped: 6
   rot: 1
-  rotSped: 100
+  loff: 0
+  rotSped: 150
+  kno: 0
+  seem: 0
+  lamp: 0
+  zug: 0
+  crou: 0
+  rocket: 0
+  iq: 0
+  mainObj: {fileID: 0}
   scoSpedObject: {fileID: 0}
   scoSpeedScript: {fileID: 0}
 --- !u!58 &2934366914702373121

@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public bool zug = false;
     public bool crou = false;
     public bool rocket = false;
+    public bool iq = false;
 
 
     public GameObject mainObj;
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour
         scoSpeedScript = scoSpedObject.GetComponent<Score>();
         if(loff == true) {
             transform.Rotate (new Vector3 (0, 0, -75.817f));
-            transform.position = new Vector3(transform.position.x, -2.6f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -2.4f, transform.position.z);
 
         }
 
@@ -59,6 +60,9 @@ public class Enemy : MonoBehaviour
         }
         if(rocket == true) {
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        }
+        if(iq == true) {
+            transform.position += new Vector3(transform.position.x, 0.1f, transform.position.z);
         }
 
         

@@ -33,8 +33,8 @@ public class Ground : MonoBehaviour
 		*/
         score = (float) mainVars.scoreInt / 800f;
     	transform.position = transform.position - new Vector3((sped+score)*Time.deltaTime,0,0);
-    	if(transform.position.x <= -22.5) {
-    		transform.position = new Vector3(-7.5f,transform.position.y,0f);
+    	if(transform.position.x <= -26.73) {
+    		transform.position = new Vector3(-8.9f,transform.position.y,0f);
     	}
     }
 }
