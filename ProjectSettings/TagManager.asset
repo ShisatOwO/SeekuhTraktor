@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - AudioTag
+  - Main
+  - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - overUI
