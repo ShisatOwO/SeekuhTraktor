@@ -9,7 +9,7 @@ public class PlayerControllerDesktop : MonoBehaviour
     public float maxSpeed;
     public float acceleration;
     public float jumpForce;
-    
+
     private PlayerController _playerController;
     
     private void Start()

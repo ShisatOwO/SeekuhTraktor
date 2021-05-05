@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +11,12 @@ namespace Gameplay
         private Rigidbody2D _rigidbody2D;
         private float _maxSpeed;
         private float _acceleration;
-        
+        private Vars _vars;
         private float _jumpForce;
         private float _rl;
         private bool _jmp;
         private bool _crh;
-        private GameObject _mainObj;
+        private GameObject _canvas;
         
         public PlayerController(MonoBehaviour parent , float jumpForce, float maxSpeed, float acceleration)
         {
@@ -24,7 +25,8 @@ namespace Gameplay
             _maxSpeed = maxSpeed;
             _jumpForce = jumpForce;
             _acceleration = acceleration;
-            _mainObj = GameObject.Find("Main");
+            _canvas = GameObject.Find("Canvas");
+            _vars = GameObject.Find("Main").GetComponent<Vars>();
         }
         
         public void PlayerCollision(Collision2D other)
@@ -34,7 +36,7 @@ namespace Gameplay
 
             if (other.gameObject.CompareTag("Enemy"))
             {
-                PlayerPrefs.SetInt("ScoreSceneOverdub", _mainObj.GetComponent<Vars>().scoreInt);
+                PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
                 SceneManager.LoadScene("HighscoreAfterGame");
             }
 
