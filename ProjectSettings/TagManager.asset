@@ -8,6 +8,9 @@ TagManager:
   - Main
   - Enemy
   - Ground
+  - Upgrade
+  - BoundHor
+  - BoundVert
   layers:
   - Default
   - TransparentFX
