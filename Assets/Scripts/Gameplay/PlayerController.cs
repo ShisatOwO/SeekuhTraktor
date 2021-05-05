@@ -9,22 +9,23 @@ namespace Gameplay
     {
         private MonoBehaviour _parent;
         private Rigidbody2D _rigidbody2D;
-        private float _maxSpeed;
-        private float _acceleration;
         private Vars _vars;
-        private float _jumpForce;
-        private float _rl;
-        private bool _jmp;
-        private bool _crh;
         private GameObject _canvas;
         
-        public PlayerController(MonoBehaviour parent , float jumpForce, float maxSpeed, float acceleration)
+        private float _maxSpeed;
+        private float _acceleration;
+        private float _deceleration;
+        private float _jumpForce;
+        private bool _inAir;
+
+        public PlayerController(MonoBehaviour parent , float jumpForce, float maxSpeed, float acceleration, float deceleration)
         {
             _parent = parent;
             _rigidbody2D = _parent.GetComponent<Rigidbody2D>();
             _maxSpeed = maxSpeed;
             _jumpForce = jumpForce;
             _acceleration = acceleration;
+            _deceleration = deceleration;
             _canvas = GameObject.Find("Canvas");
             _vars = GameObject.Find("Main").GetComponent<Vars>();
         }
@@ -40,26 +41,25 @@ namespace Gameplay
                 SceneManager.LoadScene("HighscoreAfterGame");
             }
 
+            if (other.gameObject.CompareTag("BoundHor")) _inAir = false;
+
         }
 
-        public void ReceiveInput(float rl, bool jmp, bool crh)
+        public void Move(float rl, bool jmp, bool crh)
         {
-            _rl = rl;
-            _jmp = jmp;
-            _crh = crh;
+            _rigidbody2D.velocity += new Vector2(_acceleration*rl*Time.deltaTime, 0);
 
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x + _acceleration * _rl * Time.deltaTime, _rigidbody2D.velocity.y);
-            
-            if (Math.Abs(_rigidbody2D.velocity.x) > Math.Abs(_maxSpeed * _rl))
-                _rigidbody2D.velocity = new Vector2(_maxSpeed * _rl, _rigidbody2D.velocity.y);
-            
-            if (Math.Abs(_rigidbody2D.velocity.x) > 0 && _rl == 0)
-            {
-                float force = _acceleration * Time.deltaTime;
-                if (Math.Abs(_rigidbody2D.velocity.x) < force) force = 0;
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x - force , _rigidbody2D.velocity.y);
-                
-            }
+            if (Math.Abs(_rigidbody2D.velocity.x) > Math.Abs(_maxSpeed * rl))
+                _rigidbody2D.velocity = new Vector2(_maxSpeed * rl, _rigidbody2D.velocity.y);
+
+            if (rl != 0) return;
+
+            float force = _deceleration * (int) (-_rigidbody2D.velocity.x / _rigidbody2D.velocity.x);
+            if (Math.Abs(_rigidbody2D.velocity.x) - Math.Abs(force) < 0)
+                _rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
+            else
+                _rigidbody2D.velocity =
+                    new Vector2(_rigidbody2D.velocity.x + force * Time.deltaTime, _rigidbody2D.velocity.y);
         }
     }
 }

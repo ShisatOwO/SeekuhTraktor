@@ -3,28 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay;
+using UnityEngine.Assertions.Must;
 
 public class PlayerControllerDesktop : MonoBehaviour
 {
     public float maxSpeed;
-    public float acceleration;
     public float jumpForce;
-
+    public float acceleration;
+    public float deceleration;
+    
     private PlayerController _playerController;
+    private float _rl;
+    private bool _jmp;
+    private bool _crh;
     
     private void Start()
     {
-        _playerController = new PlayerController(this, jumpForce, maxSpeed, acceleration);
+        _playerController = new PlayerController(this, jumpForce, maxSpeed, acceleration, deceleration);
     }
 
     private void Update()
     {
-        float rl = Input.GetAxis("Horizontal");
-        bool jmp = Input.GetButton("Jump");
+        _rl = Input.GetAxis("Horizontal");
+        _jmp = Input.GetButton("Jump");
         //bool crh = Input.GetButton("Crouch");
-        bool crh = false; // nur als test
-        
-        _playerController.ReceiveInput(rl, jmp, crh);
+        _crh = false; // nur als test
+    }
+
+    private void FixedUpdate()
+    {
+        _playerController.Move(_rl, _jmp, _crh);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
