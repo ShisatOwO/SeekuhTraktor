@@ -11,8 +11,8 @@ public class PlayerControllerDesktop : MonoBehaviour
     public float jumpForce;
     
     private PlayerController _playerController;
-    private Vector2 _vel;
-    void Start()
+    
+    private void Start()
     {
         _playerController = new PlayerController(this, jumpForce, maxSpeed, acceleration);
     }

@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  acceleration: 50
+  acceleration: 2000
   jumpForce: 2
 --- !u!50 &897165681
 Rigidbody2D:
@@ -487,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897165678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.37, y: 2.65, z: 0}
+  m_LocalPosition: {x: -6.92, y: 2.12, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.5168}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1215,7 +1215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -630, y: 480}
+  m_AnchoredPosition: {x: -292.4, y: 290.42}
   m_SizeDelta: {x: 599.2, y: 85.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518748866
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scText: {fileID: 0}
+  sky: 0
 --- !u!114 &1518748867
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
-    public class PlayerController : MonoBehaviour 
+    public class PlayerController
     {
         private MonoBehaviour _parent;
         private Rigidbody2D _rigidbody2D;
@@ -14,7 +15,7 @@ namespace Gameplay
         private float _rl;
         private bool _jmp;
         private bool _crh;
-        
+        private GameObject _mainObj;
         
         public PlayerController(MonoBehaviour parent , float jumpForce, float maxSpeed, float acceleration)
         {
@@ -23,12 +24,20 @@ namespace Gameplay
             _maxSpeed = maxSpeed;
             _jumpForce = jumpForce;
             _acceleration = acceleration;
+            _mainObj = GameObject.Find("Main");
         }
         
         public void PlayerCollision(Collision2D other)
         {
             if (other.gameObject.CompareTag("BoundVert")) 
                 _rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
+
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                PlayerPrefs.SetInt("ScoreSceneOverdub", _mainObj.GetComponent<Vars>().scoreInt);
+                SceneManager.LoadScene("HighscoreAfterGame");
+            }
+
         }
 
         public void ReceiveInput(float rl, bool jmp, bool crh)
