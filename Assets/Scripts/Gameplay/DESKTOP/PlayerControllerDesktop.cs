@@ -6,26 +6,29 @@ using Gameplay;
 
 public class PlayerControllerDesktop : MonoBehaviour
 {
-    public Vector2 speed;
+    public float maxSpeed;
+    public float acceleration;
+    public float jumpForce;
     
     private PlayerController _playerController;
     private Vector2 _vel;
     void Start()
     {
-        _playerController = new PlayerController(this);
+        _playerController = new PlayerController(this, jumpForce, maxSpeed, acceleration);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float axisX = Input.GetAxis("Horizontal");
-        float axisY = Input.GetAxis("Vertical");
-
-        _vel = new Vector2(speed.x * axisX, speed.y * axisY);
+        float rl = Input.GetAxis("Horizontal");
+        bool jmp = Input.GetButton("Jump");
+        //bool crh = Input.GetButton("Crouch");
+        bool crh = false; // nur als test
+        
+        _playerController.ReceiveInput(rl, jmp, crh);
     }
 
-    private void FixedUpdate()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        _playerController.Impulse(_vel);
+        _playerController.PlayerCollision(other);
     }
 }

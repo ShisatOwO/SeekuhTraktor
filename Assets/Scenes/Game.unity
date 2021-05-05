@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 345316510}
   - component: {fileID: 345316509}
   - component: {fileID: 345316508}
-  - component: {fileID: 345316513}
-  - component: {fileID: 345316512}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -225,31 +223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &345316512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345316507}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d07952388994aaf4f9def97a4ff55314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &345316513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345316507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ecd259aedb189d489cf13588f1a11f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0}
 --- !u!1 &535300736
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +236,7 @@ GameObject:
   - component: {fileID: 535300738}
   m_Layer: 0
   m_Name: Sprite Mask
-  m_TagString: Untagged
+  m_TagString: BoundVert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,7 +377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ecd259aedb189d489cf13588f1a11f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 50, y: 1}
+  maxSpeed: 10
+  acceleration: 50
+  jumpForce: 2
 --- !u!50 &897165681
 Rigidbody2D:
   serializedVersion: 4
@@ -420,7 +395,7 @@ Rigidbody2D:
   m_Mass: 11.2820015
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -512,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897165678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.05, y: -3.2, z: 0}
+  m_LocalPosition: {x: -3.37, y: 2.65, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.5168}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1109,7 +1084,7 @@ GameObject:
   - component: {fileID: 1441303748}
   m_Layer: 0
   m_Name: Sprite Mask
-  m_TagString: Untagged
+  m_TagString: BoundVert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1367,7 +1342,7 @@ GameObject:
   - component: {fileID: 1770100757}
   m_Layer: 0
   m_Name: Sprite Mask (1)
-  m_TagString: Untagged
+  m_TagString: BoundVert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
