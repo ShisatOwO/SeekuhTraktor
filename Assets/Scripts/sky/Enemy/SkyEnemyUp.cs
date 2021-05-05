@@ -74,7 +74,7 @@ public class SkyEnemyUp : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         }
         scoreCounterCa = mainVars.scoreInt;
-        rigidb.velocity = new Vector3 (0f,(-1 * scoreCounterCa / 800),0f);
+        rigidb.velocity += new Vector2 (0f,(-1 * scoreCounterCa / 800));
 
         
     }

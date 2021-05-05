@@ -86,7 +86,7 @@ public class SkyEnemyDown : MonoBehaviour
         debugFloatWhyTheFuckDoINeedThis = (float)scoreCounterCa / (float)800;
         //Debug.Log("debugFloat" + mainVars.scoreInt);
         //this.rigidb.velocity = new Vector3 (0f,(1 * scoreCounterCa / 800),0f);
-        this.rigidb.velocity = new Vector3 (0f,debugFloatWhyTheFuckDoINeedThis,0f);
+        this.rigidb.velocity += new Vector2 (0f,debugFloatWhyTheFuckDoINeedThis);
     }
 
     void FixedUpdate() {

@@ -13,9 +13,9 @@ public class randomYPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	ypos1 = 2.7f;
+    	ypos1 = 4f;
     	ypos2 = 0f;
-    	ypos3 = -4.7f;
+    	ypos3 = -4f;
         
     }
 

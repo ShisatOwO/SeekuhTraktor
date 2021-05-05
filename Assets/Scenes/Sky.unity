@@ -182,14 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8869c00999e304439ac3c52a2aea513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  genRight: {fileID: 0}
-  genLeft: {fileID: 0}
-  genUp: {fileID: 0}
-  genDown: {fileID: 0}
+  genRight: {fileID: 1770661874}
+  genLeft: {fileID: 991537263}
+  genUp: {fileID: 735833448}
+  genDown: {fileID: 1462929238}
   direction: 0
   countFrames: 0
   frameBorder: 0
-  mainObj: {fileID: 0}
+  mainObj: {fileID: 312655622}
   grense: 5
   repetT: 150
 --- !u!4 &202738076
@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 312655624}
-  - component: {fileID: 312655623}
+  - component: {fileID: 312655625}
   m_Layer: 0
   m_Name: Main (1)
   m_TagString: Main
@@ -358,18 +358,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &312655623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312655622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e606c99765e50435885e94fb6846e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &312655624
 Transform:
   m_ObjectHideFlags: 0
@@ -384,6 +372,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312655625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312655622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3e7a26dde6d0b45b709f3e12f2ada1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreObj: {fileID: 1127931982}
+  scoreInt: 0
+  zugOnS: 0
+  amphOnS: 0
 --- !u!1 &328994994
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,12 +529,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
-  eIQ: {fileID: 0}
-  eMik: {fileID: 0}
-  eGan: {fileID: 0}
+  eIQ: {fileID: 791430057642673189, guid: 539b337afa59873418fc3a75f2287bbf, type: 3}
+  eMik: {fileID: 3578206540721580204, guid: 94cfad1e1b6f9e343ae7b81e09f0bcfe, type: 3}
+  eGan: {fileID: 5804371823897354151, guid: 3161d37a0a0e1574a86e7ee673e5d59b, type: 3}
   eLof: {fileID: 0}
   eTot: {fileID: 0}
-  eCrou: {fileID: 0}
+  eCrou: {fileID: 5160721655677676059, guid: 996e9faf2843fa348867659d9c8eea06, type: 3}
   eKno: {fileID: 0}
   eBoss: {fileID: 0}
   eAuto: {fileID: 0}
@@ -540,7 +544,7 @@ MonoBehaviour:
   rocket: {fileID: 0}
   eMeteor: {fileID: 0}
   mainObj: {fileID: 0}
-  scoSpedObject: {fileID: 0}
+  scoSpedObject: {fileID: 1127931982}
   scoSpeedScript: {fileID: 0}
   grenze: 3
 --- !u!114 &735833451
@@ -638,12 +642,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
-  eIQ: {fileID: 0}
-  eMik: {fileID: 0}
-  eGan: {fileID: 0}
+  eIQ: {fileID: 791430057642673189, guid: 539b337afa59873418fc3a75f2287bbf, type: 3}
+  eMik: {fileID: 3578206540721580204, guid: 94cfad1e1b6f9e343ae7b81e09f0bcfe, type: 3}
+  eGan: {fileID: 5804371823897354151, guid: 3161d37a0a0e1574a86e7ee673e5d59b, type: 3}
   eLof: {fileID: 0}
   eTot: {fileID: 0}
-  eCrou: {fileID: 0}
+  eCrou: {fileID: 5160721655677676059, guid: 996e9faf2843fa348867659d9c8eea06, type: 3}
   eKno: {fileID: 0}
   eBoss: {fileID: 0}
   eAuto: {fileID: 0}
@@ -653,7 +657,7 @@ MonoBehaviour:
   rocket: {fileID: 0}
   eMeteor: {fileID: 0}
   mainObj: {fileID: 0}
-  scoSpedObject: {fileID: 0}
+  scoSpedObject: {fileID: 1127931982}
   scoSpeedScript: {fileID: 0}
   grenze: 3
 --- !u!114 &991537266
@@ -805,9 +809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fc56ff8f5ec3148970ac4180391ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 6000
   scText: {fileID: 0}
-  sky: 1
+  sky: 0
 --- !u!114 &1127931985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,12 +984,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
-  eIQ: {fileID: 0}
-  eMik: {fileID: 0}
-  eGan: {fileID: 0}
+  eIQ: {fileID: 791430057642673189, guid: 539b337afa59873418fc3a75f2287bbf, type: 3}
+  eMik: {fileID: 3578206540721580204, guid: 94cfad1e1b6f9e343ae7b81e09f0bcfe, type: 3}
+  eGan: {fileID: 5804371823897354151, guid: 3161d37a0a0e1574a86e7ee673e5d59b, type: 3}
   eLof: {fileID: 0}
   eTot: {fileID: 0}
-  eCrou: {fileID: 0}
+  eCrou: {fileID: 5160721655677676059, guid: 996e9faf2843fa348867659d9c8eea06, type: 3}
   eKno: {fileID: 0}
   eBoss: {fileID: 0}
   eAuto: {fileID: 0}
@@ -995,7 +999,7 @@ MonoBehaviour:
   rocket: {fileID: 0}
   eMeteor: {fileID: 0}
   mainObj: {fileID: 0}
-  scoSpedObject: {fileID: 0}
+  scoSpedObject: {fileID: 1127931982}
   scoSpeedScript: {fileID: 0}
   grenze: 3
 --- !u!114 &1462929241
@@ -1418,13 +1422,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
-  eIQ: {fileID: 0}
-  eMik: {fileID: 0}
-  eGan: {fileID: 0}
+  eIQ: {fileID: 791430057642673189, guid: 539b337afa59873418fc3a75f2287bbf, type: 3}
+  eMik: {fileID: 3578206540721580204, guid: 94cfad1e1b6f9e343ae7b81e09f0bcfe, type: 3}
+  eGan: {fileID: 5804371823897354151, guid: 3161d37a0a0e1574a86e7ee673e5d59b, type: 3}
   eLof: {fileID: 0}
   eTot: {fileID: 0}
-  eCrou: {fileID: 0}
-  eKno: {fileID: 0}
+  eCrou: {fileID: 5160721655677676059, guid: 996e9faf2843fa348867659d9c8eea06, type: 3}
+  eKno: {fileID: 5160721655677676059, guid: 996e9faf2843fa348867659d9c8eea06, type: 3}
   eBoss: {fileID: 0}
   eAuto: {fileID: 0}
   eMohr: {fileID: 0}
@@ -1433,7 +1437,7 @@ MonoBehaviour:
   rocket: {fileID: 0}
   eMeteor: {fileID: 0}
   mainObj: {fileID: 0}
-  scoSpedObject: {fileID: 0}
+  scoSpedObject: {fileID: 1127931982}
   scoSpeedScript: {fileID: 0}
   grenze: 3
 --- !u!4 &1770661876

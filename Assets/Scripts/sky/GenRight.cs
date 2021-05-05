@@ -38,7 +38,7 @@ public class GenRight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        mainObj = GameObject.FindWithTag("Main");
         mainVars = mainObj.GetComponent<Vars>();
         scoSpeedScript = scoSpedObject.GetComponent<Score>();
 

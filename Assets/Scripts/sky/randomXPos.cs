@@ -13,9 +13,9 @@ public class randomXPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	xpos1 = 5f;
+    	xpos1 = 7f;
     	xpos2 = 0f;
-    	xpos3 = -5f;
+    	xpos3 = -7f;
         
     }
 

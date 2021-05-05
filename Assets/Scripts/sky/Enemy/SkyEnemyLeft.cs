@@ -73,7 +73,7 @@ public class SkyEnemyLeft : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         }
         scoreCounterCa = mainVars.scoreInt;
-        this.rigidb.velocity = new Vector3 ((1 * scoreCounterCa / 800),0f,0f);
+        this.rigidb.velocity += new Vector2 ((1 * scoreCounterCa / 800),0f);
         
     }
 
