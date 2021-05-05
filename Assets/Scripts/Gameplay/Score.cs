@@ -7,10 +7,14 @@ public class Score : MonoBehaviour
 {
 	public int score = 0;
 	public Text scText;
+    public bool sky = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(sky == true) {
+            score = PlayerPrefs.GetInt("ScoreSceneOverdub");
+        }
     }
 
     // Update is called once per frame
