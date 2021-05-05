@@ -9,7 +9,8 @@ public class loadingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPrefs.SetFloat("VolumeSlider", 1f);
+        PlayerPrefs.SetInt("AudioSrc", 0);
     }
 
     // Update is called once per frame
