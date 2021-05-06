@@ -378,9 +378,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  jumpForce: 2
-  acceleration: 25
-  deceleration: 10
+  jumpForce: 80
+  jumpHeight: 15
+  airMobility: 1.25
+  acceleration: 90
+  deceleration: 130
 --- !u!50 &897165681
 Rigidbody2D:
   serializedVersion: 4
@@ -396,7 +398,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -489,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 897165678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.92, y: 2.12, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.5168}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5168}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1030,7 +1032,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434062548}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b1674e05639a4a41bdaf3de36066969, type: 3}
   m_Name: 
