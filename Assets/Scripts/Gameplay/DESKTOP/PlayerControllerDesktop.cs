@@ -13,7 +13,8 @@ public class PlayerControllerDesktop : MonoBehaviour
     public float deceleration;
     
     private PlayerController _playerController;
-    private float _rl;
+    private int _rl;
+    private bool _isMoving;
     private bool _jmp;
     private bool _crh;
     
@@ -24,15 +25,15 @@ public class PlayerControllerDesktop : MonoBehaviour
 
     private void Update()
     {
-        _rl = Input.GetAxis("Horizontal");
-        _jmp = Input.GetButton("Jump");
-        //bool crh = Input.GetButton("Crouch");
-        _crh = false; // nur als test
+        _rl = 0;
+        if (Input.GetButton("Right") || Input.GetAxisRaw("Horizontal") > 0) _rl = 1;
+        else if (Input.GetButton("Left") ||  Input.GetAxisRaw("Horizontal") < 0) _rl = -1;
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
     }
 
     private void FixedUpdate()
     {
-        _playerController.Move(_rl, _jmp, _crh);
+        _playerController.Move(_rl, false, false);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
