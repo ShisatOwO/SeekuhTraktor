@@ -19,8 +19,19 @@ namespace Gameplay
         private bool _inAir = true;
         private bool _atJumpPeak;
         private float _airMobility;
+        private bool _crouched;
+        private Sprite _crouch;
+        private Sprite _normal;
 
-        public PlayerController(MonoBehaviour parent , float jumpForce, float jumpHeight, float airMobility, float maxSpeed, float acceleration, float deceleration)
+        public PlayerController(MonoBehaviour parent, 
+                                float jumpForce, 
+                                float jumpHeight, 
+                                float airMobility, 
+                                float maxSpeed, 
+                                float acceleration, 
+                                float deceleration,
+                                Sprite normal,
+                                Sprite crouch)
         {
             _parent = parent;
             _rigidbody2D = _parent.GetComponent<Rigidbody2D>();
@@ -31,6 +42,9 @@ namespace Gameplay
             _acceleration = acceleration;
             _deceleration = deceleration;
             _airMobility = airMobility;
+            _crouched = false;
+            _normal = normal;
+            _crouch = crouch;
         }
         
         public void PlayerCollision(Collision2D other)
@@ -76,6 +90,7 @@ namespace Gameplay
 
             // Kein springen Mehr wenn man in der Luft Springen los lässt
             if (!jmp && _inAir) _atJumpPeak = true;
+            else if (jmp && !_inAir) vel.x *= 0.3f;
             
             // Springen
             if (jmp && !_atJumpPeak)
@@ -88,6 +103,24 @@ namespace Gameplay
                     _atJumpPeak = true;
                 }
                 vel.y += aclY;
+            }
+
+            if (crh && !_crouched)
+            {
+                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
+                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
+                _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
+                _rigidbody2D.gravityScale *= 4;
+                vel.x = 0;
+                _crouched = true;
+            }
+            else if (!crh && _crouched)
+            {
+                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(true);
+                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(false);
+                _parent.GetComponent<SpriteRenderer>().sprite = _normal;
+                _rigidbody2D.gravityScale /= 4;
+                _crouched = false;
             }
             
             _rigidbody2D.velocity = vel;

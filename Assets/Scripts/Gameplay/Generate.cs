@@ -136,32 +136,22 @@ public class Generate : MonoBehaviour
 
         Debug.Log("Rando=" + rando);
 
-        if(rando == 1) {
-    	    Spawn  = Instantiate (eIQ,transform.position,Quaternion.identity)as GameObject;
-        } else if(rando == 2) {
-            Spawn  = Instantiate (eMik,transform.position,Quaternion.identity)as GameObject;
-        } else if(rando == 3) {
-            Spawn  = Instantiate (eGan,transform.position,Quaternion.identity)as GameObject;
-        } else if(rando == 4) {
-            Spawn  = Instantiate (eCrou,transform.position,Quaternion.identity)as GameObject;
-        } else if(rando == 5) {
-            Spawn  = Instantiate (eTot,transform.position,Quaternion.identity)as GameObject;
-        } else if(rando == 6) {
-            Spawn  = Instantiate (eLof,transform.position,Quaternion.identity)as GameObject;
-        } else if (rando == 8) {
-        	Spawn  = Instantiate (eKno,transform.position,Quaternion.identity)as GameObject;
-        } else if (rando == 7) {
-            Spawn  = Instantiate (eMohr,transform.position,Quaternion.identity)as GameObject;
-        } else if (rando == 10) {
-            Spawn  = Instantiate (eBoss,new Vector3(10f, 4.3f, 0f),Quaternion.identity)as GameObject;
-        } else if (rando == 11) {
-            Spawn  = Instantiate (eAuto,transform.position,Quaternion.identity)as GameObject;
-        } else if (rando == 9) {
-            Spawn  = Instantiate (eLamp,transform.position,Quaternion.identity)as GameObject;
-        } else if (rando == 12) {
-            Spawn  = Instantiate (eZug,transform.position,Quaternion.identity)as GameObject;
-        }
-
+        Spawn = rando switch
+        {
+            1 => Instantiate(eIQ, transform.position, Quaternion.identity) as GameObject,
+            2 => Instantiate(eMik, transform.position, Quaternion.identity) as GameObject,
+            3 => Instantiate(eGan, transform.position, Quaternion.identity) as GameObject,
+            4 => Instantiate(eCrou, transform.position, Quaternion.identity) as GameObject,
+            5 => Instantiate(eTot, transform.position, Quaternion.identity) as GameObject,
+            6 => Instantiate(eLof, transform.position, Quaternion.identity) as GameObject,
+            8 => Instantiate(eKno, transform.position, Quaternion.identity) as GameObject,
+            7 => Instantiate(eMohr, transform.position, Quaternion.identity) as GameObject,
+            10 => Instantiate(eBoss, new Vector3(10f, 4.3f, 0f), Quaternion.identity) as GameObject,
+            11 => Instantiate(eAuto, transform.position, Quaternion.identity) as GameObject,
+            9 => Instantiate(eLamp, transform.position, Quaternion.identity) as GameObject,
+            12 => Instantiate(eZug, transform.position, Quaternion.identity) as GameObject,
+            _ => Spawn
+        };
     }
 
    /* void bSpawn() {
