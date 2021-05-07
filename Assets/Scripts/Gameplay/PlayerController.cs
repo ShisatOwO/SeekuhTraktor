@@ -77,6 +77,7 @@ namespace Gameplay
                 if (_inAir) acl = _acceleration * Time.deltaTime * rl * _airMobility;
                 if (Math.Abs(vel.x + acl) > Math.Abs(_maxSpeed)) vel.x = _maxSpeed * rl;
                 else vel.x += acl;
+                _parent.GetComponent<SpriteRenderer>().flipX = (rl < 0) ? true : false;
             }
 
             // Ausbremsung
@@ -90,10 +91,10 @@ namespace Gameplay
 
             // Kein springen Mehr wenn man in der Luft Springen los lässt
             if (!jmp && _inAir) _atJumpPeak = true;
-            else if (jmp && !_inAir) vel.x *= 0.3f;
+            else if (jmp && !_inAir && !_crouched) vel.x *= 0.3f;
             
             // Springen
-            if (jmp && !_atJumpPeak)
+            if (jmp && !_atJumpPeak && !_crouched)
             {
                 _inAir = true;
                 float aclY = _jumpHeight*0.1f +  _jumpForce * Time.deltaTime;
@@ -111,7 +112,9 @@ namespace Gameplay
                 _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
                 _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
                 _rigidbody2D.gravityScale *= 4;
-                vel.x = 0;
+                if (_inAir) vel.x = 0;
+                _deceleration /= 8;
+                _acceleration /= 8;
                 _crouched = true;
             }
             else if (!crh && _crouched)
@@ -120,6 +123,8 @@ namespace Gameplay
                 _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(false);
                 _parent.GetComponent<SpriteRenderer>().sprite = _normal;
                 _rigidbody2D.gravityScale /= 4;
+                _deceleration *= 8;
+                _acceleration *= 8;
                 _crouched = false;
             }
             
