@@ -11,6 +11,7 @@ TagManager:
   - Upgrade
   - BoundHor
   - BoundVert
+  - InactiveGandhi
   layers:
   - Default
   - TransparentFX

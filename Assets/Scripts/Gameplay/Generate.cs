@@ -21,6 +21,9 @@ public class Generate : MonoBehaviour
     public GameObject eZug;
     public GameObject rocket;
 
+    public GameObject GenObj;
+    public GameObject currSpawnedObj;
+
 
     public GameObject mainObj;
     private Vars mainVars;
@@ -135,7 +138,7 @@ public class Generate : MonoBehaviour
         }
 
         Debug.Log("Rando=" + rando);
-
+        
         Spawn = rando switch
         {
             1 => Instantiate(eIQ, transform.position, Quaternion.identity) as GameObject,
@@ -152,6 +155,29 @@ public class Generate : MonoBehaviour
             12 => Instantiate(eZug, transform.position, Quaternion.identity) as GameObject,
             _ => Spawn
         };
+        
+        /*
+        Spawn = rando switch
+        {
+            1 => Instantiate(eIQ, transform.position, Quaternion.identity) as GameObject,
+            2 => Instantiate(eMik, transform.position, Quaternion.identity) as GameObject,
+            3 => currSpawnedObj = GameObject.FindWithTag("InactiveGandhi"),
+            4 => Instantiate(eCrou, transform.position, Quaternion.identity) as GameObject,
+            5 => Instantiate(eTot, transform.position, Quaternion.identity) as GameObject,
+            6 => Instantiate(eLof, transform.position, Quaternion.identity) as GameObject,
+            8 => Instantiate(eKno, transform.position, Quaternion.identity) as GameObject,
+            7 => Instantiate(eMohr, transform.position, Quaternion.identity) as GameObject,
+            10 => Instantiate(eBoss, new Vector3(10f, 4.3f, 0f), Quaternion.identity) as GameObject,
+            11 => Instantiate(eAuto, transform.position, Quaternion.identity) as GameObject,
+            9 => Instantiate(eLamp, transform.position, Quaternion.identity) as GameObject,
+            12 => Instantiate(eZug, transform.position, Quaternion.identity) as GameObject,
+            _ => Spawn
+        };
+        currSpawnedObj = GameObject.FindWithTag("InactiveGandhi");
+        currSpawnedObj.transform.position = GenObj.transform.position;
+        currSpawnedObj.tag = "Enemy";
+        */
+
     }
 
    /* void bSpawn() {
