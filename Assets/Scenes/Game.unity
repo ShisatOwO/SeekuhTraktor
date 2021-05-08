@@ -1302,7 +1302,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1434062550}
-  - component: {fileID: 1434062549}
   - component: {fileID: 1434062551}
   m_Layer: 0
   m_Name: Generarte
@@ -1311,43 +1310,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1434062549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434062548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1674e05639a4a41bdaf3de36066969, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spawn: {fileID: 0}
-  eIQ: {fileID: 7143773123281455628, guid: 8fad0a017b1bfef64a25bdc5e85f219e, type: 3}
-  eMik: {fileID: 2934366914702373120, guid: 4fc661e2b4e53e108838949e6bb58f6f, type: 3}
-  eGan: {fileID: 2058504780179981791, guid: 5613b6547b4654c4394281ffb7c83c24, type: 3}
-  eLof: {fileID: 7603781260156893087, guid: 31aad49f10d87050c895c0c6e99b9de9, type: 3}
-  eTot: {fileID: 0}
-  eCrou: {fileID: 0}
-  eKno: {fileID: 0}
-  eBoss: {fileID: 0}
-  eAuto: {fileID: 0}
-  eMohr: {fileID: 0}
-  eLamp: {fileID: 0}
-  eZug: {fileID: 0}
-  rocket: {fileID: 0}
-  GenObj: {fileID: 1434062548}
-  currSpawnedObj: {fileID: 0}
-  mainObj: {fileID: 947725696}
-  dSpawn: 0
-  debugSpawn: 1
-  debugInt: 3
-  bossS: 0
-  bossRn: 0
-  repetT: 0
-  scoSpedObject: {fileID: 1518748864}
-  scoSpeedScript: {fileID: 0}
 --- !u!4 &1434062550
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,7 +1336,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2f01b865e5d12409f2703aca78cf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyArray:
+  - gan
+  - iq
+  - lof
   eGan: {fileID: 2436886296714093, guid: 2caeb0b164c12117d8b816609d93166c, type: 3}
+  eIQ: {fileID: 7143773123281455628, guid: 8fad0a017b1bfef64a25bdc5e85f219e, type: 3}
+  eLof: {fileID: 7603781260156893087, guid: 31aad49f10d87050c895c0c6e99b9de9, type: 3}
 --- !u!1 &1441303746
 GameObject:
   m_ObjectHideFlags: 0
