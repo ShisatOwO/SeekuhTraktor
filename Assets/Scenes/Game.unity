@@ -1303,6 +1303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434062550}
   - component: {fileID: 1434062551}
+  - component: {fileID: 1434062549}
   m_Layer: 0
   m_Name: Generarte
   m_TagString: Untagged
@@ -1310,6 +1311,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1434062549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434062548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8070f727c8205bb3fbeaf1f8ffaabb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1434062550
 Transform:
   m_ObjectHideFlags: 0
@@ -1331,7 +1344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434062548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2f01b865e5d12409f2703aca78cf63, type: 3}
   m_Name: 
