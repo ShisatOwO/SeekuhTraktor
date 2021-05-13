@@ -12,6 +12,7 @@ TagManager:
   - BoundHor
   - BoundVert
   - InactiveGandhi
+  - EnemyKiller
   layers:
   - Default
   - TransparentFX
