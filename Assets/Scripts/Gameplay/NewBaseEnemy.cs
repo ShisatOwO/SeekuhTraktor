@@ -55,5 +55,4 @@ public class NewBaseEnemy : MonoBehaviour
     {
         if (_wasOnScreen) _gen.SendMessage("Disable", gameObject);
     }
-
 }
