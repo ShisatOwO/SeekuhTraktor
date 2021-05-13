@@ -10,11 +10,18 @@ public class NewGenerate : MonoBehaviour
     public int[] scoreGaps;
     public int poolSize;
 	public float spawnRate;
+	public float applyScoreDifficulty = 0f;
+	public float applyRandomDifficulty = 0f;
 
+
+	private float spawnRateBorder;
     private Pooler _tier1 = new Pooler();
     private Pooler _tier2 = new Pooler();
     private Pooler _tier3 = new Pooler();
 	private float _time;
+
+	private GameObject _mainObj;
+    private Vars _mainVars;
 
 	private GameObject CreateObj(GameObject baseObj)
 	{
@@ -36,6 +43,10 @@ public class NewGenerate : MonoBehaviour
 
     void Start()
     {
+    	_mainObj = GameObject.Find("Main");
+        _mainVars = _mainObj.GetComponent<Vars>();
+
+
 		//Gegner Generieren (erstmal nur zum Testen)
 		foreach (GameObject original in tier1Enemys)
 		{
@@ -50,7 +61,17 @@ public class NewGenerate : MonoBehaviour
 
     void Update()
     {
-		if(Time.time - _time > spawnRate)
+    	applyScoreDifficulty = (float)(_mainVars.scoreInt / 3000f);
+    	if(_mainVars.scoreInt < 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }
+    	else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-30,31) / 100f); }
+    	/*else if(_mainVars.scoreInt < 4000) {applyRandomDifficulty = (float)(Random.Range(-40,41) / 100f); }
+    	else if(_mainVars.scoreInt < 5000) {applyRandomDifficulty = (float)(Random.Range(-50,51) / 100f); }
+    	else if(_mainVars.scoreInt > 5000) {applyRandomDifficulty = (float)(Random.Range(-60,61) / 100f); }
+    	*/
+
+    	spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;
+
+		if(Time.time - _time > spawnRateBorder)
 		{
 			GameObject g = _tier1.RequestObj();
 			if (g != null) Enable(g);
