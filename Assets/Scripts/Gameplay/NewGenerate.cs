@@ -18,9 +18,7 @@ public class NewGenerate : MonoBehaviour
 
 	private GameObject CreateObj(GameObject baseObj)
 	{
-		GameObject gobj = Instantiate(baseObj);
-		gobj.AddComponent<NewBaseEnemy>();
-		return gobj;
+		return Instantiate(baseObj);
 	}
 
 

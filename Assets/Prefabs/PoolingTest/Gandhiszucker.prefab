@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1752015251891822506}
   - component: {fileID: 1124576908051888016}
   - component: {fileID: 5478049775297650266}
+  - component: {fileID: -64763430725165705}
   m_Layer: 0
   m_Name: Gandhiszucker
   m_TagString: Enemy
@@ -110,3 +111,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.218915, y: 1.7783055}
   m_EdgeRadius: 0
+--- !u!114 &-64763430725165705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436886296714093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2114a9c3cbbbe7ceaaf1673ce8202496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: -8, y: 0, z: 0}
