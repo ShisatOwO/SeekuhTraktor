@@ -8,14 +8,14 @@ public class NewBaseEnemy : MonoBehaviour
     public Vector3 spawnPosition;
     public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
 
-    private Transform _trans;
-    private GameObject _gen;
-    private Renderer _renderer;
-    private bool _wasOnScreen;
-    private GameObject _mainObj;
-    private Vars _mainVars;
+    protected Transform _trans;
+    protected GameObject _gen;
+    protected Renderer _renderer;
+    protected bool _wasOnScreen;
+    protected GameObject _mainObj;
+    protected Vars _mainVars;
     
-    void Start()
+    protected void Start()
     {
         _trans = gameObject.GetComponent<Transform>();
         _gen = GameObject.Find("Generate");
@@ -25,32 +25,32 @@ public class NewBaseEnemy : MonoBehaviour
         _wasOnScreen = false;
     }
 
-    void Enable()
+    protected void Enable()
     {
         _wasOnScreen = false;
         _trans = gameObject.GetComponent<Transform>();
         _trans.position = spawnPosition;
     }
 
-    void Disable()
+    protected void Disable()
     {
         _wasOnScreen = false;
         gameObject.active = false;
     }
     
-    void Update()
+    protected void Update()
     {
     	applyScoreDifficulty = new Vector3(_mainVars.scoreInt/800f,0f,0f);
         _trans.position += (speed - applyScoreDifficulty) * Time.deltaTime;
 
     }
 
-    void OnBecameVisible()
+    protected void OnBecameVisible()
     {
         _wasOnScreen = true;
     }
 
-    void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         if (_wasOnScreen) _gen.SendMessage("Disable", gameObject);
     }

@@ -415,8 +415,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535300736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2235491, y: -1.638942, z: 3.4358118}
-  m_LocalScale: {x: 23.462008, y: 1, z: 1}
+  m_LocalPosition: {x: 6.82, y: -1.5573, z: 3.4358118}
+  m_LocalScale: {x: 39.549908, y: 0.8367, z: 1}
   m_Children: []
   m_Father: {fileID: 1064617807}
   m_RootOrder: 1
@@ -1409,9 +1409,10 @@ MonoBehaviour:
   - {fileID: 2934366914702373120, guid: 04a6e8adf47f10b6e838da5b30c1394d, type: 3}
   - {fileID: 7950919978512100575, guid: 4ce621735b915caf7b3c6c73b0bb29ed, type: 3}
   - {fileID: 2687926031770341932, guid: 35a825a7d1c3888a08b8059a2473152e, type: 3}
-  tier2Enemys: []
+  tier2Enemys:
+  - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   tier3Enemys: []
-  scoreGaps: 
+  scoreGaps: b80b0000
   poolSize: 5
   spawnRate: 3
   applyScoreDifficulty: 0

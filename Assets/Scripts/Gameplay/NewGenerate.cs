@@ -14,21 +14,21 @@ public class NewGenerate : MonoBehaviour
 	public float applyRandomDifficulty = 0f;
 
 
-	private float spawnRateBorder;
-    private Pooler _tier1 = new Pooler();
-    private Pooler _tier2 = new Pooler();
-    private Pooler _tier3 = new Pooler();
-	private float _time;
-	private GameObject _mainObj;
-    private Vars _mainVars;
+	protected float spawnRateBorder;
+	protected Pooler _tier1 = new Pooler();
+	protected Pooler _tier2 = new Pooler();
+	protected Pooler _tier3 = new Pooler();
+	protected float _time;
+	protected GameObject _mainObj;
+	protected Vars _mainVars;
 
-    private GameObject CreateObj(GameObject baseObj)
+	protected private GameObject CreateObj(GameObject baseObj)
 	{
 		return Instantiate(baseObj);
 	}
 
 
-	private void Disable(GameObject g)
+	protected private void Disable(GameObject g)
 	{
 		g.SendMessage("Disable");
 		Pooler t = _tier1.GetSiblingPool(g.name);
@@ -37,13 +37,13 @@ public class NewGenerate : MonoBehaviour
 		t.Add(g);
 	}
 
-	private void Enable(GameObject g)
+	protected private void Enable(GameObject g)
 	{
 		g.active = true;
 		g.SendMessage("Enable");
 	}
 
-	void CreateClones(GameObject[] tierl, ref Pooler tierp)
+	protected void CreateClones(GameObject[] tierl, ref Pooler tierp)
 	{
 		foreach (GameObject original in tierl)
 		{
@@ -55,7 +55,7 @@ public class NewGenerate : MonoBehaviour
 		}
 	}
 
-    void Start()
+	protected void Start()
     {
 		_mainObj = GameObject.Find("Main");
         _mainVars = _mainObj.GetComponent<Vars>();
@@ -69,7 +69,7 @@ public class NewGenerate : MonoBehaviour
     	spawnRateBorder = 0.5f;
     }
 
-    void Update()
+	protected void Update()
     {
 
 	    int randomTier = 0;
