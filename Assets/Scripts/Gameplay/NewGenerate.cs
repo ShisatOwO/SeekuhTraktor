@@ -22,7 +22,7 @@ public class NewGenerate : MonoBehaviour
 	private GameObject _mainObj;
     private Vars _mainVars;
 
-	private GameObject CreateObj(GameObject baseObj)
+    private GameObject CreateObj(GameObject baseObj)
 	{
 		return Instantiate(baseObj);
 	}
@@ -71,27 +71,33 @@ public class NewGenerate : MonoBehaviour
 
     void Update()
     {
-    	
 
-    	
-		
-		int acceptedTiers = 1;
-		foreach (int i in scoreGap)
+	    int randomTier = 0;
+		foreach (int i in scoreGaps)
 		{
-			if (_mainVars.scoreInt > i) acceptedTiers++;
+			if (_mainVars.scoreInt > i) randomTier++;
 		}
+		randomTier = Random.Range(0, randomTier+1);
 
 		if(Time.time - _time > spawnRateBorder)
 		{
-			GameObject g = _tier2.RequestObj();
-			Debug.Log(g);
+			ref Pooler t = ref _tier1;
+			ref GameObject[] e = ref tier1Enemys;
+			switch (randomTier)
+			{
+				case 1:
+				{
+					t = ref _tier2;
+					e = ref tier2Enemys;
+				} break;
+				case 2:
+				{
+					t = ref _tier3;
+					e = ref tier3Enemys;
+				} break;
+			}
 
-			
-			
-
-			//TODO(Rejk): Hier Zufällig ein Tier basierend auf acceptedTiers festlegen
-			//			  Danach aus dem Tier ein Zufälligen Gegner auswählen und in g speichern.
-
+			GameObject g = t.GetSiblingPool(e[Random.Range(0, e.Length)].name + "(Clone)").RequestObj();
 			if (g != null) Enable(g);
 
 

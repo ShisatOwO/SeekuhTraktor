@@ -5,9 +5,8 @@ using UnityEngine;
 public class NewBaseEnemy : MonoBehaviour
 {
     public Vector3 speed = new Vector3(-2f, 0, 0);
+    public Vector3 spawnPosition = new Vector3(20f, -3.64f, 0f);
     public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
-
-    
 
     private Transform _trans;
     private GameObject _gen;
@@ -30,7 +29,7 @@ public class NewBaseEnemy : MonoBehaviour
     {
         _wasOnScreen = false;
         _trans = gameObject.GetComponent<Transform>();
-        _trans.position = new Vector3(20f, -3.64f, 0f);
+        _trans.position = spawnPosition;
     }
 
     void Disable()

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7603781260156893073}
   - component: {fileID: 7603781260156893072}
-  - component: {fileID: 7603781260156893074}
   - component: {fileID: 368519000023844009}
+  - component: {fileID: -5455870271589268339}
   m_Layer: 0
   m_Name: Lochloffel
   m_TagString: Enemy
@@ -85,31 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7603781260156893074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603781260156893087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da31ee5972e07d44e868dda6d5ca8fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sped: 6
-  rot: 0
-  loff: 1
-  rotSped: 1
-  kno: 0
-  seem: 0
-  lamp: 0
-  zug: 0
-  crou: 0
-  rocket: 0
-  mainObj: {fileID: 0}
-  scoSpedObject: {fileID: 0}
-  scoSpeedScript: {fileID: 0}
 --- !u!60 &368519000023844009
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -214,3 +189,17 @@ PolygonCollider2D:
       - {x: -0.89, y: 0.14999999}
       - {x: -0.97999996, y: 0.14999999}
       - {x: -0.98999995, y: 0.16}
+--- !u!114 &-5455870271589268339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7603781260156893087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2114a9c3cbbbe7ceaaf1673ce8202496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: -2, y: 0, z: 0}
+  applyScoreDifficulty: {x: 0, y: 0, z: 0}
