@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NewBaseEnemy : MonoBehaviour
 {
-    public Vector3 speed = new Vector3(-2f, 0, 0);
-    public Vector3 spawnPosition = new Vector3(20f, -3.64f, 0f);
+    public Vector3 speed = new Vector3(-8f, 0, 0);
+    public Vector3 spawnPosition;
     public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
 
     private Transform _trans;
