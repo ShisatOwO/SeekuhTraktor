@@ -64,23 +64,21 @@ public class NewGenerate : MonoBehaviour
 		CreateClones(tier2Enemys, ref _tier2);
 		CreateClones(tier3Enemys, ref _tier3);
 		_time = 0;
+
+		//Erster Gegner spawnt um...
+    	spawnRateBorder = 0.5f;
     }
 
     void Update()
     {
-    	applyScoreDifficulty = (float)(_mainVars.scoreInt / 3000f);
-    	if(_mainVars.scoreInt < 2000) {applyRandomDifficulty 		= (float)(Random.Range(-20,21) / 100f); }
-    	else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty 	= (float)(Random.Range(-30,31) / 100f); }
-    	else if(_mainVars.scoreInt < 4000) {applyRandomDifficulty 	= (float)(Random.Range(-40,41) / 100f); }
-    	else if(_mainVars.scoreInt < 5000) {applyRandomDifficulty 	= (float)(Random.Range(-50,51) / 100f); }
-    	else if(_mainVars.scoreInt > 5000) {applyRandomDifficulty 	= (float)(Random.Range(-60,61) / 100f); }
+    	
 
-    	spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;
+    	
 		
 		int acceptedTiers = 1;
 		foreach (int i in scoreGap)
 		{
-			if (_mainVars.ScoreInt > i) acceptedTiers++;
+			if (_mainVars.scoreInt > i) acceptedTiers++;
 		}
 
 		if(Time.time - _time > spawnRateBorder)
@@ -88,12 +86,30 @@ public class NewGenerate : MonoBehaviour
 			GameObject g = _tier2.RequestObj();
 			Debug.Log(g);
 
+			
+			
+
 			//TODO(Rejk): Hier Zufällig ein Tier basierend auf acceptedTiers festlegen
 			//			  Danach aus dem Tier ein Zufälligen Gegner auswählen und in g speichern.
 
 			if (g != null) Enable(g);
+
+
+			//Feststellen wann der nächste Gegner spawnt
+			GenerateNextSpawnBorder();
 			_time = Time.time;
 		}
 		
     }
+
+	void GenerateNextSpawnBorder() {
+		applyScoreDifficulty = (float)(_mainVars.scoreInt / 3000f);
+    	ApplyRandomDifficultyFunction(); 
+		spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;
+	}
+
+	void ApplyRandomDifficultyFunction() {
+		if(_mainVars.scoreInt < 2000) {			applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }
+			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-30,31) / 100f); }	
+	}
 }
