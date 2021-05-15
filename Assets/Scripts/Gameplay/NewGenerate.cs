@@ -69,33 +69,44 @@ public class NewGenerate : MonoBehaviour
     	spawnRateBorder = 0.5f;
     }
 
+	void getPool(int id, ref Pooler t, ref GameObject[] e)
+	{
+		t = ref _tier1;
+		e = ref tier1Enemys;
+		switch (id)
+		{
+			case 1:
+			{
+				t = ref _tier2;
+				e = ref tier2Enemys;
+			} break;
+			case 2:
+			{
+				t = ref _tier3;
+				e = ref tier3Enemys;
+			} break;
+		}
+	}
+	
 	protected void Update()
-    {
-
-	    int randomTier = 0;
+	{
+		Pooler t = _tier1;
+		GameObject[] e = tier1Enemys;
+	    int acceptedTiers = 0;
 		foreach (int i in scoreGaps)
 		{
-			if (_mainVars.scoreInt > i) randomTier++;
+			if (_mainVars.scoreInt > i) acceptedTiers++;
 		}
-		randomTier = Random.Range(0, randomTier+1);
 
+		for (int i = 0; i <= acceptedTiers; i++)
+		{
+			
+			getPool(i, ref t, ref e);
+		}
+		
 		if(Time.time - _time > spawnRateBorder)
 		{
-			ref Pooler t = ref _tier1;
-			ref GameObject[] e = ref tier1Enemys;
-			switch (randomTier)
-			{
-				case 1:
-				{
-					t = ref _tier2;
-					e = ref tier2Enemys;
-				} break;
-				case 2:
-				{
-					t = ref _tier3;
-					e = ref tier3Enemys;
-				} break;
-			}
+			
 
 			GameObject g = t.GetSiblingPool(e[Random.Range(0, e.Length)].name + "(Clone)").RequestObj();
 			if (g != null) Enable(g);
