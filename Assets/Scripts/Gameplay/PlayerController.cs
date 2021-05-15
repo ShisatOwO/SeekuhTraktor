@@ -23,6 +23,8 @@ namespace Gameplay
         private Sprite _crouch;
         private Sprite _normal;
 
+        private float _countJumpSec = 0f;
+
         public PlayerController(MonoBehaviour parent, 
                                 float jumpForce, 
                                 float jumpHeight, 
@@ -55,7 +57,7 @@ namespace Gameplay
             if (other.gameObject.CompareTag("Enemy"))
             {
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
-                SceneManager.LoadScene("HighscoreAfterGame");
+                //SceneManager.LoadScene("HighscoreAfterGame");
             }
 
             if (other.gameObject.CompareTag("BoundHor"))
@@ -94,9 +96,12 @@ namespace Gameplay
             else if (jmp && !_inAir && !_crouched) vel.x *= 0.3f;
             
             // Springen
-            if (jmp && !_atJumpPeak && !_crouched)
+            if (jmp && !_inAir)
             {
-                _inAir = true;
+                
+
+               /* Raihgks Jump-Funktion
+
                 float aclY = _jumpHeight*0.1f +  _jumpForce * Time.deltaTime;
                 if (vel.y + aclY > _jumpHeight)
                 {
@@ -104,25 +109,49 @@ namespace Gameplay
                     _atJumpPeak = true;
                 }
                 vel.y += aclY;
+                */
+
+                //Frowins Jump-Funktion
+                vel = Vector2.up * _jumpForce;
+                Debug.Log("Jump");
+                _inAir = true;
+            }
+
+            // Höher Springen wenn mans gedrückt hält
+            if (jmp && _inAir && !_atJumpPeak)
+            {
+            	if(_countJumpSec < _jumpHeight) {
+	            	vel = vel + new Vector2(0f, 0.5f);
+	            	Debug.Log(_countJumpSec);
+	            	_countJumpSec = _countJumpSec + Time.deltaTime;
+	            } else {
+	            	_atJumpPeak = true;
+	            	_countJumpSec = 0f;
+	            }
             }
 
             if (crh && !_crouched)
             {
-                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
-                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
-                _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
-                _rigidbody2D.gravityScale *= 4;
-                if (_inAir) vel.x = 0;
-                _deceleration /= 8;
-                _acceleration /= 8;
-                _crouched = true;
+            	if (_inAir) {
+                		vel = vel - new Vector2(0f, 0.5f);
+                		//vel.x = 0;
+                	} else {
+	                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
+	                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
+	                _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
+	                
+	                //_deceleration /= 8;
+	                _acceleration /= 8;
+	                _crouched = true;
+	            }
             }
             else if (!crh && _crouched)
             {
+
                 _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(true);
                 _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(false);
                 _parent.GetComponent<SpriteRenderer>().sprite = _normal;
-                _rigidbody2D.gravityScale /= 4;
+                _rigidbody2D.gravityScale = 5f;
                 _deceleration *= 8;
                 _acceleration *= 8;
                 _crouched = false;
