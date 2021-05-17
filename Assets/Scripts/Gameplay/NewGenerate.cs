@@ -21,6 +21,7 @@ public class NewGenerate : MonoBehaviour
 	protected float _time;
 	protected GameObject _mainObj;
 	protected Vars _mainVars;
+	protected float _squareRootScoreApply;
 
 	protected private GameObject CreateObj(GameObject baseObj)
 	{
@@ -103,8 +104,8 @@ public class NewGenerate : MonoBehaviour
 			
 			getPool(i, ref t, ref e);
 		}
-		
-		if(Time.time - _time > spawnRateBorder)
+
+		if(Time.time - _time >= spawnRateBorder)
 		{
 			
 
@@ -120,13 +121,15 @@ public class NewGenerate : MonoBehaviour
     }
 
 	void GenerateNextSpawnBorder() {
-		applyScoreDifficulty = (float)(_mainVars.scoreInt / 3000f);
+		_squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt) / 38.72f);
+		Debug.Log("sqaureRootMultiplier: " + _squareRootScoreApply);
+		applyScoreDifficulty = _squareRootScoreApply;
     	ApplyRandomDifficultyFunction(); 
 		spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;
 	}
 
 	void ApplyRandomDifficultyFunction() {
-		if(_mainVars.scoreInt < 2000) {			applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }
-			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-30,31) / 100f); }	
+		if(_mainVars.scoreInt < 2000) {			applyRandomDifficulty = (float)(Random.Range(-30,11) / 100f); }
+			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }	
 	}
 }

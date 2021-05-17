@@ -40,7 +40,7 @@ public class NewBaseEnemy : MonoBehaviour
     
     protected void Update()
     {
-    	applyScoreDifficulty = new Vector3(_mainVars.scoreInt/800f,0f,0f);
+    	applyScoreDifficulty = new Vector3(Mathf.Sqrt(_mainVars.scoreInt) * 0.077459f,0f,0f);
         _trans.position += (speed - applyScoreDifficulty) * Time.deltaTime;
 
     }

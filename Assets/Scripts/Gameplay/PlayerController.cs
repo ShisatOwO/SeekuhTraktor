@@ -22,6 +22,8 @@ namespace Gameplay
         private bool _crouched;
         private Sprite _crouch;
         private Sprite _normal;
+        private SpriteRenderer _fallschirmObject;
+
 
         private float _countJumpSec = 0f;
 
@@ -33,7 +35,8 @@ namespace Gameplay
                                 float acceleration, 
                                 float deceleration,
                                 Sprite normal,
-                                Sprite crouch)
+                                Sprite crouch,
+                                SpriteRenderer fallschirmObject)
         {
             _parent = parent;
             _rigidbody2D = _parent.GetComponent<Rigidbody2D>();
@@ -47,6 +50,7 @@ namespace Gameplay
             _crouched = false;
             _normal = normal;
             _crouch = crouch;
+            _fallschirmObject = fallschirmObject;
         }
         
         public void PlayerCollision(Collision2D other)
@@ -64,6 +68,7 @@ namespace Gameplay
             {
                 _inAir = false;
                 _atJumpPeak = false;
+                _fallschirmObject.enabled = false;
             }
 
         }
@@ -122,18 +127,25 @@ namespace Gameplay
             {
             	if(_countJumpSec < _jumpHeight) {
 	            	vel = vel + new Vector2(0f, 0.5f);
-	            	Debug.Log(_countJumpSec);
+	            	//Debug.Log(_countJumpSec);
 	            	_countJumpSec = _countJumpSec + Time.deltaTime;
 	            } else {
 	            	_atJumpPeak = true;
 	            	_countJumpSec = 0f;
 	            }
             }
+            if (_inAir && _atJumpPeak)
+            {
+                Debug.Log("fallschirm");
+                _fallschirmObject.enabled = true;
+            }
 
             if (crh && !_crouched)
             {
+                _fallschirmObject.enabled = false;
+
             	if (_inAir) {
-                		vel = vel - new Vector2(0f, 0.5f);
+                		vel = vel - new Vector2(0f, 1f);
                 		//vel.x = 0;
                 	} else {
 	                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
@@ -142,6 +154,7 @@ namespace Gameplay
 	                
 	                //_deceleration /= 8;
 	                _acceleration /= 8;
+                    _maxSpeed /= 1.75f;
 	                _crouched = true;
 	            }
             }
@@ -152,11 +165,20 @@ namespace Gameplay
                 _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(false);
                 _parent.GetComponent<SpriteRenderer>().sprite = _normal;
                 _rigidbody2D.gravityScale = 5f;
-                _deceleration *= 8;
+                //_deceleration *= 8;
                 _acceleration *= 8;
+                _maxSpeed *= 1.75f;
                 _crouched = false;
             }
-            
+
+            //faster left and right turns
+
+            if(vel.x > 0 && rl < 0) {
+                vel = new Vector2(0f, vel.y);
+            }
+            else if(vel.x < 0 && rl > 0) {
+                vel = new Vector2(0f, vel.y);
+            }
             _rigidbody2D.velocity = vel;
         }
     }

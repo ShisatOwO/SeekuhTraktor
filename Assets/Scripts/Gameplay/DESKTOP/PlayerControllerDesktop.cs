@@ -15,6 +15,7 @@ public class PlayerControllerDesktop : MonoBehaviour
     public float deceleration;
     public Sprite spriteNormal;
     public Sprite spriteCrouch;
+    public SpriteRenderer fallschirmRenderer;
     
     private PlayerController _playerController;
     private int _rl;
@@ -32,7 +33,8 @@ public class PlayerControllerDesktop : MonoBehaviour
                                                  acceleration, 
                                                  deceleration,
                                                  spriteNormal,
-                                                 spriteCrouch);
+                                                 spriteCrouch,
+                                                 fallschirmRenderer);
     }
 
     private void Update()
