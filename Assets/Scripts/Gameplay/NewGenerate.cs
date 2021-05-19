@@ -9,15 +9,17 @@ public class NewGenerate : MonoBehaviour
     public GameObject[] tier3Enemys;
     public int[] scoreGaps;
     public int poolSize;
-	public float spawnRate;
-	public float applyScoreDifficulty = 0f;
-	public float applyRandomDifficulty = 0f;
+    public float spawnRate;
+    public float applyScoreDifficulty = 0f;
+    public float applyRandomDifficulty = 0f;
 
 
-	protected float spawnRateBorder;
-	protected Pooler _tier1 = new Pooler();
+    protected GameObject[][] _enemys;
+    protected float spawnRateBorder;
+    protected Pooler _tier1 = new Pooler();
 	protected Pooler _tier2 = new Pooler();
 	protected Pooler _tier3 = new Pooler();
+	protected Pooler[] _tiers;
 	protected float _time;
 	protected GameObject _mainObj;
 	protected Vars _mainVars;
@@ -68,48 +70,62 @@ public class NewGenerate : MonoBehaviour
 
 		//Erster Gegner spawnt um...
     	spawnRateBorder = 0.5f;
+
+        _enemys = new GameObject[3][] { tier1Enemys,
+										tier2Enemys,
+										tier3Enemys };
+        
+        
+        _tiers = new Pooler[3] { _tier1,
+								_tier2,
+								_tier3 };
     }
 
-	void getPool(int id, ref Pooler t, ref GameObject[] e)
+	protected GameObject GetRandomEnemy()
 	{
-		t = ref _tier1;
-		e = ref tier1Enemys;
-		switch (id)
+		int acceptedTiers = 1;
+		int numberOfEnemys = _tier1.GetNumberOfSiblingPools();
+		foreach (int i in scoreGaps)
 		{
-			case 1:
+			if (_mainVars.scoreInt > i)
 			{
-				t = ref _tier2;
-				e = ref tier2Enemys;
-			} break;
-			case 2:
-			{
-				t = ref _tier3;
-				e = ref tier3Enemys;
-			} break;
+				numberOfEnemys += _tiers[acceptedTiers].GetNumberOfSiblingPools();
+				acceptedTiers++;
+			};
 		}
+
+		int outIndex = Random.Range(0, numberOfEnemys);
+		
+		int checkedEnemys = 0;
+		acceptedTiers = 0;
+		foreach (var tier in _tiers)
+		{
+			if (tier.GetNumberOfSiblingPools() + checkedEnemys < outIndex)
+			{
+				checkedEnemys += tier.GetNumberOfSiblingPools();
+			}
+			else
+			{
+				Debug.Log(tier.GetNumberOfSiblingPools());
+				Debug.Log(outIndex - checkedEnemys);
+				return tier.GetSiblingPool(_enemys[acceptedTiers][outIndex - checkedEnemys].name + "(Clone)").RequestObj();
+			}
+
+			acceptedTiers++;
+		}
+
+		return null;
 	}
 	
 	protected void Update()
 	{
-		Pooler t = _tier1;
-		GameObject[] e = tier1Enemys;
-	    int acceptedTiers = 0;
-		foreach (int i in scoreGaps)
-		{
-			if (_mainVars.scoreInt > i) acceptedTiers++;
-		}
-
-		for (int i = 0; i <= acceptedTiers; i++)
-		{
-			
-			getPool(i, ref t, ref e);
-		}
-
 		if(Time.time - _time >= spawnRateBorder)
 		{
 			
+			
+			
 
-			GameObject g = t.GetSiblingPool(e[Random.Range(0, e.Length)].name + "(Clone)").RequestObj();
+			GameObject g = GetRandomEnemy();
 			if (g != null) Enable(g);
 
 
