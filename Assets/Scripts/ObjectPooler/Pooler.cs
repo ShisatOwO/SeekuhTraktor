@@ -118,4 +118,9 @@ public class Pooler
             return null;
         }
     }
+
+    public int GetNumberOfSiblingPools()
+    {
+        return _siblingPools.Count;
+    }
 }
