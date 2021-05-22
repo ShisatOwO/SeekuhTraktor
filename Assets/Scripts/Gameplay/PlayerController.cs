@@ -63,7 +63,7 @@ namespace Gameplay
             if (other.gameObject.CompareTag("Enemy"))
             {
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
-                //SceneManager.LoadScene("HighscoreAfterGame");
+                SceneManager.LoadScene("HighscoreAfterGame");
             }
 
             if (other.gameObject.CompareTag("BoundHor"))

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2934366914702373123}
   - component: {fileID: 2934366914702373121}
   - component: {fileID: 3664081638133146073}
+  - component: {fileID: -8605805905201262756}
   m_Layer: 0
   m_Name: MikroUebersteuerer
   m_TagString: Enemy
@@ -116,3 +117,17 @@ MonoBehaviour:
   speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: -3.483815, z: -1}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
+--- !u!114 &-8605805905201262756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934366914702373120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc99601609fd2b4884819bf1b0a977f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newBaseEnemyScript: {fileID: 3664081638133146073}
+  rotSpeed: 120
