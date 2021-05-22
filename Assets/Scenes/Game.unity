@@ -743,7 +743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897165678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 2, z: 0}
+  m_LocalPosition: {x: -5.76, y: -3.48, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.5168}
   m_Children:
   - {fileID: 978248469}
@@ -1492,8 +1492,9 @@ MonoBehaviour:
   - {fileID: 7143773123281455628, guid: 38905da954131d462a1d69f7d744462a, type: 3}
   - {fileID: 7603781260156893087, guid: 3a8dfc096e8897d7aab5da4bea6aa643, type: 3}
   - {fileID: 2934366914702373120, guid: 04a6e8adf47f10b6e838da5b30c1394d, type: 3}
-  - {fileID: 7950919978512100575, guid: 4ce621735b915caf7b3c6c73b0bb29ed, type: 3}
+  - {fileID: 4052895462566942048, guid: 4ce621735b915caf7b3c6c73b0bb29ed, type: 3}
   - {fileID: 2687926031770341932, guid: 35a825a7d1c3888a08b8059a2473152e, type: 3}
+  - {fileID: 1286155002788859548, guid: 09e8b4a56c71b3e47b09df9dbcd30361, type: 3}
   tier2Enemys:
   - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   tier3Enemys: []
