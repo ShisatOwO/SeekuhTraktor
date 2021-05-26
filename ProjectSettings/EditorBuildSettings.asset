@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Sky.unity
+    guid: 8bf18d60719b7d845af3a327743b2e6a
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: cef168e70c9d45d45936724b4328a7ba
   - enabled: 1
