@@ -27,7 +27,7 @@ public class AmphiFahrzeug : NewBaseEnemy
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("BoundVert") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("BoundVert"))
         {
             Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
         }

@@ -12,38 +12,41 @@ public class NewGenerate : MonoBehaviour
     public float spawnRate;
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
-
-
-    protected GameObject[][] _enemys;
+    
     protected float spawnRateBorder;
     protected Pooler _tier1 = new Pooler();
 	protected Pooler _tier2 = new Pooler();
 	protected Pooler _tier3 = new Pooler();
-	protected Pooler[] _tiers;
 	protected float _time;
 	protected GameObject _mainObj;
 	protected Vars _mainVars;
 	protected float _squareRootScoreApply;
-
+	
 	protected private GameObject CreateObj(GameObject baseObj)
 	{
 		return Instantiate(baseObj);
 	}
 
 
-	protected private void Disable(GameObject g)
+	protected private void DisableGO(GameObject g)
 	{
-		g.SendMessage("Disable");
-		Pooler t = _tier1.GetSiblingPool(g.name);
-		if (t == null) t = _tier2.GetSiblingPool(g.name);
-		if (t == null) _tier3.GetSiblingPool(g.name);
-		t.Add(g);
+		if (g != null) 
+		{
+			Pooler t = _tier1.GetSiblingPool(g.name);
+			if (t == null) t = _tier2.GetSiblingPool(g.name);
+			if (t == null) t = _tier3.GetSiblingPool(g.name);
+			g.SendMessage("Disable");
+			t.Add(g);
+		}
 	}
 
 	protected private void Enable(GameObject g)
 	{
-		g.active = true;
-		g.SendMessage("Enable");
+		if (g != null)
+		{
+			g.active = true;
+			g.SendMessage("Enable");
+		}
 	}
 
 	protected void CreateClones(GameObject[] tierl, ref Pooler tierp)
@@ -53,7 +56,7 @@ public class NewGenerate : MonoBehaviour
 			tierp.CreateSiblingPool(original.name + "(Clone)");
 			for (int i=0; i<poolSize; i++)
 			{
-				Disable(CreateObj(original));
+				DisableGO(CreateObj(original));
 			}
 		}
 	}
@@ -70,64 +73,34 @@ public class NewGenerate : MonoBehaviour
 
 		//Erster Gegner spawnt um...
     	spawnRateBorder = 0.5f;
-
-        _enemys = new GameObject[3][] { tier1Enemys,
-										tier2Enemys,
-										tier3Enemys };
-        
-        
-        _tiers = new Pooler[3] { _tier1,
-								_tier2,
-								_tier3 };
     }
-
-	protected GameObject GetRandomEnemy()
-	{
-		int acceptedTiers = 1;
-		int numberOfEnemys = _tier1.GetNumberOfSiblingPools();
-		foreach (int i in scoreGaps)
-		{
-			if (_mainVars.scoreInt > i)
-			{
-				numberOfEnemys += _tiers[acceptedTiers].GetNumberOfSiblingPools();
-				acceptedTiers++;
-			};
-		}
-
-		int outIndex = Random.Range(0, numberOfEnemys);
-		
-		int checkedEnemys = 0;
-		acceptedTiers = 0;
-		foreach (var tier in _tiers)
-		{
-			if (tier.GetNumberOfSiblingPools() + checkedEnemys < outIndex)
-			{
-				checkedEnemys += tier.GetNumberOfSiblingPools();
-			}
-			else
-			{
-				Debug.Log(tier.GetNumberOfSiblingPools());
-				Debug.Log(outIndex - checkedEnemys);
-				return tier.GetSiblingPool(_enemys[acceptedTiers][outIndex - checkedEnemys].name + "(Clone)").RequestObj();
-			}
-
-			acceptedTiers++;
-		}
-
-		return null;
-	}
 	
 	protected void Update()
 	{
 		if(Time.time - _time >= spawnRateBorder)
 		{
+			int allowed_tiers = 1;
+			int numberOfAllowedEnemys = tier1Enemys.Length;
 			
-			
-			
+			foreach(var i in scoreGaps)
+			{
+				if (_mainVars.scoreInt >= i) allowed_tiers++;
+				else break;
+			}
 
-			GameObject g = GetRandomEnemy();
-			if (g != null) Enable(g);
+			if (allowed_tiers > 1) numberOfAllowedEnemys += tier2Enemys.Length;
+			if (allowed_tiers > 2) numberOfAllowedEnemys += tier3Enemys.Length;
+			
+			int randomTier = Random.Range(0, numberOfAllowedEnemys);
 
+			GameObject g = null;
+			if (randomTier >= tier1Enemys.Length + tier2Enemys.Length)
+				g = _tier3.GetSiblingPool(tier3Enemys[Random.Range(0, tier3Enemys.Length)].name + "(Clone)").RequestObj();
+			else if (randomTier >= tier1Enemys.Length)
+				g = _tier2.GetSiblingPool(tier2Enemys[Random.Range(0, tier2Enemys.Length)].name + "(Clone)").RequestObj();
+			else g = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
+
+			Enable(g);
 
 			//Feststellen wann der nächste Gegner spawnt
 			GenerateNextSpawnBorder();
@@ -138,7 +111,7 @@ public class NewGenerate : MonoBehaviour
 
 	void GenerateNextSpawnBorder() {
 		_squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt) / 38.72f);
-		Debug.Log("sqaureRootMultiplier: " + _squareRootScoreApply);
+		//Debug.Log("sqaureRootMultiplier: " + _squareRootScoreApply);
 		applyScoreDifficulty = _squareRootScoreApply;
     	ApplyRandomDifficultyFunction(); 
 		spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;

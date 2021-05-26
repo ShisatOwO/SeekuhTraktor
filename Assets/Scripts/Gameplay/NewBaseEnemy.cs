@@ -52,6 +52,12 @@ public class NewBaseEnemy : MonoBehaviour
 
     protected void OnBecameInvisible()
     {
-        if (_wasOnScreen) _gen.SendMessage("Disable", gameObject);
+        if (_wasOnScreen && _gen != null) _gen.SendMessage("DisableGO", gameObject);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy")) 
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
     }
 }

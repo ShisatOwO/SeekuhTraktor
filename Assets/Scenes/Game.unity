@@ -1466,7 +1466,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1434062550}
-  - component: {fileID: 1434062551}
   - component: {fileID: 1434062549}
   m_Layer: 0
   m_Name: Generate
@@ -1489,16 +1488,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier1Enemys:
   - {fileID: 2436886296714093, guid: 556fe8b1d49b03b7d88dc9df8557586f, type: 3}
+  - {fileID: 1286155002788859548, guid: 09e8b4a56c71b3e47b09df9dbcd30361, type: 3}
   - {fileID: 7143773123281455628, guid: 38905da954131d462a1d69f7d744462a, type: 3}
   - {fileID: 7603781260156893087, guid: 3a8dfc096e8897d7aab5da4bea6aa643, type: 3}
   - {fileID: 2934366914702373120, guid: 04a6e8adf47f10b6e838da5b30c1394d, type: 3}
   - {fileID: 4052895462566942048, guid: 4ce621735b915caf7b3c6c73b0bb29ed, type: 3}
   - {fileID: 2687926031770341932, guid: 35a825a7d1c3888a08b8059a2473152e, type: 3}
-  - {fileID: 1286155002788859548, guid: 09e8b4a56c71b3e47b09df9dbcd30361, type: 3}
   tier2Enemys:
   - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   tier3Enemys: []
-  scoreGaps: b80b0000
+  scoreGaps: 2c010000
   poolSize: 5
   spawnRate: 3
   applyScoreDifficulty: 0
@@ -1517,25 +1516,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1434062551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434062548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2f01b865e5d12409f2703aca78cf63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyArray:
-  - gan
-  - iq
-  - lof
-  eGan: {fileID: 2436886296714093, guid: 2caeb0b164c12117d8b816609d93166c, type: 3}
-  eIQ: {fileID: 7143773123281455628, guid: 8fad0a017b1bfef64a25bdc5e85f219e, type: 3}
-  eLof: {fileID: 7603781260156893087, guid: 31aad49f10d87050c895c0c6e99b9de9, type: 3}
 --- !u!1 &1441303746
 GameObject:
   m_ObjectHideFlags: 0
