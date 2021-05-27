@@ -54,6 +54,7 @@ public class PlayerControllerDesktop : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _playerController.PlayerCollision(other);
+        if (gameObject.GetComponent<PlayerControllerDesktop>().isActiveAndEnabled)
+            _playerController.PlayerCollision(other);
     }
 }

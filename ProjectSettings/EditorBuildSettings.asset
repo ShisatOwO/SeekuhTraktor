@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Sky.unity
+    guid: 8bf18d60719b7d845af3a327743b2e6a
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: cef168e70c9d45d45936724b4328a7ba
   - enabled: 1
@@ -15,12 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 8e16b5fe7b4539d4d966aeecc9bc2081
   - enabled: 1
-    path: Assets/Scenes/HighscoreFromMenu.unity
-    guid: 5854c7513fe6ced4d85c901704dc1eca
-  - enabled: 1
     path: Assets/Scenes/HighscoreAfterGame.unity
     guid: b19ae83a2be82344f959aac342888430
   - enabled: 1
-    path: Assets/Scenes/Sky.unity
-    guid: 8bf18d60719b7d845af3a327743b2e6a
+    path: Assets/Scenes/HighscoreFromMenu.unity
+    guid: 5854c7513fe6ced4d85c901704dc1eca
   m_configObjects: {}
