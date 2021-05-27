@@ -1498,10 +1498,11 @@ MonoBehaviour:
   - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   - {fileID: 5876963055009304824, guid: d00cccfc5f2c5b24c80638b00c928817, type: 3}
   - {fileID: 5772744458924440162, guid: 4e446e4f92446bb448bb6ca8c310c028, type: 3}
+  - {fileID: 2552439269883180137, guid: 6e1ace27581a4224e92da0e5434c7c0e, type: 3}
   tier3Enemys:
   - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
-  - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
-  - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
+  - {fileID: 5863913999607707929, guid: 2951f73e7abe6e941aef692e6a923b32, type: 3}
+  - {fileID: 7224401676538193170, guid: 526e122352f24d242827f80d8b2c01df, type: 3}
   scoreGaps: b80b0000a00f0000
   poolSize: 5
   spawnRate: 3
