@@ -198,5 +198,5 @@ MonoBehaviour:
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
   reachedSpot: 0
   endSpot: 0
-  auschwenkung: 2
-  stopFrame: 150
+  auschwenkung: 2.4
+  stopFrame: 400

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
-    public class PlayerController
+    public class PlayerController : MonoBehaviour
     {
         private MonoBehaviour _parent;
         private Rigidbody2D _rigidbody2D;
@@ -27,6 +27,9 @@ namespace Gameplay
 
 
         private float _countJumpSec = 0f;
+        private float _colorChangeSpeed = 1f;
+        private bool rainbowActive = false;
+        private float _countRainbowSec = 0f;
 
         public PlayerController(MonoBehaviour parent, 
                                 float jumpForce, 
@@ -60,10 +63,13 @@ namespace Gameplay
             if (other.gameObject.CompareTag("BoundVert")) 
                 _rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
 
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy") && !rainbowActive)
             {
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
                 SceneManager.LoadScene("HighscoreAfterGame");
+            } else if(other.gameObject.CompareTag("Enemy") && rainbowActive) {
+                Destroy(other.gameObject);
+
             }
 
             if (other.gameObject.CompareTag("BoundHor"))
@@ -71,6 +77,12 @@ namespace Gameplay
                 _inAir = false;
                 _atJumpPeak = false;
                 _fallschirmObjectRenderer.enabled = false;
+            }
+            if (other.gameObject.CompareTag("Upgrade"))
+            {
+                Physics2D.IgnoreCollision(_parent.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
+                rainbowActive = true;
+                Destroy(other.gameObject);
             }
 
         }
@@ -216,7 +228,41 @@ namespace Gameplay
                 _fallschirmObjectRenderer.enabled = false;
                 vel.y *= 1.25f;   
             }
+            if(rainbowActive) {
+                _parent.GetComponent<SpriteRenderer>().color = RainbowColors(_parent.GetComponent<SpriteRenderer>().color);
+                _countRainbowSec = _countRainbowSec + Time.deltaTime;
+                if(_countRainbowSec >= 5) {
+                    _countRainbowSec = 0;
+                    rainbowActive = false;
+                    _parent.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+                }
+            }
+
             _rigidbody2D.velocity = vel;
+        }
+
+        public Color RainbowColors(Color color) 
+        {
+                // convert from RGB to HSV
+            Color.RGBToHSV(color, out float hue, out float sat, out float val);
+     
+            // shift hue by amount
+            hue += 0.01f;
+            sat = 1f;
+            val = 1f;
+
+            //Debug.Log(Color.HSVToRGB(hue, sat, val));
+            // convert back to RGB and return the color
+            return Color.HSVToRGB(hue, sat, val);
+        /*
+            if(rainbowActive) {
+                _parent.GetComponent<SpriteRenderer>().material.SetColor("_Color", HSBColor.ToColor(new HSBColor( Mathf.PingPong(Time.time * _colorChangeSpeed, 1), 1, 1)));
+                _countRainbowSec = _countRainbowSec + Time.deltaTime;
+                if(_countRainbowSec >= 5) {
+                    _countRainbowSec = 0;
+                    rainbowActive = false;
+                }
+            }*/
         }
     }
 }
