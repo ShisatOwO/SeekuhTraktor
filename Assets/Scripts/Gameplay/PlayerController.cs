@@ -164,12 +164,13 @@ namespace Gameplay
 
             if (crh && !_crouched)
             {
-                _fallschirmObjectRenderer.enabled = false;
+                
 
             	if (_inAir) {
                 		vel = vel - new Vector2(0f, 1f);
                 		//vel.x = 0;
                 	} else {
+                    _fallschirmObjectRenderer.enabled = false;
 	                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
 	                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
 	                _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
