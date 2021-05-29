@@ -30,6 +30,7 @@ namespace Gameplay
         private float _colorChangeSpeed = 1f;
         private bool rainbowActive = false;
         private float _countRainbowSec = 0f;
+        private BoxCollider2D collide2D;
 
         public PlayerController(MonoBehaviour parent, 
                                 float jumpForce, 
@@ -66,7 +67,7 @@ namespace Gameplay
             if (other.gameObject.CompareTag("Enemy") && !rainbowActive)
             {
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
-                SceneManager.LoadScene("HighscoreAfterGame");
+                //SceneManager.LoadScene("HighscoreAfterGame");
             } else if(other.gameObject.CompareTag("Enemy") && rainbowActive) {
                 Destroy(other.gameObject);
 
@@ -146,6 +147,9 @@ namespace Gameplay
                 vel = Vector2.up * _jumpForce;
                 //Debug.Log("Jump");
                 _inAir = true;
+
+                //Sound Bool = true
+                _vars.justJumped = true;
             }
 
             // Höher Springen wenn mans gedrückt hält
@@ -175,6 +179,7 @@ namespace Gameplay
             }
 
             if (crh && !_crouched)
+            //if (1 == 1)
             {
                 
 
@@ -183,9 +188,14 @@ namespace Gameplay
                 		//vel.x = 0;
                 	} else {
                     _fallschirmObjectRenderer.enabled = false;
-	                _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
+
+                    //collide2D = _parent.gameObject.transform.Find("CollisionNormal");
+	                //collide2D.size = new Vector2(collide2D.size.x, 5.874467f);
+
+                    _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(false);
 	                _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(true);
 	                _parent.GetComponent<SpriteRenderer>().sprite = _crouch;
+                    //_parent.transform.position -= new Vector3 (0f, 0.6f, 0f);
 	                
 	                //_deceleration /= 8;
 	                _acceleration /= 8;
@@ -193,12 +203,19 @@ namespace Gameplay
 	                _crouched = true;
 	            }
             }
+
             else if (!crh && _crouched)
             {
 
                 _parent.gameObject.transform.Find("CollisionNormal").gameObject.SetActive(true);
                 _parent.gameObject.transform.Find("CollisionCrouch").gameObject.SetActive(false);
+
+                
+                //collide2D.size = new Vector2(collide2D.size.x, 5.874467f);
+
+
                 _parent.GetComponent<SpriteRenderer>().sprite = _normal;
+                //_parent.transform.position += new Vector3 (0f, 0.6f, 0f);
                 _rigidbody2D.gravityScale = 5f;
                 //_deceleration *= 8;
                 _acceleration *= 8;
@@ -237,7 +254,6 @@ namespace Gameplay
                     _parent.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
                 }
             }
-
             _rigidbody2D.velocity = vel;
         }
 

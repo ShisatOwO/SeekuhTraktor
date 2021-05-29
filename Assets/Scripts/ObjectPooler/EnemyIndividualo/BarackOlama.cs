@@ -42,6 +42,8 @@ public class BarackOlama : NewBaseEnemy
     		}
     	}
 
+    	_mainVars.isEnemyOnScreen[spotInArray] = true;
+
 
     }
 }

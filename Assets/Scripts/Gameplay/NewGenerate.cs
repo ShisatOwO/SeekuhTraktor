@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class NewGenerate : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class NewGenerate : MonoBehaviour
     public float spawnRate;
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
-    
+
+    private GameObject[] allEnemys;
+    private int spotInArrayObjAboutToBeSpawned;
+
     protected float spawnRateBorder;
     protected Pooler _tier1 = new Pooler();
 	protected Pooler _tier2 = new Pooler();
@@ -21,6 +25,7 @@ public class NewGenerate : MonoBehaviour
 	protected GameObject _mainObj;
 	protected Vars _mainVars;
 	protected float _squareRootScoreApply;
+
 	
 	protected private GameObject CreateObj(GameObject baseObj)
 	{
@@ -71,6 +76,24 @@ public class NewGenerate : MonoBehaviour
 		CreateClones(tier3Enemys, ref _tier3);
 		_time = 0;
 
+		//Write all enemyTypes into Main Vars
+		_mainVars.everyEnemyArray = tier1Enemys.Concat(tier2Enemys.Concat(tier3Enemys).ToArray()).ToArray();
+		_mainVars.everyEnemyStringArr = new string[_mainVars.everyEnemyArray.Length];
+
+		for(int i = 0; i < _mainVars.everyEnemyArray.Length; i++)
+        {
+            //Debug.Log("The element in index " + i + " is " + _mainVars.everyEnemyArray[i]);
+
+            _mainVars.everyEnemyStringArr[i] = _mainVars.everyEnemyArray[i].name;
+            //Debug.Log(_mainVars.everyEnemyStringArr[i]);
+           
+        }
+		//Array.Copy(tier1Enemys, _mainVars.everyEnemyArray, tier1Enemys.Length);
+		
+		//Debug.Log(_mainVars.everyEnemyArray[14]);
+
+
+
 		//Erster Gegner spawnt um...
     	spawnRateBorder = 0.5f;
     }
@@ -100,6 +123,11 @@ public class NewGenerate : MonoBehaviour
 				g = _tier2.GetSiblingPool(tier2Enemys[Random.Range(0, tier2Enemys.Length)].name + "(Clone)").RequestObj();
 			else g = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
 
+			//g = _tier2.GetSiblingPool(tier2Enemys[5].name + "(Clone)").RequestObj();
+			//Debug.Log(g);
+
+			g = CheckIfEnemySpawnIsFair(g);
+
 			Enable(g);
 
 			//Feststellen wann der nächste Gegner spawnt
@@ -120,5 +148,41 @@ public class NewGenerate : MonoBehaviour
 	void ApplyRandomDifficultyFunction() {
 		if(_mainVars.scoreInt < 2000) {			applyRandomDifficulty = (float)(Random.Range(-30,11) / 100f); }
 			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }	
+	}
+
+	GameObject CheckIfEnemySpawnIsFair(GameObject objAboutToBeSpawned) {
+		GameObject newObjToSpawn = null;
+		for(int i = 0; i < _mainVars.everyEnemyArray.Length; i++)
+        {
+            //Debug.Log("The element in index " + i + " is " + _mainVars.everyEnemyArray[i]);
+            if(_mainVars.everyEnemyArray[i].name == objAboutToBeSpawned.name + "(Clone)") {
+                spotInArrayObjAboutToBeSpawned = i;
+            }
+        }
+
+        //Barack Olama Rules --> Olama, amphi,
+        if(objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("No 2nd Olama Spawned");
+        } else if (objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("wow");
+        } 
+
+        //Lochloffel --> amphi
+        else if (objAboutToBeSpawned.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[1].name + "(Clone)").RequestObj();
+        	Debug.Log("NoAmphiAfterLoffel");
+        }
+
+
+        else {
+        	newObjToSpawn = objAboutToBeSpawned;
+        }
+
+        return newObjToSpawn;
+
+
+		
 	}
 }

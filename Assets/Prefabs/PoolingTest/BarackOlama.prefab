@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50e762a59fa57f4a909ba7d093a7880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: -2, y: 0, z: 0}
-  spawnPosition: {x: 0, y: -5.15, z: 0}
+  speed: {x: -4, y: 0, z: 0}
+  spawnPosition: {x: 20, y: -5.15, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
   reachedSpot: 0
   endSpot: 0
