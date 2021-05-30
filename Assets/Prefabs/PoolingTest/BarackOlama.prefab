@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5401292114452662527}
   - component: {fileID: 5401292114452662524}
   - component: {fileID: 5401292114452662525}
-  - component: {fileID: -1321064862036089298}
+  - component: {fileID: -6768615190240143517}
   m_Layer: 0
   m_Name: BarackOlama
   m_TagString: Enemy
@@ -181,7 +181,7 @@ PolygonCollider2D:
       - {x: -0.03, y: -2.45}
       - {x: 0.22999999, y: -2.3999999}
       - {x: 0.35999998, y: -2.3899999}
---- !u!114 &-1321064862036089298
+--- !u!114 &-6768615190240143517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfThisObject: 
-  speed: {x: -4, y: 0, z: 0}
+  speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: -5.15, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
   spotInArray: 0

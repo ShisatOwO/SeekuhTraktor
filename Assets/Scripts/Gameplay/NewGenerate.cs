@@ -14,10 +14,12 @@ public class NewGenerate : MonoBehaviour
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
 
-    public GameObject g = null;
+
 
     private GameObject[] allEnemys;
     private int spotInArrayObjAboutToBeSpawned;
+    private int indexOfSpawnObj;
+    private int randomTier;
 
     protected float spawnRateBorder;
     protected Pooler _tier1 = new Pooler();
@@ -116,25 +118,33 @@ public class NewGenerate : MonoBehaviour
 			if (allowed_tiers > 1) numberOfAllowedEnemys += tier2Enemys.Length;
 			if (allowed_tiers > 2) numberOfAllowedEnemys += tier3Enemys.Length;
 			
-			int randomTier = Random.Range(0, numberOfAllowedEnemys);
+			randomTier = Random.Range(0, numberOfAllowedEnemys);
 
-			//GameObject g = null;
-			if (randomTier >= tier1Enemys.Length + tier2Enemys.Length)
-				g = _tier3.GetSiblingPool(tier3Enemys[Random.Range(0, tier3Enemys.Length)].name + "(Clone)").RequestObj();
-			else if (randomTier >= tier1Enemys.Length)
-				g = _tier2.GetSiblingPool(tier2Enemys[Random.Range(0, tier2Enemys.Length)].name + "(Clone)").RequestObj();
-			else g = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
+			GameObject g = null;
 
-			g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestObj();
 
 			
+			if (randomTier >= tier1Enemys.Length + tier2Enemys.Length) {
+				indexOfSpawnObj = Random.Range(0, tier3Enemys.Length);
+				g = _tier3.GetSiblingPool(tier3Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+			}
+			else if (randomTier >= tier1Enemys.Length) {
+				indexOfSpawnObj = Random.Range(0, tier2Enemys.Length);
+				g = _tier2.GetSiblingPool(tier2Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+			}
+			else {
+				indexOfSpawnObj = Random.Range(0, tier1Enemys.Length);
+				g = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+			}
+
+			randomTier = 10;
+			indexOfSpawnObj = 4;
+			g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
 			
 			//Debug.Log("1" + g);
-			GameObject fairG;
-			fairG = CheckIfEnemySpawnIsFair();
-			g = fairG;
 
-			Enable(g);
+
+			Enable(CheckIfEnemySpawnIsFair(g));
 
 			//Feststellen wann der nächste Gegner spawnt
 			GenerateNextSpawnBorder();
@@ -155,35 +165,50 @@ public class NewGenerate : MonoBehaviour
 		if(_mainVars.scoreInt < 2000) {			applyRandomDifficulty = (float)(Random.Range(-30,11) / 100f); }
 			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }	
 	}
+	
+	GameObject CheckIfEnemySpawnIsFair(GameObject objAboutToBeSpawned) {
 
-	GameObject CheckIfEnemySpawnIsFair() {
-		GameObject newObjToSpawn = g;
-		Debug.Log("2"  + g);
-		/*
-		for(int i = 0; i < _mainVars.everyEnemyArray.Length; i++)
-        {
-            //Debug.Log("The element in index " + i + " is " + _mainVars.everyEnemyArray[i]);
-            if(_mainVars.everyEnemyArray[i].name == objAboutToBeSpawned.name + "(Clone)") {
-                spotInArrayObjAboutToBeSpawned = i;
-            }
-        }*/
+		//newObjToSpawn will return in this function and get requested. Wenn nix unfair ist gilt newObjToSpawn = objAboutToBeSpawned
+		GameObject newObjToSpawn = objAboutToBeSpawned;
+
 
         //Barack Olama Rules --> Olama, amphi,
+        if(objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[1].name + "(Clone)").RequestObj();
+        	Debug.Log("No 2nd Olama");
 
-        if(g.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
-
-        } else if (g.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
-        	Debug.Log("wow");
+        } else if (objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("No Amphi Cause Olama");
         } 
 
         //Lochloffel --> amphi
-        else if (g.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
-        	Debug.Log("NoAmphiAfterLoffel");
+        else if (objAboutToBeSpawned.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[2].name + "(Clone)").RequestObj();
+        	Debug.Log("No Amphi After Loffel");
         }
 
+
+        else if (objAboutToBeSpawned.name == "FlippedAmphiF(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[2].name + "(Clone)").RequestObj();
+        	Debug.Log("No Amphi After Loffel");
+        }
+
+
+
+		if(newObjToSpawn == objAboutToBeSpawned) {
+	        if (randomTier >= tier1Enemys.Length + tier2Enemys.Length) {
+				newObjToSpawn = _tier3.GetSiblingPool(tier3Enemys[indexOfSpawnObj].name + "(Clone)").RequestObj();
+			}
+			else if (randomTier >= tier1Enemys.Length) {
+				newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[indexOfSpawnObj].name + "(Clone)").RequestObj();
+			}
+			else {
+				newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestObj();
+			}
+		}
+
+		//newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestObj();
 
         return newObjToSpawn;
 

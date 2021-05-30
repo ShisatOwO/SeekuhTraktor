@@ -68,6 +68,11 @@ public class Pooler
         _stack.Push(gameObject);
     }
 
+    public GameObject RequestPeek()
+    {
+    	return _stack.Peek();
+    }
+
     public GameObject RequestObj()
     {
         if (_stack.GetSize() != 0) return _stack.Pop();
