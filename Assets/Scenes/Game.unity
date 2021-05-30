@@ -765,6 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897165684}
   - component: {fileID: 897165683}
+  - component: {fileID: 897165682}
   - component: {fileID: 897165681}
   - component: {fileID: 897165680}
   - component: {fileID: 897165679}
@@ -842,6 +843,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &897165682
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897165678}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9.1, y: 6.06}
+    newSize: {x: 9.1, y: 6.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.1, y: 6.06}
+  m_EdgeRadius: 0
 --- !u!212 &897165683
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1871,7 +1898,7 @@ MonoBehaviour:
   tier2Enemys:
   - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   - {fileID: 5876963055009304824, guid: d00cccfc5f2c5b24c80638b00c928817, type: 3}
-  - {fileID: 2552439269883180137, guid: 6e1ace27581a4224e92da0e5434c7c0e, type: 3}
+  - {fileID: 564709403370368728, guid: 6e1ace27581a4224e92da0e5434c7c0e, type: 3}
   - {fileID: 4887075804610555569, guid: cd86477e1523a9940b5861d33142ed50, type: 3}
   - {fileID: 5401292114452662522, guid: ed2faf4d4b15f21419aa0f284532ab40, type: 3}
   - {fileID: 5772744458924440162, guid: 4e446e4f92446bb448bb6ca8c310c028, type: 3}
