@@ -137,11 +137,9 @@ public class NewGenerate : MonoBehaviour
 				g = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
 			}
 
-			randomTier = 10;
-			indexOfSpawnObj = 4;
-			g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
-			
-			//Debug.Log("1" + g);
+			//randomTier = 10;
+			//indexOfSpawnObj = 4;
+			//g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
 
 
 			Enable(CheckIfEnemySpawnIsFair(g));
@@ -182,19 +180,34 @@ public class NewGenerate : MonoBehaviour
         	Debug.Log("No Amphi Cause Olama");
         } 
 
-        //Lochloffel --> amphi
+        //Lochloffel Rules --> amphi
         else if (objAboutToBeSpawned.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
         	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[2].name + "(Clone)").RequestObj();
-        	Debug.Log("No Amphi After Loffel");
+        	Debug.Log("No Loffel After Amphi");
         }
 
+        // Amphi Rules
+        
+        else if (objAboutToBeSpawned.name == "FlippedAmphiF(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Lochloffel")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("No Amphi After Loffel");
+        } 
 
-        else if (objAboutToBeSpawned.name == "FlippedAmphiF(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[2].name + "(Clone)").RequestObj();
+        //Add Rules Here
+
+
+
+
+
+        //zug 
+        else if (objAboutToBeSpawned.name == "loongTrain(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[3].name + "(Clone)").RequestObj();
         	Debug.Log("No Amphi After Loffel");
         }
-
-
+        else if (_mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "loongTrain")] == true || _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "schortTrain")] == true) {
+        	newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Knoflook")-tier1Enemys.Length].name + "(Clone)").RequestObj();
+        	Debug.Log("Knoflook bc of Zug");
+        }
 
 		if(newObjToSpawn == objAboutToBeSpawned) {
 	        if (randomTier >= tier1Enemys.Length + tier2Enemys.Length) {

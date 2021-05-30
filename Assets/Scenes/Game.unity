@@ -1884,7 +1884,6 @@ MonoBehaviour:
   spawnRate: 3
   applyScoreDifficulty: 0
   applyRandomDifficulty: 0
-  g: {fileID: 0}
 --- !u!4 &1434062550
 Transform:
   m_ObjectHideFlags: 0
@@ -2058,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86fc56ff8f5ec3148970ac4180391ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 4000
   scText: {fileID: 0}
   sky: 0
 --- !u!114 &1518748867
