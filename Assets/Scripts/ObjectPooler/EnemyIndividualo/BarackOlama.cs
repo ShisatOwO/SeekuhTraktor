@@ -10,9 +10,20 @@ public class BarackOlama : NewBaseEnemy
 	public bool endSpot;
 	public float auschwenkung;
 	public float stopFrame;
+
     [Range(-6f,6f)]
     private float exciterSpot;
     private float counter;
+
+
+    void Enable()
+    {
+        _wasOnScreen = false;
+        _trans = gameObject.GetComponent<Transform>();
+        _trans.position = spawnPosition;
+        reachedSpot = false;
+        endSpot = false;
+    }
 
     // Update is called once per frame
     void OnBecameVisible()
@@ -24,6 +35,15 @@ public class BarackOlama : NewBaseEnemy
         Debug.Log("exciterSpot" + exciterSpot);
 
     }
+
+    void OnBecameInvisible()
+    {
+        if (_wasOnScreen && _gen != null) _gen.SendMessage("DisableGO", gameObject);
+        _mainVars.isEnemyOnScreen[spotInArray] = false;
+        reachedSpot = false;
+        endSpot = false;
+    }
+    
 
     void Update() {
     	if(!reachedSpot || endSpot) {

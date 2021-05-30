@@ -14,6 +14,8 @@ public class NewGenerate : MonoBehaviour
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
 
+    public GameObject g = null;
+
     private GameObject[] allEnemys;
     private int spotInArrayObjAboutToBeSpawned;
 
@@ -116,17 +118,21 @@ public class NewGenerate : MonoBehaviour
 			
 			int randomTier = Random.Range(0, numberOfAllowedEnemys);
 
-			GameObject g = null;
+			//GameObject g = null;
 			if (randomTier >= tier1Enemys.Length + tier2Enemys.Length)
 				g = _tier3.GetSiblingPool(tier3Enemys[Random.Range(0, tier3Enemys.Length)].name + "(Clone)").RequestObj();
 			else if (randomTier >= tier1Enemys.Length)
 				g = _tier2.GetSiblingPool(tier2Enemys[Random.Range(0, tier2Enemys.Length)].name + "(Clone)").RequestObj();
 			else g = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
 
-			//g = _tier2.GetSiblingPool(tier2Enemys[5].name + "(Clone)").RequestObj();
-			//Debug.Log(g);
+			g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestObj();
 
-			g = CheckIfEnemySpawnIsFair(g);
+			
+			
+			//Debug.Log("1" + g);
+			GameObject fairG;
+			fairG = CheckIfEnemySpawnIsFair();
+			g = fairG;
 
 			Enable(g);
 
@@ -150,35 +156,34 @@ public class NewGenerate : MonoBehaviour
 			else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); }	
 	}
 
-	GameObject CheckIfEnemySpawnIsFair(GameObject objAboutToBeSpawned) {
-		GameObject newObjToSpawn = null;
+	GameObject CheckIfEnemySpawnIsFair() {
+		GameObject newObjToSpawn = g;
+		Debug.Log("2"  + g);
+		/*
 		for(int i = 0; i < _mainVars.everyEnemyArray.Length; i++)
         {
             //Debug.Log("The element in index " + i + " is " + _mainVars.everyEnemyArray[i]);
             if(_mainVars.everyEnemyArray[i].name == objAboutToBeSpawned.name + "(Clone)") {
                 spotInArrayObjAboutToBeSpawned = i;
             }
-        }
+        }*/
 
         //Barack Olama Rules --> Olama, amphi,
-        if(objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
-        	Debug.Log("No 2nd Olama Spawned");
-        } else if (objAboutToBeSpawned.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+
+        if(g.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
+
+        } else if (g.name == "BarackOlama(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
         	Debug.Log("wow");
         } 
 
         //Lochloffel --> amphi
-        else if (objAboutToBeSpawned.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
-        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[1].name + "(Clone)").RequestObj();
+        else if (g.name == "Lochloffel(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[Random.Range(0, tier1Enemys.Length)].name + "(Clone)").RequestObj();
         	Debug.Log("NoAmphiAfterLoffel");
         }
 
-
-        else {
-        	newObjToSpawn = objAboutToBeSpawned;
-        }
 
         return newObjToSpawn;
 
