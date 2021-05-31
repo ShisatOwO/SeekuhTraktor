@@ -193,6 +193,17 @@ public class NewGenerate : MonoBehaviour
         	Debug.Log("No Amphi After Loffel");
         } 
 
+
+        // Audo
+        else if (objAboutToBeSpawned.name == "Audo(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Audo")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[2].name + "(Clone)").RequestObj();
+        	Debug.Log("No Audo after Audo");
+        }
+        else if (objAboutToBeSpawned.name == "Seemohre(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Audo")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[1].name + "(Clone)").RequestObj();
+        	Debug.Log("No Seemohre after Audo");
+        } 
+
         //Add Rules Here
 
 
@@ -202,7 +213,7 @@ public class NewGenerate : MonoBehaviour
         //zug 
         else if (objAboutToBeSpawned.name == "loongTrain(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
         	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[3].name + "(Clone)").RequestObj();
-        	Debug.Log("No Amphi After Loffel");
+        	Debug.Log("No Zuf after Amphi");
         }
         else if (_mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "loongTrain")] == true || _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "schortTrain")] == true) {
         	newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Knoflook")-tier1Enemys.Length].name + "(Clone)").RequestObj();
@@ -221,11 +232,9 @@ public class NewGenerate : MonoBehaviour
 			}
 		}
 
-		//newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestObj();
+		//Debug Spawn:
+		//newObjToSpawn = _tier2.GetSiblingPool(tier2Enemys[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")-tier1Enemys.Length].name + "(Clone)").RequestObj();
 
         return newObjToSpawn;
-
-
-		
 	}
 }

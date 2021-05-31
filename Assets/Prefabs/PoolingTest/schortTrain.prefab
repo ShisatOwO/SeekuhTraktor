@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3265049263273062243}
-  - component: {fileID: 3265049263273062242}
+  - component: {fileID: 1162183707878728179}
   m_Layer: 0
   m_Name: schortTrain
   m_TagString: Untagged
@@ -197,7 +197,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3265049263273062242
+--- !u!114 &1162183707878728179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,12 +206,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3265049263273062245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2114a9c3cbbbe7ceaaf1673ce8202496, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a18164b0b230074e9bc68fee890c931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfThisObject: 
   speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: -1.78, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
+  spotInArray: 0
 --- !u!1 &3265049263786693810
 GameObject:
   m_ObjectHideFlags: 0

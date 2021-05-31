@@ -32,6 +32,8 @@ namespace Gameplay
         private float _countRainbowSec = 0f;
         private BoxCollider2D collide2D;
 
+
+
         public PlayerController(MonoBehaviour parent, 
                                 float jumpForce, 
                                 float jumpHeight, 
@@ -92,6 +94,7 @@ namespace Gameplay
         {
             Vector2 vel = _rigidbody2D.velocity;
 
+
             // Beschleunigung
             if (rl != 0)
             {
@@ -126,6 +129,10 @@ namespace Gameplay
             //Mehr velocity rl in air
             //else if (jmp && !_inAir && !_crouched) vel.x *= 0.3f;
             
+            //Test if vel < 0 for debug
+            if(jmp && vel.y <= 0f && !_inAir) {
+                vel.y = 0f;
+            }
             
             // Springen
             if (jmp && !_inAir)
@@ -151,6 +158,14 @@ namespace Gameplay
                 //Sound Bool = true
                 _vars.justJumped = true;
             }
+
+            /*
+            //Debug Set Jump Peak and inAir
+            if(_parent.transform.position.y <= -3f) {
+                _atJumpPeak = false;
+            } else {
+                _inAir = true;
+            }*/
 
             // Höher Springen wenn mans gedrückt hält
             if (jmp && _inAir && !_atJumpPeak)
@@ -254,6 +269,9 @@ namespace Gameplay
                     _parent.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
                 }
             }
+
+            
+
             _rigidbody2D.velocity = vel;
         }
 

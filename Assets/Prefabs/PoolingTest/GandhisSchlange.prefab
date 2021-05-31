@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286155002788859523}
   - component: {fileID: 1286155002788859522}
-  - component: {fileID: 1286155002788859549}
+  - component: {fileID: 3411031928868364201}
   m_Layer: 0
   m_Name: GandhisSchlange
   m_TagString: Enemy
@@ -71,7 +71,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1286155002788859549
+--- !u!114 &3411031928868364201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,12 +80,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1286155002788859548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2114a9c3cbbbe7ceaaf1673ce8202496, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d7fe380f77e94489ba65a947f26974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfThisObject: 
   speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: -3.92, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
+  spotInArray: 0
 --- !u!1 &1286155002899118146
 GameObject:
   m_ObjectHideFlags: 0

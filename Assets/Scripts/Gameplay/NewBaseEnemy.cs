@@ -93,4 +93,21 @@ public class NewBaseEnemy : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")) 
             Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
     }
+
+    public void ManualCheckIfOffscreen(float killPosition) {
+        if(_trans.position.x <= killPosition) {
+            if (_wasOnScreen && _gen != null) {
+                _gen.SendMessage("DisableGO", gameObject); 
+                //Debug.Log("ManualDeactivation of GameObject " + nameOfThisObject); 
+            }
+            _mainVars.isEnemyOnScreen[spotInArray] = false;
+                   
+            }
+    }
+
+    public void ManualCheckIfOnscreen(float onPosition) {
+        if(_trans.position.x >= onPosition) {
+            _wasOnScreen = true;
+        }
+    }
 }

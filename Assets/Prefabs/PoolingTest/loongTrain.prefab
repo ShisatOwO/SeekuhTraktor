@@ -1470,7 +1470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5863913999607707935}
-  - component: {fileID: 5863913999607707934}
+  - component: {fileID: 2299437448566284132}
   m_Layer: 0
   m_Name: loongTrain
   m_TagString: Untagged
@@ -1505,7 +1505,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5863913999607707934
+--- !u!114 &2299437448566284132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1514,12 +1514,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5863913999607707929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2114a9c3cbbbe7ceaaf1673ce8202496, type: 3}
+  m_Script: {fileID: 11500000, guid: 50cec6a90fd5f1c42887c65cd722628f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfThisObject: 
   speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: -1.78, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
+  spotInArray: 0
 --- !u!1 &5863914000147540871
 GameObject:
   m_ObjectHideFlags: 0
