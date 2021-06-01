@@ -105,6 +105,17 @@ public class NewBaseEnemy : MonoBehaviour
             }
     }
 
+    public void MushDelete(GameObject gob) {
+        try {
+            _mainVars.isEnemyOnScreen[spotInArray] = false;
+            GameObject.Find("Generate").SendMessage("DisableGO", gob);
+        } 
+        catch {
+            GameObject.Find("Generate").SendMessage("DisableGO", gob.transform.parent.gameObject);
+            Debug.Log("Error + ");
+        }
+    }
+
     public void ManualCheckIfOnscreen(float onPosition) {
         if(_trans.position.x >= onPosition) {
             _wasOnScreen = true;

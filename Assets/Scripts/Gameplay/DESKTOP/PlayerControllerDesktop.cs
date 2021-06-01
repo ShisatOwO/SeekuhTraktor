@@ -16,6 +16,7 @@ public class PlayerControllerDesktop : MonoBehaviour
     public Sprite spriteNormal;
     public Sprite spriteCrouch;
     public GameObject fallschirmObject;
+    //public GameObject genObj;
     
     private PlayerController _playerController;
     private int _rl;
@@ -34,7 +35,8 @@ public class PlayerControllerDesktop : MonoBehaviour
                                                  deceleration,
                                                  spriteNormal,
                                                  spriteCrouch,
-                                                 fallschirmObject);
+                                                 fallschirmObject
+                                                 );
     }
 
     private void Update()

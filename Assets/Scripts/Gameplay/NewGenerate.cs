@@ -39,13 +39,26 @@ public class NewGenerate : MonoBehaviour
 
 	protected private void DisableGO(GameObject g)
 	{
-		if (g != null) 
-		{
-			Pooler t = _tier1.GetSiblingPool(g.name);
-			if (t == null) t = _tier2.GetSiblingPool(g.name);
-			if (t == null) t = _tier3.GetSiblingPool(g.name);
-			g.SendMessage("Disable");
-			t.Add(g);
+		try {
+			if (g != null) 
+			{
+				Pooler t = _tier1.GetSiblingPool(g.name);
+				if (t == null) t = _tier2.GetSiblingPool(g.name);
+				if (t == null) t = _tier3.GetSiblingPool(g.name);
+				g.SendMessage("Disable");
+				t.Add(g);	
+			}
+		}
+		catch (System.Exception e) {
+			g = g.transform.parent.gameObject;
+			if (g != null) 
+			{
+				Pooler t = _tier1.GetSiblingPool(g.name);
+				if (t == null) t = _tier2.GetSiblingPool(g.name);
+				if (t == null) t = _tier3.GetSiblingPool(g.name);
+				g.SendMessage("Disable");
+				t.Add(g);	
+			}
 		}
 	}
 

@@ -24,6 +24,7 @@ namespace Gameplay
         private Sprite _normal;
         private SpriteRenderer _fallschirmObjectRenderer;
         private GameObject _fallschirmObject;
+        //private GameObject _genObj;
 
 
         private float _countJumpSec = 0f;
@@ -43,7 +44,8 @@ namespace Gameplay
                                 float deceleration,
                                 Sprite normal,
                                 Sprite crouch,
-                                GameObject fallschirmObject)
+                                GameObject fallschirmObject
+                                )
         {
             _parent = parent;
             _rigidbody2D = _parent.GetComponent<Rigidbody2D>();
@@ -59,6 +61,7 @@ namespace Gameplay
             _crouch = crouch;
             _fallschirmObject = fallschirmObject;
             _fallschirmObjectRenderer = fallschirmObject.GetComponent<SpriteRenderer>();
+            //_genObj = genObj;
         }
         
         public void PlayerCollision(Collision2D other)
@@ -71,21 +74,33 @@ namespace Gameplay
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
                 //SceneManager.LoadScene("HighscoreAfterGame");
             } else if(other.gameObject.CompareTag("Enemy") && rainbowActive) {
-                Destroy(other.gameObject);
+                try {
+                    other.gameObject.SendMessage("MushDelete", other.gameObject);
+                    other.gameObject.transform.parent.gameObject.gameObject.SendMessage("MushDelete", other.gameObject.transform.parent.gameObject);
+                }
+                catch (System.Exception e) {
+                    Debug.Log("SomeError");
+                }
 
             }
 
             if (other.gameObject.CompareTag("BoundHor"))
             {
-                _inAir = false;
+                _rigidbody2D.velocity = new Vector2 (_rigidbody2D.velocity.x, 0f);
                 _atJumpPeak = false;
                 _fallschirmObjectRenderer.enabled = false;
+                _inAir = false;
             }
             if (other.gameObject.CompareTag("Upgrade"))
             {
                 Physics2D.IgnoreCollision(_parent.GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
                 rainbowActive = true;
-                Destroy(other.gameObject);
+                try {
+                    other.gameObject.SendMessage("MushDelete", other.gameObject);
+                }
+                catch (System.Exception e) {
+                    Debug.Log("Erroorr");
+                }
             }
 
         }
@@ -130,9 +145,9 @@ namespace Gameplay
             //else if (jmp && !_inAir && !_crouched) vel.x *= 0.3f;
             
             //Test if vel < 0 for debug
-            if(jmp && vel.y <= 0f && !_inAir) {
+            /*if(jmp && vel.y <= 0f && !_inAir) {
                 vel.y = 0f;
-            }
+            }*/
             
             // Springen
             if (jmp && !_inAir)
@@ -159,14 +174,6 @@ namespace Gameplay
                 _vars.justJumped = true;
             }
 
-            /*
-            //Debug Set Jump Peak and inAir
-            if(_parent.transform.position.y <= -3f) {
-                _atJumpPeak = false;
-            } else {
-                _inAir = true;
-            }*/
-
             // Höher Springen wenn mans gedrückt hält
             if (jmp && _inAir && !_atJumpPeak)
             {
@@ -182,10 +189,9 @@ namespace Gameplay
 	            	_atJumpPeak = true;
 	            	_countJumpSec = 0f;
 	            }
-
+            }
 
             //falschirm
-            }
             if (jmp && _inAir && _atJumpPeak && vel.y < -0.5 && !_crouched)
             {
                 //Debug.Log("fallschirm");

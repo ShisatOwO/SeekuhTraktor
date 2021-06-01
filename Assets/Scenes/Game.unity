@@ -1906,7 +1906,7 @@ MonoBehaviour:
   - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
   - {fileID: 5863913999607707929, guid: 2951f73e7abe6e941aef692e6a923b32, type: 3}
   - {fileID: 7224401676538193170, guid: 526e122352f24d242827f80d8b2c01df, type: 3}
-  scoreGaps: d0070000a00f0000
+  scoreGaps: 0a00000014000000
   poolSize: 5
   spawnRate: 3
   applyScoreDifficulty: 0
