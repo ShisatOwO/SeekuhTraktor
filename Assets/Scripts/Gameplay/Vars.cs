@@ -7,6 +7,8 @@ public class Vars : MonoBehaviour
     public GameObject scoreObj;
     private Score scoreScript;
 
+    public GameObject mobileUI;
+
 	public int scoreInt = 0;
 
 
@@ -31,6 +33,9 @@ public class Vars : MonoBehaviour
         scoreScript = scoreObj.GetComponent<Score>();
         audioSrcMain = GetComponent<AudioSource>();
         Debug.Log("scoreInt" + scoreInt);
+        if(PlayerPrefs.GetInt("mobile") == 1) {
+            mobileUI.SetActive(false);
+        }
 
         
 

@@ -29,6 +29,14 @@ public class dontDestroy : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         audio.Play();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            PlayerPrefs.SetInt("mobile", 0);
+        } else {
+            PlayerPrefs.SetInt("mobile", 1);
+        }
+        
         
 
     }
