@@ -88,16 +88,11 @@ public class NController : MonoBehaviour
     void Update()
     {
        CheckInput();
-       
-
-        
     }
 
     void FixedUpdate()
     {
         Move(_rl,_jmp,_crh);
-
-        
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -209,20 +204,6 @@ public class NController : MonoBehaviour
             // Springen
             if (jmp && !_inAir)
             {
-                
-
-               /* Raihgks Jump-Funktion
-
-                float aclY = _jumpHeight*0.1f +  _jumpForce * Time.deltaTime;
-                if (vel.y + aclY > _jumpHeight)
-                {
-                    vel.y += vel.y + aclY - _jumpHeight;
-                    _atJumpPeak = true;
-                }
-                vel.y += aclY;
-                */
-
-                
 
                 //Frowins Jump-Funktion
                 vel = Vector2.up * _jumpForce;
@@ -330,18 +311,15 @@ public class NController : MonoBehaviour
             }
             if(rainbowActive) {
                 
-                if(_cf >= 10) {
-                    _cf = 0;
-                    _spRender.color = mushColor();
-                } else {
-                    _cf++;       
-                }
+                float lerp = Mathf.PingPong(Time.time, 1f) / 1f;
+                _spRender.material.color = Color.Lerp(Color.red, Color.green, lerp);
+                  
                 _countRainbowSec = _countRainbowSec + Time.deltaTime;
                 if(_countRainbowSec >= 5) {
                     _countRainbowSec = 0;
                     rainbowActive = false;
-                    _cf = 10;
-                    _spRender.color = new Color(255, 255, 255, 255);
+                    //_cf = 10;
+                    _spRender.material.SetColor("_Color", Color.white);
                 }
             }
 
@@ -350,10 +328,4 @@ public class NController : MonoBehaviour
             _rigidbody2D.velocity = vel;
     }
 
-    public Color mushColor () {
-        int red = 1;
-        int blue = 255;
-        int green = 3;
-        return new Color(red, blue, green);
-    }
 }

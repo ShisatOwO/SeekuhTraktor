@@ -497,8 +497,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca307814fc63065c8db7e8632cb5d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: -2, y: 0, z: 0}
+  nameOfThisObject: 
+  speed: {x: -8, y: 0, z: 0}
   spawnPosition: {x: 20, y: 2.08, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
-  randomMovementLeft: -350
-  randomMovementRight: 300
+  spotInArray: 0
+  randomMovementLeft: -800
+  randomMovementRight: 800

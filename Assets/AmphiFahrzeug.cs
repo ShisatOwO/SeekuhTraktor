@@ -7,6 +7,7 @@ public class AmphiFahrzeug : NewBaseEnemy
     public float randomMovementLeft;
     public float randomMovementRight;
 
+    private int cFrames = 0;
     private Rigidbody2D _rb2d;
 
     void Start()
@@ -18,11 +19,19 @@ public class AmphiFahrzeug : NewBaseEnemy
     }
     
 
-    void FixedUpdate()
+    void Update()
     {
-        Vector2 _vel = new Vector2(Random.Range(randomMovementLeft, randomMovementRight) / 100 * Time.deltaTime,
-            _rb2d.velocity.y);
-        _rb2d.velocity = _vel;
+        //if(cFrames >= 10) {
+            Vector2 _vel = new Vector2(Random.Range(randomMovementLeft, randomMovementRight) / 100 * Time.fixedDeltaTime,
+                _rb2d.velocity.y);
+            _rb2d.velocity = _vel;
+            //cFrames = 0;
+            //} else {
+            //    cFrames++;
+           // }
+        applyScoreDifficulty = new Vector3(Mathf.Sqrt(_mainVars.scoreInt) * 0.077459f,0f,0f);
+        _trans.position += (speed - applyScoreDifficulty) * Time.deltaTime;
+        _mainVars.isEnemyOnScreen[spotInArray] = true;
     }
 
     void OnCollisionEnter2D(Collision2D other)

@@ -116,7 +116,8 @@ public class NewGenerate : MonoBehaviour
     }
 	
 	protected void Update()
-	{
+	{	
+		if(_mainVars.scoreInt <= 6000) {
 		if(Time.time - _time >= spawnRateBorder)
 		{
 			int allowed_tiers = 1;
@@ -161,6 +162,11 @@ public class NewGenerate : MonoBehaviour
 			GenerateNextSpawnBorder();
 			_time = Time.time;
 		}
+		else {
+			
+		}
+
+		}
 		
     }
 
@@ -204,6 +210,15 @@ public class NewGenerate : MonoBehaviour
         else if (objAboutToBeSpawned.name == "FlippedAmphiF(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "Lochloffel")] == true) {
         	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
         	Debug.Log("No Amphi After Loffel");
+        } 
+
+        else if (objAboutToBeSpawned.name == "FlippedAmphiF(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "BarackOlama")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("No Amphi After Olama");
+        } 
+        else if (objAboutToBeSpawned.name == "Seemohre(Clone)" && _mainVars.isEnemyOnScreen[System.Array.IndexOf(_mainVars.everyEnemyStringArr, "FlippedAmphiF")] == true) {
+        	newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[0].name + "(Clone)").RequestObj();
+        	Debug.Log("No Mohre After Amphi");
         } 
 
 

@@ -577,6 +577,8 @@ MonoBehaviour:
   standard: {fileID: 8300000, guid: b73fdc36691b8cc34879b7fec01151c4, type: 3}
   cursed: {fileID: 8300000, guid: 5bbcbb720af7b58c9adeb4ce3d44c2ef, type: 3}
   pianoIntensifies: {fileID: 8300000, guid: 98b9924a97ef77eb098d5742b029c0ec, type: 3}
+  bronto: {fileID: 8300000, guid: f54f911adf9d67e4fb5ebec86837285c, type: 3}
+  cowbell: {fileID: 8300000, guid: 5c5dd9acca6eab74694dbc1e41ee9d21, type: 3}
   loopAudio: 1
 --- !u!1 &1571765700
 GameObject:
