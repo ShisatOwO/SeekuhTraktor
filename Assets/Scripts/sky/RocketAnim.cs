@@ -18,7 +18,7 @@ public class RocketAnim : MonoBehaviour
     {
     	trans.position += new Vector3(transform.position.x, 0.1f, transform.position.z);
     	if(trans.position.y >= 14) {
-    		SceneManager.LoadScene("Sky"); 
+    		SceneManager.LoadScene("SkyNew"); 
     	}
         
     }

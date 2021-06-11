@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5160721655677676059
+--- !u!1 &8625223977424406155
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5160721655677676052}
-  - component: {fileID: 5160721655677676053}
-  - component: {fileID: 5160721655677676054}
-  - component: {fileID: 5160721655677676058}
-  - component: {fileID: 2898190040664181637}
-  - component: {fileID: 5990027923581025149}
+  - component: {fileID: 8625223977424406148}
+  - component: {fileID: 8625223977424406149}
+  - component: {fileID: 8625223977424406150}
+  - component: {fileID: 8625223977424406154}
+  - component: {fileID: 1735032638652557077}
   m_Layer: 0
   m_Name: Kno_Sky
   m_TagString: Enemy
@@ -21,27 +20,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5160721655677676052
+--- !u!4 &8625223977424406148
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
+  m_GameObject: {fileID: 8625223977424406155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74, y: -1.92, z: 0}
+  m_LocalPosition: {x: 1.5, y: 2.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5160721655677676053
+--- !u!212 &8625223977424406149
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
+  m_GameObject: {fileID: 8625223977424406155}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5160721655677676054
+--- !u!60 &8625223977424406150
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
+  m_GameObject: {fileID: 8625223977424406155}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -203,14 +202,14 @@ PolygonCollider2D:
       - {x: 0.51, y: 0.31}
       - {x: 0.52, y: 0.29999998}
       - {x: 0.5, y: 0.31}
---- !u!50 &5160721655677676058
+--- !u!50 &8625223977424406154
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
+  m_GameObject: {fileID: 8625223977424406155}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -224,39 +223,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2898190040664181637
+--- !u!114 &1735032638652557077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
+  m_GameObject: {fileID: 8625223977424406155}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d437900340a50204a9aaae2e484de79b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameOfThisObject: 
-  speed: {x: 0, y: 0, z: 0}
-  speedFloat: 7
-  spawnPosition: {x: 0, y: 0, z: 0}
-  applyScoreDifficulty: {x: 0, y: 0, z: 0}
-  spawnObjLeft: {fileID: 0}
-  spawnObjRight: {fileID: 0}
-  spawnObjUp: {fileID: 0}
-  spawnObjDown: {fileID: 0}
-  spotInArray: 0
-  direction: 0
---- !u!114 &5990027923581025149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160721655677676059}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f9a9f7864e39f4293a8ed8db73c3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfThisObject: 

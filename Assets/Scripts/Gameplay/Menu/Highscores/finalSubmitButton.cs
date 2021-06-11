@@ -32,7 +32,7 @@ public class finalSubmitButton : MonoBehaviour
     public void SubmitFinal() {
 
     sscore = PlayerPrefs.GetInt("ScoreSceneOverdub");
-    sscore = 9000;
+    //sscore = 9000;
     	if(string.IsNullOrEmpty(inp.text)) {
     		sname = "GeheimTraktor007";
     		Debug.Log("isNullOrEmpty");

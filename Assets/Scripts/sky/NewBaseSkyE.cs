@@ -75,7 +75,7 @@ public class NewBaseSkyE : MonoBehaviour
             default: Debug.Log("LOL"); break;
         }
 
-        Debug.Log(spawnPosition + " " + direction);
+        //Debug.Log(spawnPosition + " " + direction);
         _trans.position = spawnPosition;
 
     }
@@ -97,6 +97,8 @@ public class NewBaseSkyE : MonoBehaviour
             default: Debug.Log("LOL"); break;
         }
 
+        OverrideSpawnPosition();
+
         _trans.position = spawnPosition;
 
     }
@@ -115,6 +117,7 @@ public class NewBaseSkyE : MonoBehaviour
         //_trans.position += (speed - applyScoreDifficulty) * Time.deltaTime;
         _trans.position += (speed) * Time.deltaTime;
         _mainVars.isEnemyOnScreen[spotInArray] = true;
+
 
     }
 
@@ -150,5 +153,17 @@ public class NewBaseSkyE : MonoBehaviour
     public void SetDirDown() {
         direction = 2;
         spawnPosition = spawnObjDown.position;
+    }
+    public void OverrideSpawnPosition() {
+        if (spawnPosition == new Vector3(0f,0f,0f)) {
+            direction = Random.Range(0,4);
+            switch (direction) {
+            case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
+            case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
+            case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
+            case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
+            default: Debug.Log("LOL"); break;
+            }
+        }     
     }
 }

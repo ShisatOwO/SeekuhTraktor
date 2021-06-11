@@ -38,6 +38,8 @@ public class dontDestroy : MonoBehaviour
         } else {
             PlayerPrefs.SetInt("mobile", 1);
         }
+
+        PlayerPrefs.SetInt("ScoreSceneOverdub", 0);
         
         
 

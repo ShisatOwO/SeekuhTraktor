@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Assertions.Must;
+using UnityEngine.UI;
 
 public class NSkyController : MonoBehaviour
 {
@@ -15,6 +19,8 @@ public class NSkyController : MonoBehaviour
     private Vector2 _vel;
     private SpriteRenderer _spRender;
 
+    public Vars _vars;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +28,15 @@ public class NSkyController : MonoBehaviour
         decc = decc / 100;
         acc = acc / 100;
         _spRender = GetComponent<SpriteRenderer>();
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+         if (other.gameObject.CompareTag("Enemy"))
+            {
+                PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
+                SceneManager.LoadScene("HighscoreAfterGame");
+            }
     }
 
     // Update is called once per frame

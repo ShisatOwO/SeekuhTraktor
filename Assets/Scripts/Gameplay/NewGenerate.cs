@@ -14,6 +14,7 @@ public class NewGenerate : MonoBehaviour
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
 
+    public Rocket rocketScript;
 
 
     private GameObject[] allEnemys;
@@ -166,6 +167,9 @@ public class NewGenerate : MonoBehaviour
 			
 		}
 
+		//If points over 6000
+		} else {
+			rocketScript.enabled = true;
 		}
 		
     }

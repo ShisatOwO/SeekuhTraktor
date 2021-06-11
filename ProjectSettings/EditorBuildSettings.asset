@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HighscoreFromMenu.unity
     guid: 5854c7513fe6ced4d85c901704dc1eca
   - enabled: 1
-    path: Assets/Scenes/Sky.unity
-    guid: 8bf18d60719b7d845af3a327743b2e6a
+    path: Assets/Scenes/SkyAnim.unity
+    guid: fda9cd48588887f4f883da5999875834
+  - enabled: 1
+    path: Assets/Scenes/SkyNew.unity
+    guid: f130af0d4f0f3ae4cb95416f1ef9005e
   m_configObjects: {}

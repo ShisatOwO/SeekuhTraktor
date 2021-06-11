@@ -114,6 +114,10 @@ public class NController : MonoBehaviour
                 }
 
             }
+            if (other.gameObject.CompareTag("Finish")) {
+                PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
+                SceneManager.LoadScene("SkyAnim");
+            }
 
             if (other.gameObject.CompareTag("BoundHor"))
             {
