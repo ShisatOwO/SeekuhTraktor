@@ -11,6 +11,8 @@ public class loadingScript : MonoBehaviour
     {
         PlayerPrefs.SetFloat("VolumeSlider", 1f);
         PlayerPrefs.SetInt("AudioSrc", 0);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
