@@ -128,7 +128,22 @@ PlayerSettings:
     16:9: 1
     Others: 0
   bundleVersion: 3.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 7224401676538193170, guid: 526e122352f24d242827f80d8b2c01df, type: 3}
+  - {fileID: 4887075804610555569, guid: cd86477e1523a9940b5861d33142ed50, type: 3}
+  - {fileID: 7143773123281455628, guid: 38905da954131d462a1d69f7d744462a, type: 3}
+  - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
+  - {fileID: 5401292114452662522, guid: ed2faf4d4b15f21419aa0f284532ab40, type: 3}
+  - {fileID: 5876963055009304824, guid: d00cccfc5f2c5b24c80638b00c928817, type: 3}
+  - {fileID: 8625223977424406155, guid: 21635b4d3ddc77849963dbf2fcd321d8, type: 3}
+  - {fileID: 5472252702653253175, guid: f66c427f0559cc44aab0fb5ddf886638, type: 3}
+  - {fileID: 5772744458924440162, guid: 4e446e4f92446bb448bb6ca8c310c028, type: 3}
+  - {fileID: 5863913999607707929, guid: 2951f73e7abe6e941aef692e6a923b32, type: 3}
+  - {fileID: 4052895462566942048, guid: 4ce621735b915caf7b3c6c73b0bb29ed, type: 3}
+  - {fileID: 7197700540675763111, guid: 045c897e44c078d4fba282f7603366cd, type: 3}
+  - {fileID: 7603781260156893087, guid: 3a8dfc096e8897d7aab5da4bea6aa643, type: 3}
+  - {fileID: 1286155002788859548, guid: 09e8b4a56c71b3e47b09df9dbcd30361, type: 3}
+  - {fileID: 11500000, guid: 45f1cf13d14c0d34785536e55af58a50, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -648,7 +663,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Minimal
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 0
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
@@ -658,7 +673,8 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
-  managedStrippingLevel: {}
+  managedStrippingLevel:
+    Android: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
   allowUnsafeCode: 1

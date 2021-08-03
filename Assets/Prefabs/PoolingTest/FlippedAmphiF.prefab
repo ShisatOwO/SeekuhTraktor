@@ -502,5 +502,5 @@ MonoBehaviour:
   spawnPosition: {x: 20, y: 2.08, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
   spotInArray: 0
-  randomMovementLeft: -800
-  randomMovementRight: 800
+  randomMovementLeft: -100
+  randomMovementRight: 100

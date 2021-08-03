@@ -56,12 +56,14 @@ public class NController : MonoBehaviour
     private bool _crh;
     private int _cf = 10;
 
-    private float _countJumpSec = 0f;
+    //private float _countJumpSec = 0f;
     private float _colorChangeSpeed = 1f;
     private bool rainbowActive = false;
     private float _countRainbowSec = 0f;
     private BoxCollider2D collide2D;
     private int countJFrames;
+    private int _cDebugFrames = 0;
+    private int _cDebugFrames1 = 0;
 
 
     // Start is called before the first frame update
@@ -125,6 +127,7 @@ public class NController : MonoBehaviour
                 _atJumpPeak = false;
                 _fallschirmObjectRenderer.enabled = false;
                 _inAir = false;
+                countJFrames = 0;
             }
             if (other.gameObject.CompareTag("Upgrade"))
             {
@@ -193,7 +196,16 @@ public class NController : MonoBehaviour
 
             
             // Kein springen Mehr wenn man in der Luft Springen los lässt
-            if (!jmp && _inAir) _atJumpPeak = true;
+            if (!jmp && _inAir) {
+
+                if(_cDebugFrames >= 3) {
+                    _atJumpPeak = true;
+                    _cDebugFrames = 0;
+                } else {
+                    _cDebugFrames++;
+                }
+                
+            }
             
             //Mehr velocity rl in air
             //else if (jmp && !_inAir && !_crouched) vel.x *= 0.3f;
@@ -222,18 +234,16 @@ public class NController : MonoBehaviour
             if (jmp && _inAir && !_atJumpPeak)
             {
                 
-                if(_countJumpSec < _jumpHeight && !_atJumpPeak) {
+                if(countJFrames < _jumpHeight && !_atJumpPeak) {
                     vel = vel + new Vector2(0f, 0.5f);
                     //Debug.Log("executed");
                     countJFrames++;
 
-                    _countJumpSec = _countJumpSec + Time.deltaTime;
                 }
-                if(countJFrames >= _jumpHeight)
+                if(countJFrames >= _jumpHeight) // && gameObject.transform.position.y >= 4.2f)
                 {
                     //Debug.Log("else");
                     _atJumpPeak = true;
-                    _countJumpSec = 0f;
                     countJFrames = 0;
                 }
             }
@@ -327,9 +337,6 @@ public class NController : MonoBehaviour
                 }
             }
 
-            
-
             _rigidbody2D.velocity = vel;
     }
-
 }

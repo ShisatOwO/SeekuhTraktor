@@ -54,7 +54,7 @@ public class BarackOlama : NewBaseEnemy
         }
         if(reachedSpot && !endSpot) {
             counter++;
-            _trans.position = new Vector3 (_trans.position.x, spawnPosition.y + (auschwenkung * Mathf.Sin(counter/32)), 0f);
+            _trans.position = new Vector3 (_trans.position.x, spawnPosition.y + (auschwenkung * Mathf.Sin(counter/48)), 0f);
             if(counter >= stopFrame) {
                 endSpot = true;
             }

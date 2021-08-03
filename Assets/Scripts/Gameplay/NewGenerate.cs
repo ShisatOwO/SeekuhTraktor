@@ -115,8 +115,9 @@ public class NewGenerate : MonoBehaviour
 		//Erster Gegner spawnt um...
     	spawnRateBorder = 0.5f;
     }
+
 	
-	protected void Update()
+	protected void FixedUpdate()
 	{	
 		if(_mainVars.scoreInt <= 6000) {
 		if(Time.time - _time >= spawnRateBorder)

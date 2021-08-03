@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameOfThisObject: 
-  speed: {x: -6, y: 0, z: 0}
+  speed: {x: -9, y: 0, z: 0}
   spawnPosition: {x: 20, y: -5.15, z: 0}
   applyScoreDifficulty: {x: 0, y: 0, z: 0}
   spotInArray: 0
   reachedSpot: 0
   endSpot: 0
   auschwenkung: 1.9
-  stopFrame: 200
+  stopFrame: 150

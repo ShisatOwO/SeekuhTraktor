@@ -13,8 +13,8 @@ public class AmphiFahrzeug : NewBaseEnemy
     void Start()
     {
         base.Start();
-        randomMovementLeft *= 100;
-        randomMovementRight *= 100;
+        randomMovementLeft *= 8;
+        randomMovementRight *= 8;
         _rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
     
@@ -22,7 +22,7 @@ public class AmphiFahrzeug : NewBaseEnemy
     void Update()
     {
         //if(cFrames >= 10) {
-            Vector2 _vel = new Vector2(Random.Range(randomMovementLeft, randomMovementRight) / 100 * Time.fixedDeltaTime,
+            Vector2 _vel = new Vector2(Random.Range(randomMovementLeft, randomMovementRight) * Time.fixedDeltaTime,
                 _rb2d.velocity.y);
             _rb2d.velocity = _vel;
             //cFrames = 0;
