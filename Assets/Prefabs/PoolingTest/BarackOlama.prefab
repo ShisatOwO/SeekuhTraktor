@@ -202,3 +202,4 @@ MonoBehaviour:
   endSpot: 0
   auschwenkung: 1.9
   stopFrame: 150
+  steps: 50

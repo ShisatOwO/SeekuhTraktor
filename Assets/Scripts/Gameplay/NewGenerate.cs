@@ -120,53 +120,52 @@ public class NewGenerate : MonoBehaviour
 	protected void FixedUpdate()
 	{	
 		if(_mainVars.scoreInt <= 6000) {
-		if(Time.time - _time >= spawnRateBorder)
-		{
-			int allowed_tiers = 1;
-			int numberOfAllowedEnemys = tier1Enemys.Length;
-			
-			foreach(var i in scoreGaps)
+			if(Time.time - _time >= spawnRateBorder)
 			{
-				if (_mainVars.scoreInt >= i) allowed_tiers++;
-				else break;
-			}
+				int allowed_tiers = 1;
+				int numberOfAllowedEnemys = tier1Enemys.Length;
+				
+				foreach(var i in scoreGaps)
+				{
+					if (_mainVars.scoreInt >= i) allowed_tiers++;
+					else break;
+				}
 
-			if (allowed_tiers > 1) numberOfAllowedEnemys += tier2Enemys.Length;
-			if (allowed_tiers > 2) numberOfAllowedEnemys += tier3Enemys.Length;
-			
-			randomTier = Random.Range(0, numberOfAllowedEnemys);
+				if (allowed_tiers > 1) numberOfAllowedEnemys += tier2Enemys.Length;
+				if (allowed_tiers > 2) numberOfAllowedEnemys += tier3Enemys.Length;
+				
+				randomTier = Random.Range(0, numberOfAllowedEnemys);
 
-			GameObject g = null;
+				GameObject g = null;
 
 
-			
-			if (randomTier >= tier1Enemys.Length + tier2Enemys.Length) {
-				indexOfSpawnObj = Random.Range(0, tier3Enemys.Length);
-				g = _tier3.GetSiblingPool(tier3Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
-			}
-			else if (randomTier >= tier1Enemys.Length) {
-				indexOfSpawnObj = Random.Range(0, tier2Enemys.Length);
-				g = _tier2.GetSiblingPool(tier2Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+				
+				if (randomTier >= tier1Enemys.Length + tier2Enemys.Length) {
+					indexOfSpawnObj = Random.Range(0, tier3Enemys.Length);
+					g = _tier3.GetSiblingPool(tier3Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+				}
+				else if (randomTier >= tier1Enemys.Length) {
+					indexOfSpawnObj = Random.Range(0, tier2Enemys.Length);
+					g = _tier2.GetSiblingPool(tier2Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+				}
+				else {
+					indexOfSpawnObj = Random.Range(0, tier1Enemys.Length);
+					g = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
+				}
+
+				//randomTier = 10;
+				//indexOfSpawnObj = 4;
+				//g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
+
+
+				Enable(CheckIfEnemySpawnIsFair(g));
+
+				//Feststellen wann der nächste Gegner spawnt
+				GenerateNextSpawnBorder();
+				_time = Time.time;
 			}
 			else {
-				indexOfSpawnObj = Random.Range(0, tier1Enemys.Length);
-				g = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestPeek();
 			}
-
-			//randomTier = 10;
-			//indexOfSpawnObj = 4;
-			//g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
-
-
-			Enable(CheckIfEnemySpawnIsFair(g));
-
-			//Feststellen wann der nächste Gegner spawnt
-			GenerateNextSpawnBorder();
-			_time = Time.time;
-		}
-		else {
-			
-		}
 
 		//If points over 6000
 		} else {
