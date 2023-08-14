@@ -1234,6 +1234,7 @@ MonoBehaviour:
   _crouch: {fileID: 21300000, guid: ed3687b8960f9f47a9f2e9a3d5091ddf, type: 3}
   _normal: {fileID: 21300000, guid: aaa7ff5b4ceae3e06a6b315c1658134b, type: 3}
   _fallschirmObject: {fileID: 385026785}
+  lives: 3
   mobileBtnL: {fileID: 1949499116}
   mobileBtnR: {fileID: 1656832318}
   mobileBtnU: {fileID: 1100860034}
@@ -1359,7 +1360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreObj: {fileID: 1518748864}
   mobileUI: {fileID: 37986320}
-  scoreInt: 0
+  scoreInt: 5999
   everyEnemyArray: []
   isEnemyOnScreen: 0000000000000000000000000000000000
   everyEnemyStringArr: []
@@ -2924,7 +2925,7 @@ GameObject:
   - component: {fileID: 1965236611}
   - component: {fileID: 1965236610}
   m_Layer: 0
-  m_Name: Generate_RenameToDebug
+  m_Name: GenerateRename
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2943,7 +2944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tier1Enemys:
-  - {fileID: 5401292114452662522, guid: ed2faf4d4b15f21419aa0f284532ab40, type: 3}
+  - {fileID: 5863913999607707929, guid: 2951f73e7abe6e941aef692e6a923b32, type: 3}
+  - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
   tier2Enemys:
   - {fileID: 7603781260156893087, guid: 3a8dfc096e8897d7aab5da4bea6aa643, type: 3}
   - {fileID: 5772744458924440162, guid: 4e446e4f92446bb448bb6ca8c310c028, type: 3}
@@ -2956,8 +2958,8 @@ MonoBehaviour:
   - {fileID: 2934366914702373120, guid: 04a6e8adf47f10b6e838da5b30c1394d, type: 3}
   - {fileID: 2436886296714093, guid: 556fe8b1d49b03b7d88dc9df8557586f, type: 3}
   - {fileID: 7143773123281455628, guid: 38905da954131d462a1d69f7d744462a, type: 3}
-  - {fileID: 5863913999607707929, guid: 2951f73e7abe6e941aef692e6a923b32, type: 3}
-  - {fileID: 3265049263273062245, guid: 9b24fe6e69a45f84ea1bbad2250d1585, type: 3}
+  - {fileID: 1286155002788859548, guid: 09e8b4a56c71b3e47b09df9dbcd30361, type: 3}
+  - {fileID: 5523554033822902044, guid: 17ce940ac04314c63ad73c886d07bd1e, type: 3}
   - {fileID: 7603781260156893087, guid: 3a8dfc096e8897d7aab5da4bea6aa643, type: 3}
   - {fileID: 2687926031770341932, guid: 35a825a7d1c3888a08b8059a2473152e, type: 3}
   - {fileID: 7224401676538193170, guid: 526e122352f24d242827f80d8b2c01df, type: 3}
