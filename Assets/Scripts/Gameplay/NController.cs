@@ -30,6 +30,9 @@ public class NController : MonoBehaviour
     private Transform _fallschirmTransform;
     public GameObject _fallschirmObject;
 
+    public int lives = 2;
+    private int _hitCooldown = 15;
+
     public Button mobileBtnL;
     public Button mobileBtnR;
     public Button mobileBtnU;
@@ -69,6 +72,7 @@ public class NController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lives = 2; _hitCooldown = 15;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spRender= GetComponent<SpriteRenderer>();
         _fallschirmObjectRenderer = _fallschirmObject.GetComponent<SpriteRenderer>();
@@ -94,6 +98,7 @@ public class NController : MonoBehaviour
 
     void FixedUpdate()
     {
+        _hitCooldown -= 1;
         Move(_rl,_jmp,_crh);
     }
 
@@ -102,11 +107,28 @@ public class NController : MonoBehaviour
         if (other.gameObject.CompareTag("BoundVert")) 
                 _rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
 
-            if (other.gameObject.CompareTag("Enemy") && !rainbowActive)
+            if (other.gameObject.CompareTag("Enemy")) //&& !rainbowActive)
             {
-                PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
-                SceneManager.LoadScene("HighscoreAfterGame");
-            } else if(other.gameObject.CompareTag("Enemy") && rainbowActive) {
+                if (lives > 0) 
+                {
+                    try {
+                        other.gameObject.SendMessage("MushDelete", other.gameObject);
+                        other.gameObject.transform.parent.gameObject.gameObject.SendMessage("MushDelete", other.gameObject.transform.parent.gameObject);
+                    }
+                    catch (System.Exception e) {
+                        Debug.Log("SomeError");
+                    }
+                    if(_hitCooldown < 0) {
+                        _hitCooldown = 15;
+                        lives -= 1;        
+                        print(lives);
+                    }
+                } else {
+                    //print("dead");
+                    PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
+                    SceneManager.LoadScene("HighscoreAfterGame");
+                }
+            } /*else if(other.gameObject.CompareTag("Enemy") && rainbowActive) {
                 try {
                     other.gameObject.SendMessage("MushDelete", other.gameObject);
                     other.gameObject.transform.parent.gameObject.gameObject.SendMessage("MushDelete", other.gameObject.transform.parent.gameObject);
@@ -115,7 +137,7 @@ public class NController : MonoBehaviour
                     Debug.Log("SomeError");
                 }
 
-            }
+            }*/
             if (other.gameObject.CompareTag("Finish")) {
                 PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
                 SceneManager.LoadScene("SkyAnim");

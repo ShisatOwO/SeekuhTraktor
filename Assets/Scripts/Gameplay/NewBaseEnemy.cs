@@ -9,6 +9,7 @@ public class NewBaseEnemy : MonoBehaviour
     public Vector3 speed = new Vector3(-8f, 0, 0);
     public Vector3 spawnPosition;
     public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
+    private Vector3 _genPos;
 
     protected Transform _trans;
     protected GameObject _gen;
@@ -27,6 +28,7 @@ public class NewBaseEnemy : MonoBehaviour
         _mainObj = GameObject.Find("Main");
         _mainVars = _mainObj.GetComponent<Vars>();
         _wasOnScreen = false;
+        _genPos = _gen.transform.position;
 
         nameOfThisObject = gameObject.name;
         nameOfThisObject = nameOfThisObject.Remove(name.Length - 7);

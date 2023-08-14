@@ -412,10 +412,11 @@ MonoBehaviour:
   - {fileID: 5472252702653253175, guid: f66c427f0559cc44aab0fb5ddf886638, type: 3}
   - {fileID: 7197700540675763111, guid: 045c897e44c078d4fba282f7603366cd, type: 3}
   - {fileID: 8625223977424406155, guid: 21635b4d3ddc77849963dbf2fcd321d8, type: 3}
+  - {fileID: 2722546091441196981, guid: 61e3201dbd3dc47ecb92cdb0ca1ea9a9, type: 3}
   tier2Enemys: []
   tier3Enemys: []
   scoreGaps: 50c30000
-  poolSize: 25
+  poolSize: 20
   spawnRate: 3
   applyScoreDifficulty: 0
   applyRandomDifficulty: 0
@@ -452,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugWidth: 1280
   debugHeight: 720
+  ratio: 0
 --- !u!81 &143781834
 AudioListener:
   m_ObjectHideFlags: 0

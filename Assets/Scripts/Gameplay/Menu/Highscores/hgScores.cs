@@ -3,8 +3,11 @@ using System.Collections;
 
 public class hgScores : MonoBehaviour {
 
-	const string privateCode = "iCS1qBjNs0CGanSPUKy9BAwel91EY91EaywYkdykd-ZQ";
-	const string publicCode = "6055c6188f40bbaf006fd3f0";
+	//const string privateCode = "iCS1qBjNs0CGanSPUKy9BAwel91EY91EaywYkdykd-ZQ";
+	//const string publicCode = "6055c6188f40bbaf006fd3f0";
+	const string privateCode = "7RWsjAmiQECpZdFm4rhbYgT9M4lA0jl0yTIR2MkcQv3g";
+	const string publicCode = "64da0a458f40bb0ee052d1c9";
+
 	const string webURL = "http://dreamlo.com/lb/";
 
 	DisplayHighscores highscoreDisplay;
