@@ -5,26 +5,27 @@ using Dialog;
 
 public class DestroyDialog : TextLine
 {
-    private bool _activateMark = false;
-    private bool _setPosition = false;
+    //private bool _activateMark = false;
+    //private bool _setPosition = false;
 
-    private Vector3 _store_start_position;
-    private Rigidbody2D _rb;
+    //private Vector3 _store_start_position;
+    //private Rigidbody2D _rb;
     public GameObject Textbox;
+    public GameObject MoveMarkLine;
     public GameObject MediaMark;
     private MarkController _markC;
+    private LineMoveMark _moveMarkSkript;
     private bool _activateFight = false;
-    [SerializeField] private LastLineBeforeFight last_line;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        _setPosition = false;
-        _activateMark = false;   
-        _activateFight = false;
+        //_setPosition = false;
+        //_activateMark = false;   
+        //_activateFight = false;
         _markC = MediaMark.GetComponent<MarkController>();
-        _rb = MediaMark.GetComponent<Rigidbody2D>();
+        _moveMarkSkript = MoveMarkLine.GetComponent<LineMoveMark>();
+        //_rb = MediaMark.GetComponent<Rigidbody2D>();
     }
 
 /*    public override void Update() 
@@ -63,14 +64,15 @@ public class DestroyDialog : TextLine
 
     public override void speak()
     {
-        _activateMark = true;
+        activateFight();
         //_rb.velocity = new Vector2 (1,-100f);
         //Textbox = GameObject.Find("TextBox");
     }
 
     public void activateFight() {
+        _moveMarkSkript.deactivateMark();
         print("Fight activated");
-        _activateFight = true;
+        //_activateFight = true;
         _markC.startFight = true;
         Textbox.SetActive(false);
 

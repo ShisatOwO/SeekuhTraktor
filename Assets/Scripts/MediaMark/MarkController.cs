@@ -6,8 +6,11 @@ public class MarkController : MonoBehaviour
 {
 
     public int lives;
+    public GameObject explosion;
     private int _starting_lives;
     private int _invulframes;
+
+    private bool _dead = false;
 
     public bool startFight = false;
     public float velocity;
@@ -27,11 +30,15 @@ public class MarkController : MonoBehaviour
     private float _shoot_border;
     private float _shoot_frames_counter;
     private int _count_bullets = 0;
+
+    private int _dead_frame_counter;
     // Start is called before the first frame update
 
 
     void Start()
     {
+        _dead_frame_counter = 0;
+        _dead = false;
         _invulframes = 0;
         _shoot_frames_counter = 0;
         _shoot_border = 1;
@@ -48,11 +55,23 @@ public class MarkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startFight) {
+        if(startFight && !_dead) {
             Rotate();
             Translate();
             Shoot();
             _invulframes -= 1;
+
+            if(lives <= 0) {
+                _dead = true;
+                Die();
+            }
+        }
+
+        if (_dead) {
+            _dead_frame_counter += 1;
+            if (_dead_frame_counter >= 1000) {
+                explosion.SetActive(false);
+            }
         }
     }
 
@@ -108,6 +127,18 @@ public class MarkController : MonoBehaviour
         if (other.gameObject.tag == "Player" && _invulframes <= 0) {
             lives -= 1;
             _invulframes = 15;
+        }
+    }
+
+    void Die() {
+        explosion.SetActive(true);
+        for (int i = 0; i < bullets.Length; i++) {
+            bullets[i].SetActive(false);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().simulated = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+
+
         }
     }
 }
