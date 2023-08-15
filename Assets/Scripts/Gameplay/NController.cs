@@ -74,7 +74,7 @@ public class NController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _livehandler = livehandlerObj.GetComponent<live_handler>();
+        if (livehandlerObj != null) {_livehandler = livehandlerObj.GetComponent<live_handler>();}
         //lives = 2;
         _hitCooldown = 15;
         _rigidbody2D = GetComponent<Rigidbody2D>();
