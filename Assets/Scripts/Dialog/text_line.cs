@@ -38,7 +38,7 @@ namespace Dialog
         answered = false;
       }
 
-      public void speak()
+      public virtual void speak()
       {
         // Text Component Anpassen.
         text = GetComponent<Text>();

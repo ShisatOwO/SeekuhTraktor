@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HallOFame.unity
     guid: 270691c2ce9e849319498b2b0f07d1c9
+  - enabled: 1
+    path: Assets/Scenes/Bossfights/MediaMark/MediaMark.unity
+    guid: 9bdea894f689ea5b8a9d9caee494fa77
   m_configObjects: {}
