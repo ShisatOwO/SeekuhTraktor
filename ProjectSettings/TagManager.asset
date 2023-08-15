@@ -13,6 +13,8 @@ TagManager:
   - BoundVert
   - InactiveGandhi
   - EnemyKiller
+  - MediaBullet
+  - MediaBulletDeath
   layers:
   - Default
   - TransparentFX

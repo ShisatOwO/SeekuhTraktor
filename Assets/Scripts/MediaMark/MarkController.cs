@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MarkController : MonoBehaviour
 {
-
+    public AnimationCurve SpawnCurve;
     private AudioSource audioHurt;
     private AudioSource audioShoot;
 
@@ -25,6 +25,7 @@ public class MarkController : MonoBehaviour
     public float velocity;
     public float w;
     public GameObject bulletPrefab;
+    public GameObject bulletDiePrefab;
     public int bulletAmount;
     public GameObject[] bullets;
 
@@ -61,7 +62,12 @@ public class MarkController : MonoBehaviour
         _trans_frame_border = Mathf.RoundToInt(Random.Range(0.8f,1f)*30f);
         _reset_trans = false;
         for (int i = 0; i < bulletAmount; i++) {
-            bullets[i] = Instantiate(bulletPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+            if(i != 2 && i != 6 && i != 9 && i != 11 && i != 15 && i != 18 && i != 25) {
+                bullets[i] = Instantiate(bulletPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+            } else {
+                bullets[i] = Instantiate(bulletDiePrefab, new Vector3(1000,1000,0), Quaternion.identity);
+
+            }
         }
     }
 
@@ -132,19 +138,24 @@ public class MarkController : MonoBehaviour
 
 
     void Shoot() {
-        //print("Lives"+lives/_starting_lives);
+        //print("Lives/startting"+lives/_starting_lives);
         //print("Barrier"+_shoot_border);
-        _shoot_frames_counter -= 1;
-        if ((float) (((float)lives)/(float)_starting_lives) <= _shoot_border && _shoot_frames_counter <= 0) {
-            _shoot_frames_counter = 15;
-            //if(_count_bullets<= bullets.Length-1) {
-            bullets[_count_bullets].transform.position = gameObject.transform.position;
-            audioShoot.Play();
-            //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
-            _count_bullets += 1;
-            _shoot_border -= 1f/(_count_bullets*_count_bullets+1);
-            //}
+        try {
+            _shoot_frames_counter -= 1;
+            if ((float) (((float)lives)/(float)_starting_lives) <= _shoot_border && _shoot_frames_counter <= 0) {
+                _shoot_frames_counter = 15;
+                //if(_count_bullets<= bullets.Length-1) {
+                bullets[_count_bullets].transform.position = gameObject.transform.position;
+                audioShoot.Play();
+                //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
+                _count_bullets += 1;
+                _shoot_border -= SpawnCurve.Evaluate(_count_bullets/30f);
+                //}
+            }
+        } catch (System.IndexOutOfRangeException ex) {
+            
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D other) {

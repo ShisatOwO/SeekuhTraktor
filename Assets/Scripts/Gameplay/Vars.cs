@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Vars : MonoBehaviour
 {
+
+    public bool normalGame;
+
     public GameObject scoreObj;
     private Score scoreScript;
 
@@ -31,8 +34,9 @@ public class Vars : MonoBehaviour
     void Start()
     {
         scoreScript = scoreObj.GetComponent<Score>();
-        audioSrcMain = GetComponent<AudioSource>();
+        if(GetComponent<AudioSource>() != null) { audioSrcMain = GetComponent<AudioSource>(); }
         Debug.Log("scoreInt" + scoreInt);
+
         if(PlayerPrefs.GetInt("mobile") == 1) {
             mobileUI.SetActive(false);
         }
@@ -46,7 +50,9 @@ public class Vars : MonoBehaviour
     void Update()
     {
         scoreInt = scoreScript.score;
-        if(justJumped) {
+
+
+        if(justJumped && normalGame) {
             justJumped = false;
             PlaySound();
         }
