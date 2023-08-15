@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dialog;
 
-public class DestroyDialog : TextLine
+public class LineMoveMark : TextLine
 {
+
+    public TextLine nextLine2;
+
     private bool _activateMark = false;
     private bool _setPosition = false;
+    private bool _speak_stop = false;
 
     private Vector3 _store_start_position;
     private Rigidbody2D _rb;
-    public GameObject Textbox;
+    //public GameObject Textbox;
     public GameObject MediaMark;
     private MarkController _markC;
     private bool _activateFight = false;
-    [SerializeField] private LastLineBeforeFight last_line;
-
-
     // Start is called before the first frame update
+
     void Start()
     {
+        _speak_stop = false;
         _setPosition = false;
         _activateMark = false;   
         _activateFight = false;
@@ -27,26 +30,7 @@ public class DestroyDialog : TextLine
         _rb = MediaMark.GetComponent<Rigidbody2D>();
     }
 
-/*    public override void Update() 
-    {
-        if (Input.GetKeyDown("space"))
-        {
-          if (finished && !answered && last_line != null)
-          {
-            text.text = "";
-            last_line.speak();
-            this.enabled = false;
-          }
-          
-          else if (finished)
-          {
-            answered = true;
-          }
-        }
-      }*/
-
-    // Update is called once per frame
-/*    void FixedUpdate()
+    void FixedUpdate()
     {
         if(_activateMark && !_activateFight && !_setPosition) {
             if(MediaMark.transform.position.y > 2) {
@@ -54,12 +38,20 @@ public class DestroyDialog : TextLine
             } else {
                 _setPosition = true;
                 _store_start_position = MediaMark.transform.position;
+
             }
         }
-        if(_setPosition && !_activateFight) {
+        if (_activateMark && _setPosition && !_speak_stop)
+        {
+            nextLine2.speak();
+            _speak_stop = true;
+
+        }
+        
+        if(_activateMark && _setPosition && !_activateFight) {
             MediaMark.transform.position = _store_start_position;
         }
-    }*/
+    }
 
     public override void speak()
     {
@@ -68,11 +60,7 @@ public class DestroyDialog : TextLine
         //Textbox = GameObject.Find("TextBox");
     }
 
-    public void activateFight() {
-        print("Fight activated");
-        _activateFight = true;
-        _markC.startFight = true;
-        Textbox.SetActive(false);
-
+    public void deactivateMark() {
+        _activateMark = false;
     }
 }

@@ -90,7 +90,7 @@ namespace Dialog
         //this.enabled = false;
       }
 
-      private void Update()
+      public void Update()
       {
         if (Input.GetKeyDown("space"))
         {
