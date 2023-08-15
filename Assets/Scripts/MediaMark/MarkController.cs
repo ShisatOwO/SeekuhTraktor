@@ -69,6 +69,9 @@ public class MarkController : MonoBehaviour
 
         if (_dead) {
             _dead_frame_counter += 1;
+            if(_dead_frame_counter >= 200 && _dead_frame_counter <= 300) {
+                GetComponent<SpriteRenderer>().enabled = false;
+            }
             if (_dead_frame_counter >= 1000) {
                 explosion.SetActive(false);
             }
@@ -136,9 +139,6 @@ public class MarkController : MonoBehaviour
             bullets[i].SetActive(false);
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Rigidbody2D>().simulated = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-
-
         }
     }
 }
