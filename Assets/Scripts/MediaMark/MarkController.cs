@@ -5,8 +5,17 @@ using UnityEngine;
 public class MarkController : MonoBehaviour
 {
 
+    private AudioSource audioHurt;
+    private AudioSource audioShoot;
+
+    public GameObject plusHundred;
+    private int _plusHundred_framecounter;
+    public GameObject sfxHurt;
+    public GameObject sfxShoot;
     public int lives;
     public GameObject explosion;
+    public GameObject scoreObj;
+    private ScoreMediaMark _score_script;
     private int _starting_lives;
     private int _invulframes;
 
@@ -37,9 +46,13 @@ public class MarkController : MonoBehaviour
 
     void Start()
     {
+        _plusHundred_framecounter = 0;
+        audioHurt = sfxHurt.GetComponent<AudioSource>();
+        audioShoot = sfxShoot.GetComponent<AudioSource>();
+        _score_script = scoreObj.GetComponent<ScoreMediaMark>();
         _dead_frame_counter = 0;
         _dead = false;
-        _invulframes = 0;
+        _invulframes = 1;
         _shoot_frames_counter = 0;
         _shoot_border = 1;
         _starting_lives = lives;
@@ -60,6 +73,13 @@ public class MarkController : MonoBehaviour
             Translate();
             Shoot();
             _invulframes -= 1;
+
+            if (_plusHundred_framecounter > 0) {
+                _plusHundred_framecounter -= 1;
+                plusHundred.SetActive(true);
+            } else {
+                plusHundred.SetActive(false);
+            }
 
             if(lives <= 0) {
                 _dead = true;
@@ -112,13 +132,14 @@ public class MarkController : MonoBehaviour
 
 
     void Shoot() {
-        print("Lives"+lives/_starting_lives);
-        print("Barrier"+_shoot_border);
+        //print("Lives"+lives/_starting_lives);
+        //print("Barrier"+_shoot_border);
         _shoot_frames_counter -= 1;
         if ((float) (((float)lives)/(float)_starting_lives) <= _shoot_border && _shoot_frames_counter <= 0) {
             _shoot_frames_counter = 15;
             //if(_count_bullets<= bullets.Length-1) {
             bullets[_count_bullets].transform.position = gameObject.transform.position;
+            audioShoot.Play();
             //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
             _count_bullets += 1;
             _shoot_border -= 1f/(_count_bullets*_count_bullets+1);
@@ -129,16 +150,22 @@ public class MarkController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player" && _invulframes <= 0) {
             lives -= 1;
-            _invulframes = 15;
+            audioHurt.Play();
+            _score_script.score += 100;
+            _invulframes = 300;
+            _plusHundred_framecounter = 100;
         }
     }
 
     void Die() {
+        plusHundred.SetActive(false);
         explosion.SetActive(true);
+        PlayerPrefs.SetInt("ScoreSceneOverdub", _score_script.score);
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
         for (int i = 0; i < bullets.Length; i++) {
             bullets[i].SetActive(false);
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().simulated = false;
+            
         }
     }
 }
