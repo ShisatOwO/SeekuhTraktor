@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class MarkController : MonoBehaviour
 {
+    public Sprite red;
+    public Sprite orange;
+    public Sprite green;
+    private SpriteRenderer spriteRenderer;
+
+    private bool _onceAfterStartFight;
+
+
     public AnimationCurve SpawnCurve;
     public GameObject secondPhase;
     private AudioSource audioHurt;
@@ -50,6 +58,8 @@ public class MarkController : MonoBehaviour
 
     void Start()
     {
+        _onceAfterStartFight = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         _plusHundred_framecounter = 0;
         audioHurt = sfxHurt.GetComponent<AudioSource>();
         audioShoot = sfxShoot.GetComponent<AudioSource>();
@@ -79,6 +89,10 @@ public class MarkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(startFight && !_onceAfterStartFight) {
+            _onceAfterStartFight = true;
+            spriteRenderer.sprite = orange;
+        }
         if(startFight && !_dead) {
             Rotate();
             Translate();
@@ -166,6 +180,18 @@ public class MarkController : MonoBehaviour
                 //if(_count_bullets<= bullets.Length-1) {
                 bullets[_count_bullets].transform.position = gameObject.transform.position;
                 audioShoot.Play();
+
+                switch(bullets[_count_bullets+1].tag) {
+                    case "MediaBullet":
+                        spriteRenderer.sprite = orange;
+                        break;
+                    case "Enemy":
+                        spriteRenderer.sprite = red;
+                        break;
+                    case "MediaBulletHeal":
+                        spriteRenderer.sprite = green;
+                        break;
+                }
                 //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
                 _count_bullets += 1;
                 _shoot_border -= SpawnCurve.Evaluate(_count_bullets/30f);
