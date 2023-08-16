@@ -5,6 +5,7 @@ using UnityEngine;
 public class MarkController : MonoBehaviour
 {
     public AnimationCurve SpawnCurve;
+    public GameObject secondPhase;
     private AudioSource audioHurt;
     private AudioSource audioShoot;
 
@@ -18,6 +19,7 @@ public class MarkController : MonoBehaviour
     private ScoreMediaMark _score_script;
     private int _starting_lives;
     private int _invulframes;
+    private float _secondsSinceDeath;
 
     private bool _dead = false;
 
@@ -53,6 +55,7 @@ public class MarkController : MonoBehaviour
         _score_script = scoreObj.GetComponent<ScoreMediaMark>();
         _dead_frame_counter = 0;
         _dead = false;
+        _secondsSinceDeath = 0;
         _invulframes = 1;
         _shoot_frames_counter = 0;
         _shoot_border = 1;
@@ -95,11 +98,25 @@ public class MarkController : MonoBehaviour
 
         if (_dead) {
             _dead_frame_counter += 1;
+            _secondsSinceDeath += Time.deltaTime;
             if(_dead_frame_counter >= 200 && _dead_frame_counter <= 300) {
                 GetComponent<SpriteRenderer>().enabled = false;
             }
+            /*
             if (_dead_frame_counter >= 1000) {
                 explosion.SetActive(false);
+            }*/
+
+            if (_secondsSinceDeath >= 4)
+            {
+                explosion.SetActive(false);
+                
+            }
+
+            if (_secondsSinceDeath >= 6.5)
+            {
+                secondPhase.SetActive(true);
+                this.gameObject.SetActive(false);
             }
         }
     }

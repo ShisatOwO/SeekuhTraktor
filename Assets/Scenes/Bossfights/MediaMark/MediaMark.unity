@@ -2427,7 +2427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &593494861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5530,7 +5530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1490253370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5995,10 +5995,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  secondPhase: {fileID: 1490253369}
   plusHundred: {fileID: 521682778}
   sfxHurt: {fileID: 435200805}
   sfxShoot: {fileID: 482988776}
-  lives: 30
+  lives: 1
   explosion: {fileID: 1116329953}
   scoreObj: {fileID: 593494860}
   startFight: 0
@@ -6670,7 +6671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1990735888
 RectTransform:
   m_ObjectHideFlags: 0
