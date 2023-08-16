@@ -21,6 +21,9 @@ public class Phase2Controller : TextLine
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float spawnIntervall;
 
+    [SerializeField] private GameObject lives;
+
+
     private enum Phase
     {
         Starting,
@@ -102,6 +105,7 @@ public class Phase2Controller : TextLine
         }
 
         this.transform.position -= new Vector3(0, speed, 0);
+        lives.transform.position -= new Vector3(0,0.08f,0);
         _totalChange += speed;
     }
 }

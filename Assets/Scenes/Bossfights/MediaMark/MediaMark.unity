@@ -988,6 +988,7 @@ MonoBehaviour:
   numberOfBullets: 170
   bulletPrefab: {fileID: 6128201396126087428, guid: ad1b04408d5662d03ad2f9e6a10d1bb9, type: 3}
   spawnIntervall: 0.11
+  lives: {fileID: 1066729836}
 --- !u!1 &218055617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2351,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281657599
-  m_fontColor: {r: 1, g: 0.9103097, b: 0.2028302, a: 1}
+  m_fontColor: {r: 0.2494964, g: 1, b: 0.20392156, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5332,7 +5333,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281657599
-  m_fontColor: {r: 1, g: 0.9103097, b: 0.2028302, a: 1}
+  m_fontColor: {r: 1, g: 0.20392156, b: 0.24171034, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5778,7 +5779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1490253370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6345,21 +6346,22 @@ MonoBehaviour:
   red: {fileID: 21300000, guid: dc52ddd5ea8a24855950dbd63b01acc5, type: 3}
   orange: {fileID: 21300000, guid: c21cb197a39864273af547638922ef65, type: 3}
   green: {fileID: 21300000, guid: 3fe98c720bd8d4de79de02998702f20f, type: 3}
+  bulletThatSpawnsEmAll: 13
   SpawnCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0.0015267172
       value: 0.10289899
-      inSlope: -0.021854658
-      outSlope: -0.021854658
+      inSlope: -0.02384348
+      outSlope: -0.02384348
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.25266787
-      value: 0.09741039
+      time: 0.15801138
+      value: 0.09916785
       inSlope: 0.012324102
       outSlope: 0.012324102
       tangentMode: 0
@@ -6367,10 +6369,19 @@ MonoBehaviour:
       inWeight: 0.12349616
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3305389
-      value: 0.0027656779
-      inSlope: -0.6197067
-      outSlope: -0.6197067
+      time: 0.2267221
+      value: 0.004523147
+      inSlope: -0.20855404
+      outSlope: -0.20855404
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.44481835
+    - serializedVersion: 3
+      time: 0.56436765
+      value: -0.0014523491
+      inSlope: -0.022080723
+      outSlope: -0.022080723
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -6378,8 +6389,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1.1333334
       value: -0.016509406
-      inSlope: -0.024009982
-      outSlope: -0.024009982
+      inSlope: -0.026463905
+      outSlope: -0.026463905
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -6391,7 +6402,7 @@ MonoBehaviour:
   plusHundred: {fileID: 521682778}
   sfxHurt: {fileID: 435200805}
   sfxShoot: {fileID: 482988776}
-  lives: 25
+  lives: 20
   explosion: {fileID: 1116329953}
   scoreObj: {fileID: 593494860}
   startFight: 0
@@ -6477,7 +6488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakerIsPlayer: 1
-  dialogLine: '@Ughgrr'
+  dialogLine: '@Ugh'
   characterPortrait: {fileID: 21300000, guid: 90b676b3578d257ef970ac6f1a2bcfc0, type: 3}
   characterPortraitDisplay: {fileID: 357907624}
   audio: {fileID: 8300000, guid: 3edcbac8c8d1a4485be9d22ce4f0650b, type: 3}
@@ -6968,7 +6979,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 21300000, guid: 3d52121c1580b4cfd95d47c13f7c32c2, type: 3}
   characterPortraitDisplay: {fileID: 357907624}
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
-  nextLine: {fileID: 1040004021}
+  nextLine: {fileID: 1827387972}
   charDelay: 0.2
   wordDelay: 0.15
   sentenceDelay: 0.4
@@ -7187,7 +7198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1990735888
 RectTransform:
   m_ObjectHideFlags: 0

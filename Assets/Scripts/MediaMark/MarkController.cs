@@ -9,6 +9,8 @@ public class MarkController : MonoBehaviour
     public Sprite green;
     private SpriteRenderer spriteRenderer;
 
+    public int bulletThatSpawnsEmAll;
+
     private bool _onceAfterStartFight;
 
 
@@ -76,14 +78,19 @@ public class MarkController : MonoBehaviour
         _trans_frame_border = Mathf.RoundToInt(Random.Range(0.8f,1f)*30f);
         _reset_trans = false;
         for (int i = 0; i < bulletAmount; i++) {
-            if(i == 2 || i == 6 || i == 9 || i == 15 || i == 18 ||i == 25) {
-                bullets[i] = Instantiate(bulletDiePrefab, new Vector3(1000,1000,0), Quaternion.identity);
-            } else if (i == 7 || i == 10 || i == 20) {
-                bullets[i] = Instantiate(bulletHealPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+            if (i != bulletAmount - 1) {
+                if(i == 2 || i == 6 || i == 9 || i == 15) {
+                    bullets[i] = Instantiate(bulletDiePrefab, new Vector3(1000,1000,0), Quaternion.identity);
+                } else if (i == 7 || i == 10 || i == 20) {
+                    bullets[i] = Instantiate(bulletHealPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+                } else {
+                    bullets[i] = Instantiate(bulletPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+                }
             } else {
-                bullets[i] = Instantiate(bulletPrefab, new Vector3(1000,1000,0), Quaternion.identity);
+                bullets[i] = Instantiate(bulletDiePrefab, new Vector3(1000,1000,0), Quaternion.identity);
             }
         }
+
     }
 
     // Update is called once per frame
@@ -173,10 +180,35 @@ public class MarkController : MonoBehaviour
     void Shoot() {
         //print("Lives/startting"+lives/_starting_lives);
         //print("Barrier"+_shoot_border);
-        try {
+        if (_count_bullets+1 < bullets.Length) {
             _shoot_frames_counter -= 1;
-            if ((float) (((float)lives)/(float)_starting_lives) <= _shoot_border && _shoot_frames_counter <= 0) {
+            if(_count_bullets < bulletThatSpawnsEmAll) {
+                if ((float) (((float)lives)/(float)_starting_lives) <= _shoot_border && _shoot_frames_counter <= 0) {
+                    _shoot_frames_counter = 15;
+
+                    //if(_count_bullets<= bullets.Length-1) {
+                    bullets[_count_bullets].transform.position = gameObject.transform.position;
+                    audioShoot.Play();
+
+                    switch(bullets[_count_bullets+1].tag) {
+                        case "MediaBullet":
+                            spriteRenderer.sprite = orange;
+                            break;
+                        case "Enemy":
+                            spriteRenderer.sprite = red;
+                            break;
+                        case "MediaBulletHeal":
+                            spriteRenderer.sprite = green;
+                            break;
+                    }
+                    //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
+                    _count_bullets += 1;
+                    _shoot_border -= SpawnCurve.Evaluate(_count_bullets/30f);
+                    //}
+                }
+            } else {
                 _shoot_frames_counter = 15;
+
                 //if(_count_bullets<= bullets.Length-1) {
                 bullets[_count_bullets].transform.position = gameObject.transform.position;
                 audioShoot.Play();
@@ -197,8 +229,7 @@ public class MarkController : MonoBehaviour
                 _shoot_border -= SpawnCurve.Evaluate(_count_bullets/30f);
                 //}
             }
-        } catch (System.IndexOutOfRangeException ex) {
-            
+
         }
 
     }
