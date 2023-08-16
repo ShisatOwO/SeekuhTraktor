@@ -101,6 +101,7 @@ public class PlayerRocket : MonoBehaviour
         {
             if (_invulframes <= 0)
             {
+                _invulframes = 100;
                 _livehandler.removeLive();
                 SoundManager.instance.playOnce(rockethit);
             }
