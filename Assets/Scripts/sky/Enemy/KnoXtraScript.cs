@@ -5,6 +5,11 @@ using UnityEngine;
 public class KnoXtraScript : NewBaseSkyE
 {
 	private Vector3 normKnoTransScale;
+    public bool rotate;
+
+    private int _rot_frame_border;
+    private bool _reset_rot;
+    private int _rot_frame_count = 0;
     // Start is called before the first frame update
     
 
@@ -18,5 +23,23 @@ public class KnoXtraScript : NewBaseSkyE
         }
         transform.localScale = normKnoTransScale;
         Debug.Log("normKnoTransScale" + normKnoTransScale); 
+    }
+
+    void FixedUpdate() {
+        Rotate();
+    }
+
+        void Rotate() {
+        if(_reset_rot) {
+            _rot_frame_border = Mathf.RoundToInt(Random.Range(0.7f,1f)*300f);
+        _reset_rot = false;
+        }
+        _rot_frame_count += 1;
+
+        if (_rot_frame_count >= _rot_frame_border) {
+            _rot_frame_count = 0;
+            _reset_rot = true;
+            gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-180f,180f)*100;
+        }
     }
 }
