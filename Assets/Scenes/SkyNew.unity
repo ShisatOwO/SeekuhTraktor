@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3e7a26dde6d0b45b709f3e12f2ada1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalGame: 0
+  normalGame: 1
   scoreObj: {fileID: 64107069}
   mobileUI: {fileID: 1132725499}
   scoreInt: 0
@@ -1543,6 +1543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca8aed4b6a276a428a82f0c7a7fa5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livehandler: {fileID: 2132773923}
   maxSpeed_focus: 4
   maxSpeed_normal: 10
   decc: 100

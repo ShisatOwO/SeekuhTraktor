@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class NSkyController : MonoBehaviour
 {
-    
+    public GameObject livehandler;
     public float maxSpeed_focus;
     public float maxSpeed_normal;
     private float maxSpeed;
@@ -38,8 +38,9 @@ public class NSkyController : MonoBehaviour
     {
          if (other.gameObject.CompareTag("Enemy"))
             {
-                PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
-                SceneManager.LoadScene("HighscoreAfterGame");
+                livehandler.GetComponent<live_handler>().removeLive();
+                //PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
+                //SceneManager.LoadScene("HighscoreAfterGame");
             }
     }
 
