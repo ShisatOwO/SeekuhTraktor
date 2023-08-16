@@ -25,5 +25,11 @@ namespace Dialog
         audioSource.PlayOneShot(clip);
       }
 
+      public void playOnce(AudioClip clip)
+      {
+        this.clip = clip;
+        audioSource.PlayOneShot(clip);
+      }
+
    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Dialog;
 using UnityEngine;
 
 public class PlayerRocket : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerRocket : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float focusedMovementSpeed;
+    [SerializeField] private AudioClip rockethit;
     
     private CircleCollider2D collider;
     private Rigidbody2D rb;
@@ -71,7 +73,7 @@ public class PlayerRocket : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
 
-        //        _score_script.score += 100;     
+        //_score_script.score += 100;     
 
         if (other.gameObject.tag == "MediaBullet") {
             //print("collision with bullet");
@@ -85,13 +87,16 @@ public class PlayerRocket : MonoBehaviour
                 
             }
 
-        } 
+        }
 
-        if (other.gameObject.tag == "MediaBulletDeath") {
-            //print("collision with bullet Death");
-            if(_invulframes <= 0) {
+        else if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("MediaBulletDeath"))
+        {
+            if (_invulframes <= 0)
+            {
                 _livehandler.removeLive();
+                SoundManager.instance.playOnce(rockethit);
             }
+            
         }
     }
 
