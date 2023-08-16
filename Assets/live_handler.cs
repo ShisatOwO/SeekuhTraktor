@@ -60,7 +60,7 @@ public class live_handler : MonoBehaviour
             return 0;
         } else if (!live2.activeSelf) {
             return 1;
-        } else if (!live1.activeSelf) {
+        } else if (!live3.activeSelf) {
             return 2;
         } else {
             return 3;
