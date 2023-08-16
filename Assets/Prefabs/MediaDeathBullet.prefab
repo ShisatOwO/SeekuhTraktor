@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7999207096258886316}
   m_Layer: 0
   m_Name: MediaDeathBullet
-  m_TagString: MediaBulletDeath
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4135499257978902272}
   m_Layer: 0
   m_Name: MediaMarktLogo
-  m_TagString: MediaBulletDeath
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

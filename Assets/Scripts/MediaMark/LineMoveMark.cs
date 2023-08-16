@@ -7,6 +7,7 @@ public class LineMoveMark : TextLine
 {
 
     public TextLine nextLine2;
+    public GameObject battleTheme;
 
     private bool _activateMark = false;
     private bool _setPosition = false;
@@ -55,6 +56,7 @@ public class LineMoveMark : TextLine
 
     public override void speak()
     {
+        battleTheme.GetComponent<AudioSource>().Play();
         _activateMark = true;
         //_rb.velocity = new Vector2 (1,-100f);
         //Textbox = GameObject.Find("TextBox");

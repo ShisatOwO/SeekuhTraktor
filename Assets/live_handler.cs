@@ -45,8 +45,8 @@ public class live_handler : MonoBehaviour
     public void addLive() {
         if (!live2.activeSelf) {
             live2.SetActive(true);
-        } else if (!live1.activeSelf) {
-            live1.SetActive(true);
+        } else if (!live3.activeSelf) {
+            live3.SetActive(true);
         } 
     }
 

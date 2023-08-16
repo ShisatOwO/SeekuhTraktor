@@ -15,6 +15,7 @@ TagManager:
   - EnemyKiller
   - MediaBullet
   - MediaBulletDeath
+  - MediaBulletHeal
   layers:
   - Default
   - TransparentFX
