@@ -19,6 +19,8 @@ public class PlayerRocket : MonoBehaviour
     public GameObject scoreObj;
     public GameObject minusScore;
 
+    public bool movementAllowed;
+
     public GameObject livehandlerObj;
     private live_handler _livehandler;
 
@@ -32,6 +34,7 @@ public class PlayerRocket : MonoBehaviour
         
     void Start()
     {
+        movementAllowed = true;
         _livehandler = livehandlerObj.GetComponent<live_handler>();
         _livehandler.loadLives(PlayerPrefs.GetInt("Lives"));
         _invulframes = 100;
@@ -51,7 +54,11 @@ public class PlayerRocket : MonoBehaviour
         float deltaX = Input.GetAxisRaw("Horizontal"); 
         float deltaY = Input.GetAxisRaw("Vertical");
 
-        moveSpeed = Input.GetKey("space") ? focusedMovementSpeed : movementSpeed;
+        if(movementAllowed) {
+            moveSpeed = Input.GetKey("space") ? focusedMovementSpeed : movementSpeed;
+        } else {
+            moveSpeed = 0;
+        }
         moveDir = new Vector2(deltaX, deltaY).normalized;
 
         _minus_framecounter -= 1;
