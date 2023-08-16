@@ -66,9 +66,9 @@ public class MarkController : MonoBehaviour
         _trans_frame_border = Mathf.RoundToInt(Random.Range(0.8f,1f)*30f);
         _reset_trans = false;
         for (int i = 0; i < bulletAmount; i++) {
-            if(i != 2 && i != 6 && i != 9 && i != 15 && i != 18 && i != 25) {
+            if(i == 2 || i == 6 || i == 9 || i == 15 || i == 18 ||i == 25) {
                 bullets[i] = Instantiate(bulletDiePrefab, new Vector3(1000,1000,0), Quaternion.identity);
-            } else if (i != 7 && i != 11 && i != 20) {
+            } else if (i == 7 || i == 11 || i == 20) {
                 bullets[i] = Instantiate(bulletHealPrefab, new Vector3(1000,1000,0), Quaternion.identity);
             } else {
                 bullets[i] = Instantiate(bulletPrefab, new Vector3(1000,1000,0), Quaternion.identity);
