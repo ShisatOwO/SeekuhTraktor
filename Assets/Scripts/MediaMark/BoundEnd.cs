@@ -58,10 +58,10 @@ public class BoundEnd : MonoBehaviour
             if(bottom) gameObject.transform.position += new Vector3(0,-speed,0);
         }
         if(_activateEnd){
-            if(left) gameObject.transform.position += new Vector3(speed*1.5f,0,0);
-            if(top) gameObject.transform.position += new Vector3(0,-speed,0);
-            if(right) gameObject.transform.position += new Vector3(-speed*1.5f,0,0);
-            if(bottom) gameObject.transform.position += new Vector3(0,speed,0);
+            if(left) gameObject.transform.position += new Vector3(2*speed*1.5f,0,0);
+            if(top) gameObject.transform.position += new Vector3(0,-2*speed,0);
+            if(right) gameObject.transform.position += new Vector3(-2*speed*1.5f,0,0);
+            if(bottom) gameObject.transform.position += new Vector3(0,2*speed,0);
         }
     }
 

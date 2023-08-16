@@ -24,8 +24,9 @@ public class EveryoneSavesTheDay : TextLine
         TextBoxII.SetActive(false);
         if(_start == 2) {
             BoundEndController.GetComponent<BoundEndController>().ActivateEnd();
-            PlayerPrefs.SetInt("ScoreSceneOverdub", Main.GetComponent<Vars>().score);
-            PlayerPrefs.SetInt("Lives", lives.GetComponent<live_handler>().GetLives());
+            RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
+            PlayerPrefs.SetInt("ScoreSceneOverdub", Main.GetComponent<Vars>().scoreInt);
+            PlayerPrefs.SetInt("Lives", lives.GetComponent<live_handler>().getLives());
         }
     }
 
@@ -42,7 +43,7 @@ public class EveryoneSavesTheDay : TextLine
 
         if(_start == 2) {
             RaketenTraktor.gameObject.transform.position += new Vector3(0,0.1f,0);
-            if(RaketenTraktor.gameObject.transform.position >= 8) {
+            if(RaketenTraktor.gameObject.transform.position.y >= 8) {
                 SceneManager.LoadScene("SkyNew"); 
             }
         }

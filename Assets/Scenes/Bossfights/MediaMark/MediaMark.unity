@@ -3776,6 +3776,14 @@ PrefabInstance:
       value: EveryoneSavesTheDay
       objectReference: {fileID: 0}
     - target: {fileID: 6683934216251639037, guid: ed32cbbc351ed44d39031715fa22e72f, type: 3}
+      propertyPath: Main
+      value: 
+      objectReference: {fileID: 1427761892}
+    - target: {fileID: 6683934216251639037, guid: ed32cbbc351ed44d39031715fa22e72f, type: 3}
+      propertyPath: lives
+      value: 
+      objectReference: {fileID: 1066729836}
+    - target: {fileID: 6683934216251639037, guid: ed32cbbc351ed44d39031715fa22e72f, type: 3}
       propertyPath: TextBox
       value: 
       objectReference: {fileID: 750741722}
@@ -3783,6 +3791,10 @@ PrefabInstance:
       propertyPath: TextBoxII
       value: 
       objectReference: {fileID: 474548222}
+    - target: {fileID: 6683934216251639037, guid: ed32cbbc351ed44d39031715fa22e72f, type: 3}
+      propertyPath: RaketenTraktor
+      value: 
+      objectReference: {fileID: 222292371}
     - target: {fileID: 6683934216251639037, guid: ed32cbbc351ed44d39031715fa22e72f, type: 3}
       propertyPath: BoundEndController
       value: 
