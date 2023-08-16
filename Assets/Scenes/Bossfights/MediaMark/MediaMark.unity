@@ -2473,6 +2473,7 @@ RectTransform:
   m_Children:
   - {fileID: 215126667}
   - {fileID: 784621746}
+  - {fileID: 669386817}
   m_Father: {fileID: 1457576152}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3529,6 +3530,113 @@ MonoBehaviour:
   leftObj: {fileID: 0}
   bottomObj: {fileID: 0}
   speed: 0
+--- !u!1 &669386813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669386817}
+  - component: {fileID: 669386816}
+  - component: {fileID: 669386815}
+  - component: {fileID: 669386814}
+  m_Layer: 5
+  m_Name: Line2pe2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &669386814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669386813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78561eef14173b8be8790690f9826194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakerIsPlayer: 1
+  dialogLine: '@keine Ursache'
+  characterPortrait: {fileID: 21300000, guid: 37bf8b8f85a75404690913b7925ff97b, type: 3}
+  characterPortraitDisplay: {fileID: 215126665}
+  audio: {fileID: 8300000, guid: 6a7a43402839b4086ba865ad24325d54, type: 3}
+  nextLine: {fileID: 231723189}
+  charDelay: 0.1
+  wordDelay: 0.15
+  sentenceDelay: 0.4
+  pauseDelay: 0.5
+  textScrollSpeed: 0.65
+  color: {r: 1, g: 1, b: 1, a: 1}
+  font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}
+  fontSize: 70
+--- !u!114 &669386815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669386813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 60
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &669386816
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669386813}
+  m_CullTransparentMesh: 1
+--- !u!224 &669386817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669386813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 474548227}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 93.0316, y: 0}
+  m_SizeDelta: {x: 808.4188, y: 125.7226}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &671355844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,7 +4038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &750741723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4276,7 +4384,7 @@ GameObject:
   - component: {fileID: 784621744}
   - component: {fileID: 784621743}
   m_Layer: 5
-  m_Name: Line1pe
+  m_Name: Line1pe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4299,7 +4407,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 21300000, guid: 7b64dbf272e44c276a9189bc5041dae6, type: 3}
   characterPortraitDisplay: {fileID: 215126665}
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
-  nextLine: {fileID: 231723189}
+  nextLine: {fileID: 669386814}
   charDelay: 0.1
   wordDelay: 0.15
   sentenceDelay: 0.4
@@ -8231,7 +8339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1990735888
 RectTransform:
   m_ObjectHideFlags: 0
