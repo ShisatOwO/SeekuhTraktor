@@ -92,13 +92,15 @@ public class MarkController : MonoBehaviour
                 Die();
             }
         }
+    }
 
+    void FixedUpdate() {
         if (_dead) {
             _dead_frame_counter += 1;
-            if(_dead_frame_counter >= 200 && _dead_frame_counter <= 300) {
+            if(_dead_frame_counter >= 50 && _dead_frame_counter <= 90) {
                 GetComponent<SpriteRenderer>().enabled = false;
             }
-            if (_dead_frame_counter >= 1000) {
+            if (_dead_frame_counter >= 250) {
                 explosion.SetActive(false);
             }
         }

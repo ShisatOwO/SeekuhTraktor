@@ -9,6 +9,8 @@ public class Vars : MonoBehaviour
 
     public GameObject scoreObj;
     private Score scoreScript;
+    private ScoreMediaMark scoreScriptM;
+
 
     public GameObject mobileUI;
 
@@ -30,10 +32,14 @@ public class Vars : MonoBehaviour
     public AudioClip[] jumpClips;
     private int clipArrayIndex;
     private AudioSource audioSrcMain;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreScript = scoreObj.GetComponent<Score>();
+        if(scoreScript == null) {
+            scoreScriptM = scoreObj.GetComponent<ScoreMediaMark>();
+        }
         if(GetComponent<AudioSource>() != null) { audioSrcMain = GetComponent<AudioSource>(); }
         Debug.Log("scoreInt" + scoreInt);
 
@@ -49,7 +55,9 @@ public class Vars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreInt = scoreScript.score;
+        if(normalGame) scoreInt = scoreScript.score;
+        if(!normalGame) scoreInt = scoreScriptM.score;
+
 
 
         if(justJumped && normalGame) {
