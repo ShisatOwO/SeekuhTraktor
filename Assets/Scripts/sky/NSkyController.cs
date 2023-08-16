@@ -9,9 +9,13 @@ using UnityEngine.UI;
 public class NSkyController : MonoBehaviour
 {
     
-    public float maxSpeed;
+    public float maxSpeed_focus;
+    public float maxSpeed_normal;
+    private float maxSpeed;
     public float decc;
-    public float acc;
+    private float acc;
+    public float acc_focus;
+    public float acc_normal;
 
     private int _ud;
     private int _rl;
@@ -26,7 +30,7 @@ public class NSkyController : MonoBehaviour
     {
         _rigid2D = GetComponent<Rigidbody2D>();
         decc = decc / 100;
-        acc = acc / 100;
+        acc = acc_normal / 100;
         _spRender = GetComponent<SpriteRenderer>();
     }
 
@@ -46,6 +50,8 @@ public class NSkyController : MonoBehaviour
     }
 
     void FixedUpdate() {
+        acc = Input.GetKey("space") ? acc_focus/100 : acc_normal/100;
+        maxSpeed = Input.GetKey("space") ? maxSpeed_focus : maxSpeed_normal;
         Move(_rl, _ud);
     }
 

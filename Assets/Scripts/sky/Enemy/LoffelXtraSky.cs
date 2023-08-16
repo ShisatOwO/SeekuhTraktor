@@ -12,7 +12,7 @@ public class LoffelXtraSky : NewBaseSkyE
     {
         gameObject.transform.rotation = new Quaternion (0f, 0f, Random.Range(-90f,90f), 10f);
         _wasOnScreen = true;
-        normKnoTransScale = new Vector3(1f,1f,1f) + new Vector3 (Random.Range(-10f,15f)/10f, Random.Range(-1,2), 0f);
+        normKnoTransScale = new Vector3(1f,1f,1f) + new Vector3 (Random.Range(-0.7f,1.3f), Random.Range(-0.7f,1.7f), 0f);
         if(normKnoTransScale.x == 0f || normKnoTransScale.y == 0f) {
             normKnoTransScale.x = 1.1f;
             normKnoTransScale.y = 0.9f;

@@ -393,9 +393,9 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
   nextLine: {fileID: 1724210148}
   charDelay: 0.1
-  wordDelay: 0.15
+  wordDelay: 0.1
   sentenceDelay: 0.4
-  pauseDelay: 0.5
+  pauseDelay: 0.1
   textScrollSpeed: 1
   color: {r: 0.9622642, g: 0.10957546, b: 0, a: 1}
   font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}
@@ -1734,9 +1734,9 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
   nextLine: {fileID: 133045468}
   charDelay: 0.1
-  wordDelay: 0.15
+  wordDelay: 0.1
   sentenceDelay: 0.4
-  pauseDelay: 0.5
+  pauseDelay: 0.1
   textScrollSpeed: 1
   color: {r: 0.9622642, g: 0.10957546, b: 0, a: 1}
   font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}
@@ -4302,6 +4302,7 @@ MonoBehaviour:
   live1: {fileID: 965327755}
   live2: {fileID: 62511269}
   live3: {fileID: 321423890}
+  loadLivesFromPlayerPrefs: 0
   invulnarability: 0
 --- !u!1 &1072856321
 GameObject:
@@ -5979,9 +5980,9 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
   nextLine: {fileID: 386140209}
   charDelay: 0.1
-  wordDelay: 0.15
+  wordDelay: 0.1
   sentenceDelay: 0.4
-  pauseDelay: 0.5
+  pauseDelay: 0.1
   textScrollSpeed: 1
   color: {r: 0.9622642, g: 0.10957546, b: 0, a: 1}
   font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}
@@ -6241,7 +6242,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: be1527cb40c4241459439e2c7b8568c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc52ddd5ea8a24855950dbd63b01acc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6369,7 +6370,7 @@ MonoBehaviour:
   plusHundred: {fileID: 521682778}
   sfxHurt: {fileID: 435200805}
   sfxShoot: {fileID: 482988776}
-  lives: 30
+  lives: 25
   explosion: {fileID: 1116329953}
   scoreObj: {fileID: 593494860}
   startFight: 0
@@ -6692,9 +6693,9 @@ MonoBehaviour:
   audio: {fileID: 8300000, guid: d31dcd7ce7395ae158a06a3894c752b2, type: 3}
   nextLine: {fileID: 1614153501}
   charDelay: 0.1
-  wordDelay: 0.15
+  wordDelay: 0.1
   sentenceDelay: 0.4
-  pauseDelay: 0.5
+  pauseDelay: 0.1
   textScrollSpeed: 1
   color: {r: 0.9622642, g: 0.10957546, b: 0, a: 1}
   font: {fileID: 12800000, guid: bc846b5b7bb66f3a7962f7380d26c183, type: 3}

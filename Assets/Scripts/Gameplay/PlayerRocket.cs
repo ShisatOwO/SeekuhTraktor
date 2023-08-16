@@ -90,8 +90,11 @@ public class PlayerRocket : MonoBehaviour
         }
 
         if (other.gameObject.tag == "MediaBulletHeal") {
-            other.gameObject.SetActive(false);
-            _livehandler.addLive();
+            if(_livehandler.getLives() < 3) {
+                other.gameObject.SetActive(false);
+                _livehandler.addLive();
+            }
+            
         }
 
         else if (other.gameObject.CompareTag("Enemy"))

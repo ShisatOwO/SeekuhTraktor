@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NewBaseSkyE : MonoBehaviour
 {
-     public string nameOfThisObject;
+    public string nameOfThisObject;
 
     public Vector3 speed = new Vector3(0, 0, 0);
     public float speedFloat = 7;

@@ -13,10 +13,15 @@ public class live_handler : MonoBehaviour
     public GameObject live2;
     public GameObject live3;
 
+    public bool loadLivesFromPlayerPrefs;
+
     public bool invulnarability;
 
     void Start() {
         _vars = GameObject.Find("Main").GetComponent<Vars>();
+        if(loadLivesFromPlayerPrefs) {
+            loadLives(PlayerPrefs.GetInt("Lives"));
+        }
         
     }
     public void removeLive() {
