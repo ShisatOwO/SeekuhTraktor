@@ -7,12 +7,9 @@ public class spawnLizardEndBullets : TextLine
 {
     public TextLine nextLine2;
     private bool _activate = false;
-    [SerializeField] private int numberOfBullets;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float spawnIntervall;
+    public int countBullets;
+    public int frameBetween;
 
-    private LizardBulletPool _pool;
-    private float _spawnIntervall;
 
     public override void speak() {
         _activate = true;
@@ -23,7 +20,7 @@ public class spawnLizardEndBullets : TextLine
 
     void FixedUpdate() {
         if(_activate) {
-            var bullet = _pool.Get();
+            
         }
     }
 }
