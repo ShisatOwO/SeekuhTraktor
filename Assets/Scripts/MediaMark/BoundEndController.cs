@@ -10,10 +10,12 @@ public class BoundEndController : TextLine
     public GameObject left;
     public GameObject bottom;
 
+    public GameObject RaketenTraktor;
     public TextLine nextLineII;
     private bool doStuffOnlyOnce = true;
 
     public override void speak() {
+        RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
         right.GetComponent<BoundEnd>().Activate();
         left.GetComponent<BoundEnd>().Activate();
         top.GetComponent<BoundEnd>().Activate();
