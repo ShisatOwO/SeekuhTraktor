@@ -12,30 +12,47 @@ public class Phase2Controller : TextLine
     private Phase _phase;
     private float _totalChange;
     private LizardBulletPool _pool;
+    private LizardBulletPool _tailPool;
     private float _spawnIntervall;
+    private float _tailSpawnIntervall;
+    private int _tailCount;
 
     [Header("Idk was der Name ist.")] 
     [SerializeField] private GameObject textBox;
+    [SerializeField] private GameObject endTextBox;
+    [SerializeField] private GameObject textBox2;
     [SerializeField] private List<Zunge> zungen;
     [SerializeField] private int numberOfBullets;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float spawnIntervall;
+    [SerializeField] private int numberOfTails;
+    [SerializeField] private GameObject tailPrefab;
+    [SerializeField] private float tailSpawnIntervall;
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject blindness;
 
     [SerializeField] private GameObject lives;
 
+    private bool _isBlind;
 
     private enum Phase
     {
         Starting,
         Attack1,
         Attack2,
+        Idle,
     }
     
     void Start()
     {
         _initiateTheGrandVaranPlan = false;
         _totalChange = 0;
+        _tailCount = 0;
+        _isBlind = false;
+        _tailSpawnIntervall = 0;
         _pool = new LizardBulletPool(numberOfBullets, bulletPrefab);
+        _tailPool = new LizardBulletPool(numberOfTails, tailPrefab);
     }
 
     void ReleaseTheVaran()
@@ -70,9 +87,46 @@ public class Phase2Controller : TextLine
                     var bullet = _pool.Get();
                 }
                 
-                Debug.Log(_spawnIntervall);
                 _spawnIntervall += Time.deltaTime;
-                
+                break;
+            }
+
+            case Phase.Attack2:
+            {
+                if (_tailSpawnIntervall >= tailSpawnIntervall)
+                {
+                    _tailCount++;
+                    _tailSpawnIntervall = 0;
+                    
+                    var tail = _tailPool.Get();
+                    
+                    if (_tailCount >= numberOfTails)
+                    {
+                        _phase = Phase.Idle;
+
+                        if (_isBlind)
+                        {
+                            this.gameObject.SetActive(false);
+                            player.GetComponent<SpriteRenderer>().enabled = true;
+                            blindness.SetActive(false);
+                            endTextBox.SetActive(true);
+                        }
+
+                        else
+                        {
+                            textBox2.gameObject.SetActive(true);
+                        }
+
+                        _isBlind = true;
+                    }
+                }
+
+                _tailSpawnIntervall += Time.deltaTime;
+                break;
+            }
+
+            case Phase.Idle:
+            {
                 break;
             }
         }
@@ -84,9 +138,16 @@ public class Phase2Controller : TextLine
         textBox.SetActive(false);
     }
 
+    public void phase3()
+    {
+        _attack1Setup();
+    }
+
     private void _attack1Setup()
     {
         _phase = Phase.Attack1;
+        _spawnIntervall = 0;
+        _tailCount = 0;
 
         foreach (var zunge in zungen)
         {

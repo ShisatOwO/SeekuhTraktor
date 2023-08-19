@@ -18,7 +18,7 @@ public class LizardBullet : MonoBehaviour
     {
         this.transform.position -= new Vector3(0, speed, 0);
 
-        if (this.transform.position.y >= 20)
+        if (this.transform.position.y <= -20)
         {
             this.gameObject.SetActive(false);
         }
