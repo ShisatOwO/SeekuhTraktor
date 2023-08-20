@@ -67,6 +67,12 @@ public class live_handler : MonoBehaviour
         }
     }
 
+    public void sendWolfgangMessage() {
+    if (GameObject.Find("Seekuhtraktor") != null) {
+            GameObject.Find("Seekuhtraktor").GetComponent<NController>().triggerWolfgang();
+        }
+    }
+
     public void saveLives() {
         PlayerPrefs.SetInt("Lives", getLives());
     }

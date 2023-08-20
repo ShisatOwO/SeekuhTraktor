@@ -40,6 +40,12 @@ public class NController : MonoBehaviour
     public Button mobileBtnU;
     public Button mobileBtnD;
 
+    public AudioSource wolfAudio;
+    public GameObject wolfgangReifen;
+    private bool _wolfActive = false;
+    public Sprite _crouchWolf;
+    public Sprite _normalWolf;
+
 
     private BtnClicker mobileSteerLeft;
     private BtnClicker mobileSteerRight;
@@ -70,10 +76,16 @@ public class NController : MonoBehaviour
     private int _cDebugFrames = 0;
     private int _cDebugFrames1 = 0;
 
+    private bool dsoo;
+    private bool dsoo2;
+    public AudioSource hurtSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        dsoo = true;
+        dsoo2 = true;
         if (livehandlerObj != null) {_livehandler = livehandlerObj.GetComponent<live_handler>();}
         //lives = 2;
         _hitCooldown = 15;
@@ -104,6 +116,23 @@ public class NController : MonoBehaviour
     {
         _hitCooldown -= 1;
         Move(_rl,_jmp,_crh);
+        if(_livehandler.getLives() == 1 && dsoo) {
+            triggerWolfgang();
+            dsoo = false;
+        }
+        if(_livehandler.getLives() == 2 && dsoo2) {
+            hurtSound.Play();
+            dsoo2 = false;
+        }
+    }
+
+    public void triggerWolfgang() {
+        wolfAudio.Play();
+        _crouch = _crouchWolf;
+        _normal = _normalWolf;
+        wolfgangReifen.gameObject.transform.position = gameObject.transform.position;
+        wolfgangReifen.SetActive(true);
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -186,6 +215,8 @@ public class NController : MonoBehaviour
         if (mobileSteerCrouch.pressed) _crh = true;
         if (mobileSteerJump.pressed) _jmp = true;
     }
+
+
 
     void Move(int rl, bool jmp, bool crh) {
 

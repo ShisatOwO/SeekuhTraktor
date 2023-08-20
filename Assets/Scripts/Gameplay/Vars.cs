@@ -25,8 +25,6 @@ public class Vars : MonoBehaviour
 	public bool zugOnS = false;
     public bool amphOnS = false;
 
-
-
     public bool justJumped;
     public AudioClip[] jumpClips;
     private int clipArrayIndex;
