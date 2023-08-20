@@ -10,6 +10,8 @@ public class LizardBullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private AudioClip spawnSound;
+    [SerializeField] private bool autoPos;
+    [SerializeField] private float nomPercentage;
 
     private bool _firstEnable = true;
     
@@ -22,17 +24,22 @@ public class LizardBullet : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        
+        if (!autoPos) say_nom();
     }
 
     private void OnEnable()
     {
-        if (_firstEnable) _firstEnable = false;
-        else say_nom();
-        this.transform.position = new Vector3(Random.Range(-7, 7), 7, 0);
+        if (autoPos)
+        {
+            if (_firstEnable) _firstEnable = false;
+            else say_nom();
+            this.transform.position = new Vector3(Random.Range(-7, 7), 7, 0);
+        }
     }
 
     public void say_nom()
     {
-        if (Random.Range(0f, 1f) > 0.7) SoundManager.instance.playOnce(spawnSound);
+        if (Random.Range(0f, 1f) > 1f-nomPercentage) SoundManager.instance.playOnce(spawnSound);
     }
 }

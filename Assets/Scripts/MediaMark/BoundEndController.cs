@@ -14,12 +14,15 @@ public class BoundEndController : TextLine
     public TextLine nextLineII;
     private bool doStuffOnlyOnce = true;
 
+    [SerializeField] private GameObject CutsceneBullets;
+
     public override void speak() {
         RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
         right.GetComponent<BoundEnd>().Activate();
         left.GetComponent<BoundEnd>().Activate();
         top.GetComponent<BoundEnd>().Activate();
         bottom.GetComponent<BoundEnd>().Activate();
+        CutsceneBullets.SetActive(true);
     }
 
     void FixedUpdate() {
