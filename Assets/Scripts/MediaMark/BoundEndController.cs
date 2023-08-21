@@ -17,7 +17,7 @@ public class BoundEndController : TextLine
     [SerializeField] private GameObject CutsceneBullets;
 
     public override void speak() {
-        RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
+        //RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
         right.GetComponent<BoundEnd>().Activate();
         left.GetComponent<BoundEnd>().Activate();
         top.GetComponent<BoundEnd>().Activate();

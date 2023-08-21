@@ -21,6 +21,9 @@ public class EveryoneSavesTheDay : TextLine
 
     private int frameBarr = 0;
 
+    private float xpos;
+    private float ypos;
+
     // Start is called before the first frame update
     public override void speak()
     {
@@ -40,7 +43,11 @@ public class EveryoneSavesTheDay : TextLine
     {
         _seekuhBarrier = RaketenTraktor.gameObject.transform.position.x -3;
         if(_start == 1 && gameObject.transform.position.x <= _seekuhBarrier) {
-            gameObject.transform.position += new Vector3 (0.1f,0,0);
+
+            xpos = gameObject.transform.position.x;
+            ypos = gameObject.transform.position.y+1;
+            gameObject.transform.position = new Vector3(xpos,ypos,0);
+            gameObject.transform.position += new Vector3 (0.5f,0,0);
         }
 
         if(dsoo && _start == 1 && gameObject.transform.position.x > _seekuhBarrier) {
