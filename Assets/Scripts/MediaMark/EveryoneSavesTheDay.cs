@@ -45,7 +45,7 @@ public class EveryoneSavesTheDay : TextLine
         if(_start == 1 && gameObject.transform.position.x <= _seekuhBarrier) {
 
             xpos = gameObject.transform.position.x;
-            ypos = gameObject.transform.position.y+1;
+            ypos = RaketenTraktor.transform.position.y + 1;
             gameObject.transform.position = new Vector3(xpos,ypos,0);
             gameObject.transform.position += new Vector3 (0.5f,0,0);
         }
