@@ -14,7 +14,7 @@ public class LizardBullet : MonoBehaviour
     [SerializeField] private float nomPercentage;
 
     private bool _firstEnable = true;
-    
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -41,5 +41,14 @@ public class LizardBullet : MonoBehaviour
     public void say_nom()
     {
         if (Random.Range(0f, 1f) > 1f-nomPercentage) SoundManager.instance.playOnce(spawnSound);
+    }
+
+    public void flee(float fleeSpeed)
+    {
+        speed = -fleeSpeed;
+        Vector3 scale = this.transform.localScale;
+        nomPercentage = 0;
+        scale.x *= -1;
+        this.transform.localScale = scale;
     }
 }

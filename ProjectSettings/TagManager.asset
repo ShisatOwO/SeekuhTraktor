@@ -16,6 +16,7 @@ TagManager:
   - MediaBullet
   - MediaBulletDeath
   - MediaBulletHeal
+  - BulletShield
   layers:
   - Default
   - TransparentFX
