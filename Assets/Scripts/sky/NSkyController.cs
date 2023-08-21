@@ -17,6 +17,8 @@ public class NSkyController : MonoBehaviour
     public float acc_focus;
     public float acc_normal;
 
+    public AudioSource sfxHurt;
+
     private int _ud;
     private int _rl;
     private Rigidbody2D _rigid2D;
@@ -38,6 +40,7 @@ public class NSkyController : MonoBehaviour
     {
          if (other.gameObject.CompareTag("Enemy"))
             {
+                sfxHurt.Play();
                 livehandler.GetComponent<live_handler>().removeLive();
                 //PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
                 //SceneManager.LoadScene("HighscoreAfterGame");

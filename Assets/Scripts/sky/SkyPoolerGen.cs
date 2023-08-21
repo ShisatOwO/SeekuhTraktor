@@ -181,7 +181,7 @@ public class SkyPoolerGen : MonoBehaviour
     }
 
     void GenerateNextSpawnBorder() {
-        _squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt) / 38.72f);
+        _squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt-4500) / 38.72f);
         //Debug.Log("sqaureRootMultiplier: " + _squareRootScoreApply);
         applyScoreDifficulty = _squareRootScoreApply;
         ApplyRandomDifficultyFunction(); 
@@ -189,8 +189,9 @@ public class SkyPoolerGen : MonoBehaviour
     }
 
     void ApplyRandomDifficultyFunction() {
-        if(_mainVars.scoreInt < 2000) {         applyRandomDifficulty = (float)(Random.Range(-30,11) / 100f); }
-            else if(_mainVars.scoreInt > 2000) {applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f); } 
+        //if(_mainVars.scoreInt < 2000) {         applyRandomDifficulty = (float)(Random.Range(-30,11) / 100f); }
+        //    else if(_mainVars.scoreInt > 2000) {
+        applyRandomDifficulty = (float)(Random.Range(-20,21) / 100f);
     }
 
     GameObject CheckIfEnemySpawnIsFair(GameObject objAboutToBeSpawned) {
