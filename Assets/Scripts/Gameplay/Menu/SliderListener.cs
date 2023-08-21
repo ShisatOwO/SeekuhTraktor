@@ -31,6 +31,6 @@ public class SliderListener : MonoBehaviour
     public void SliderHandler(float va) {
     	Debug.Log(va);
     	audioS.volume = va;
-    	PlayerPrefs.SetFloat("VolumeSlider", va);
+    	PlayerPrefs.SetFloat("VolumeSlider", va*0.9f);
     }
 }

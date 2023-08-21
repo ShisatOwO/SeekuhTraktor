@@ -9,7 +9,10 @@ public class dontDestroy : MonoBehaviour
 	public AudioClip pianoIntensifies;
     public AudioClip bronto;
     public AudioClip cowbell;
+    public AudioClip boss_music_clip;
 	public bool loopAudio = true;
+
+    private bool _bossMusic = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,21 +48,50 @@ public class dontDestroy : MonoBehaviour
 
     }
 
-    void Update() {
-    	if(PlayerPrefs.GetInt("AudioSrc") == 0) {
-    		GetComponent<AudioSource>().clip = standard;
-    	}
-    	if(PlayerPrefs.GetInt("AudioSrc") == 1) {
-    		GetComponent<AudioSource>().clip = cursed;
-    	}
-    	if(PlayerPrefs.GetInt("AudioSrc") == 2) {
-    		GetComponent<AudioSource>().clip = pianoIntensifies;
-    	}
+    public void BossMusic() {
+        GetComponent<AudioSource>().clip = boss_music_clip;
+        _bossMusic = true;
+        //GetComponent<AudioSource>().Play();
+    }
+
+    public void BackToGame() {
+        _bossMusic = false;
+        if(PlayerPrefs.GetInt("AudioSrc") == 0) {
+            GetComponent<AudioSource>().clip = standard;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 1) {
+            GetComponent<AudioSource>().clip = cursed;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 2) {
+            GetComponent<AudioSource>().clip = pianoIntensifies;
+        }
         if(PlayerPrefs.GetInt("AudioSrc") == 3) {
             GetComponent<AudioSource>().clip = cowbell;
         }
         if(PlayerPrefs.GetInt("AudioSrc") == 4) {
             GetComponent<AudioSource>().clip = bronto;
+        }
+        GetComponent<AudioSource>().Play();
+
+    }
+
+    void Update() {
+        if(!_bossMusic) {
+        	if(PlayerPrefs.GetInt("AudioSrc") == 0) {
+        		GetComponent<AudioSource>().clip = standard;
+        	}
+        	if(PlayerPrefs.GetInt("AudioSrc") == 1) {
+        		GetComponent<AudioSource>().clip = cursed;
+        	}
+        	if(PlayerPrefs.GetInt("AudioSrc") == 2) {
+        		GetComponent<AudioSource>().clip = pianoIntensifies;
+        	}
+            if(PlayerPrefs.GetInt("AudioSrc") == 3) {
+                GetComponent<AudioSource>().clip = cowbell;
+            }
+            if(PlayerPrefs.GetInt("AudioSrc") == 4) {
+                GetComponent<AudioSource>().clip = bronto;
+            }
         }
 
 
