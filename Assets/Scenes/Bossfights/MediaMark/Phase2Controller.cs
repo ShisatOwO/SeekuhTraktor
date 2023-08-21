@@ -36,6 +36,8 @@ public class Phase2Controller : TextLine
 
     private bool _isBlind;
 
+    public GameObject scoreAdder;
+
     private enum Phase
     {
         Starting,
@@ -58,6 +60,7 @@ public class Phase2Controller : TextLine
     void ReleaseTheVaran()
     {
         _initiateTheGrandVaranPlan = true;
+        scoreAdder.SetActive(true);
     }
 
     // Update is called once per frame

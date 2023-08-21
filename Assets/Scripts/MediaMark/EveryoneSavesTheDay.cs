@@ -55,6 +55,7 @@ public class EveryoneSavesTheDay : TextLine
                 RaketenTraktor.gameObject.transform.position += new Vector3(0,0.1f,0);
             }
             if(RaketenTraktor.gameObject.transform.position.y >= 8) {
+                GameObject.Find("BackgroundMusic").GetComponent<dontDestroy>().BackToGame();
                 SceneManager.LoadScene("SkyNew"); 
             }
         }
