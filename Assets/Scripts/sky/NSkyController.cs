@@ -25,6 +25,8 @@ public class NSkyController : MonoBehaviour
     private Vector2 _vel;
     private SpriteRenderer _spRender;
 
+
+
     public Vars _vars;
 
     // Start is called before the first frame update
@@ -54,6 +56,7 @@ public class NSkyController : MonoBehaviour
     }
 
     void FixedUpdate() {
+
         acc = Input.GetKey("space") ? acc_focus/100 : acc_normal/100;
         maxSpeed = Input.GetKey("space") ? maxSpeed_focus : maxSpeed_normal;
         Move(_rl, _ud);

@@ -201,7 +201,14 @@ public class NController : MonoBehaviour
     void CheckInput()
     {
         _rl = 0;
-        _jmp = Input.GetButton("Jump");
+
+        if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) {
+            _jmp = true;
+        } else {
+            _jmp = false;
+        }
+
+        //_jmp = Input.GetButton("Jump");
         _crh = false;
 
 
