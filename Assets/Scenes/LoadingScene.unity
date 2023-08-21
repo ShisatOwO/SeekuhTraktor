@@ -593,6 +593,7 @@ MonoBehaviour:
   bronto: {fileID: 8300000, guid: f54f911adf9d67e4fb5ebec86837285c, type: 3}
   cowbell: {fileID: 8300000, guid: 5c5dd9acca6eab74694dbc1e41ee9d21, type: 3}
   boss_music_clip: {fileID: 8300000, guid: 6f5f310db2f4b45bcabef28739fc4daa, type: 3}
+  bongo: {fileID: 8300000, guid: 6ea4a9b76271d414db853dee5e5fade3, type: 3}
   loopAudio: 1
 --- !u!1 &1571765700
 GameObject:

@@ -10,6 +10,7 @@ public class dontDestroy : MonoBehaviour
     public AudioClip bronto;
     public AudioClip cowbell;
     public AudioClip boss_music_clip;
+    public AudioClip bongo;
 	public bool loopAudio = true;
 
     private bool _bossMusic = false;
@@ -20,14 +21,23 @@ public class dontDestroy : MonoBehaviour
         AudioSource audio = GetComponent<AudioSource>();
 
         if(PlayerPrefs.GetInt("AudioSrc") == 0) {
-    		audio.clip = standard;
-    	}
-    	if(PlayerPrefs.GetInt("AudioSrc") == 1) {
-    		audio.clip = cursed;
-    	}
-    	if(PlayerPrefs.GetInt("AudioSrc") == 2) {
-    		audio.clip = pianoIntensifies;
-    	}
+            GetComponent<AudioSource>().clip = standard;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 1) {
+            GetComponent<AudioSource>().clip = cursed;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 2) {
+            GetComponent<AudioSource>().clip = pianoIntensifies;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 3) {
+            GetComponent<AudioSource>().clip = cowbell;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 4) {
+            GetComponent<AudioSource>().clip = bronto;
+        }
+        if(PlayerPrefs.GetInt("AudioSrc") == 5) {
+            GetComponent<AudioSource>().clip = bongo;
+        }
 
 
 
@@ -71,6 +81,9 @@ public class dontDestroy : MonoBehaviour
         if(PlayerPrefs.GetInt("AudioSrc") == 4) {
             GetComponent<AudioSource>().clip = bronto;
         }
+        if(PlayerPrefs.GetInt("AudioSrc") == 5) {
+            GetComponent<AudioSource>().clip = bongo;
+        }
         GetComponent<AudioSource>().Play();
 
     }
@@ -91,6 +104,9 @@ public class dontDestroy : MonoBehaviour
             }
             if(PlayerPrefs.GetInt("AudioSrc") == 4) {
                 GetComponent<AudioSource>().clip = bronto;
+            }
+            if(PlayerPrefs.GetInt("AudioSrc") == 5) {
+                GetComponent<AudioSource>().clip = bongo;
             }
         }
 

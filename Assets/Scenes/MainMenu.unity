@@ -4283,6 +4283,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Bronto in Toronto
       m_Image: {fileID: 0}
+    - m_Text: bongo
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
