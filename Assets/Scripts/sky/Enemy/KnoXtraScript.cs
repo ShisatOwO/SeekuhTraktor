@@ -24,7 +24,7 @@ public class KnoXtraScript : NewBaseSkyE
         transform.localScale = normKnoTransScale;
         Debug.Log("normKnoTransScale" + normKnoTransScale); 
         if(rotate) {
-            gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-180f,180f)*100;
+            gameObject.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-180f,180f)*1000;
         }
 
     }

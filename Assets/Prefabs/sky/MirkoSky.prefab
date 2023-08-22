@@ -1880,6 +1880,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7424959593862248607, guid: 21635b4d3ddc77849963dbf2fcd321d8, type: 3}
+      propertyPath: m_Constraints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7787695323013261886, guid: 21635b4d3ddc77849963dbf2fcd321d8, type: 3}
       propertyPath: m_Name
       value: MirkoSky
