@@ -46,6 +46,7 @@ public class NSkyController : MonoBehaviour
          if (other.gameObject.CompareTag("Enemy") && invulTime >= 0.7)
             {
                 invulTime = 0;
+                other.gameObject.SetActive(false);
                 sfxHurt.Play();
                 livehandler.GetComponent<live_handler>().removeLive();
                 //PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);

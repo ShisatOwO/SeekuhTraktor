@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e2973971e0d1bea98cdba1ba54324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugWidth: 2000
+  debugWidth: 1920
   debugHeight: 1080
   ratio: 0
 --- !u!81 &1619046468

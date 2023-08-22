@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class finalSubmitButton : MonoBehaviour
 {
-	const string privateCode = "iCS1qBjNs0CGanSPUKy9BAwel91EY91EaywYkdykd-ZQ";
-	const string publicCode = "6055c6188f40bbaf006fd3f0";
+	//const string privateCode = "iCS1qBjNs0CGanSPUKy9BAwel91EY91EaywYkdykd-ZQ";
+	//const string publicCode = "6055c6188f40bbaf006fd3f0";
+	const string privateCode = "7RWsjAmiQECpZdFm4rhbYgT9M4lA0jl0yTIR2MkcQv3g";
+	const string publicCode = "64da0a458f40bb0ee052d1c9";
 	const string webURL = "http://dreamlo.com/lb/";
 	static finalSubmitButton instance;
 
@@ -26,14 +28,15 @@ public class finalSubmitButton : MonoBehaviour
     void Update()
     {
     	sname = inp.text;
-        
+        //print("This is it: " + inp.text.Length);
+
     }
 
     public void SubmitFinal() {
 
     sscore = PlayerPrefs.GetInt("ScoreSceneOverdub");
     //sscore = 9000;
-    	if(string.IsNullOrEmpty(inp.text)) {
+    	if(inp.text.Length == 1) {
     		sname = "GeheimTraktor007";
     		Debug.Log("isNullOrEmpty");
     	}

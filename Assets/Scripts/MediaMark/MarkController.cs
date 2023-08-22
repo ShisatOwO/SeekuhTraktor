@@ -99,12 +99,13 @@ public class MarkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _invultime += Time.deltaTime;
+        
         if(startFight && !_onceAfterStartFight) {
             _onceAfterStartFight = true;
             spriteRenderer.sprite = orange;
         }
         if(startFight && !_dead) {
+            _invultime += Time.deltaTime;
             Rotate();
             Translate();
             Shoot();
@@ -240,7 +241,7 @@ public class MarkController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
             
-        if (other.gameObject.tag == "Player" && _invultime <= 0.7f) {
+        if (other.gameObject.tag == "Player" && _invultime >= 1f) {
             lives -= 1;
             audioHurt.Play();
             _score_script.score += 100;
