@@ -9,6 +9,8 @@ public class NewBaseSkyE : MonoBehaviour
     public Vector3 speed = new Vector3(0, 0, 0);
     public float speedFloat = 7;
     public Vector3 spawnPosition;
+
+    public GameObject seekuhtraktor;
     //public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
 
     
@@ -84,6 +86,7 @@ public class NewBaseSkyE : MonoBehaviour
 
     protected void Enable()
     {
+        seekuhtraktor = GameObject.Find("Seekuhtraktor");
         _wasOnScreen = false;
         spawnObjLeft = GameObject.Find("GenParent/genLeft").GetComponent<Transform>();
         spawnObjRight = GameObject.Find("GenParent/genRight").GetComponent<Transform>();
@@ -96,19 +99,30 @@ public class NewBaseSkyE : MonoBehaviour
     }
 
     public void ActivateEnemy() {
-        print("activated");
-        switch (direction) {
+        //print("activated");
+        //switch (direction) {
             /*case 0:  speed = new Vector3 (speedFloat, 0f, 0f); break;
             case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); break;
             case 2:  speed = new Vector3 (0f, speedFloat, 0f); break;
             case 3:  speed = new Vector3 (0f, -speedFloat, 0f); break;*/
-            case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
+            /*case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
             case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
             case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
             case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
             default: Debug.Log("LOL"); break;
+        }*/
+
+        switch (direction) {
+            case 0: spawnPosition = spawnObjLeft.position; break;
+            case 1: spawnPosition = spawnObjRight.position; break;
+            case 2: spawnPosition = spawnObjUp.position; break;
+            case 3: spawnPosition = spawnObjLeft.position; break;
+            default: Debug.Log("LOL"); break;
         }
+        
         _trans.position = spawnPosition;
+        speed = Vector3.Normalize(seekuhtraktor.transform.position - _trans.position)*speedFloat;
+
 
     }
 
@@ -124,10 +138,12 @@ public class NewBaseSkyE : MonoBehaviour
     {
         //applyScoreDifficulty = new Vector3(Mathf.Sqrt(_mainVars.scoreInt) * 0.077459f,0f,0f);
         //_trans.position += (speed - applyScoreDifficulty) * Time.deltaTime;
-        _trans.position += (speed) * Time.deltaTime;
+        //_trans.position += (speed) * Time.deltaTime;
         _mainVars.isEnemyOnScreen[spotInArray] = true;
+    }
 
-
+    void FixedUpdate() {
+        GetComponent<Rigidbody2D>().velocity = speed;
     }
 
     protected void OnBecameVisible()
@@ -148,18 +164,22 @@ public class NewBaseSkyE : MonoBehaviour
     }
 
     public void SetDirLeft() {
+        //print("SetDirLeft");
         direction = 0;
         spawnPosition = spawnObjLeft.position;
     }
     public void SetDirRight() {
+        //print("SetDirRight");
         direction = 1;
         spawnPosition = spawnObjRight.position;
     }
     public void SetDirUp() {
+        //print("SetDirUp");
         direction = 3;
         spawnPosition = spawnObjUp.position;
     }
     public void SetDirDown() {
+        //print("SetDirDown");
         direction = 2;
         spawnPosition = spawnObjDown.position;
     }

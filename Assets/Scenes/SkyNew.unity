@@ -449,6 +449,7 @@ MonoBehaviour:
   spawnRate: 3
   applyScoreDifficulty: 0
   applyRandomDifficulty: 0
+  justSpawned: {fileID: 0}
 --- !u!1 &143781832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1550,7 @@ GameObject:
   - component: {fileID: 870142529}
   - component: {fileID: 870142528}
   m_Layer: 0
-  m_Name: Seekuhtraktor (2)
+  m_Name: Seekuhtraktor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

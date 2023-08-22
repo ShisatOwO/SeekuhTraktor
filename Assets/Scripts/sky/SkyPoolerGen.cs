@@ -168,10 +168,9 @@ public class SkyPoolerGen : MonoBehaviour
                 case 1: justSpawned.SendMessage("SetDirRight"); break;
                 case 2: justSpawned.SendMessage("SetDirUp"); break;
                 case 3: justSpawned.SendMessage("SetDirDown"); break;
+            }
 
             justSpawned.GetComponent<NewBaseSkyE>().ActivateEnemy();
-
-        }
         
 
             //Feststellen wann der nächste Gegner spawnt

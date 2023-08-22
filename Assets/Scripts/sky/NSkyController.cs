@@ -19,6 +19,8 @@ public class NSkyController : MonoBehaviour
 
     public AudioSource sfxHurt;
 
+    private float invulTime;
+
     private int _ud;
     private int _rl;
     private Rigidbody2D _rigid2D;
@@ -32,6 +34,7 @@ public class NSkyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        invulTime = 0;
         _rigid2D = GetComponent<Rigidbody2D>();
         decc = decc / 100;
         acc = acc_normal / 100;
@@ -40,8 +43,9 @@ public class NSkyController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-         if (other.gameObject.CompareTag("Enemy"))
+         if (other.gameObject.CompareTag("Enemy") && invulTime >= 0.7)
             {
+                invulTime = 0;
                 sfxHurt.Play();
                 livehandler.GetComponent<live_handler>().removeLive();
                 //PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
@@ -53,6 +57,7 @@ public class NSkyController : MonoBehaviour
     void Update()
     {
         CheckInput();
+        invulTime += Time.deltaTime;
     }
 
     void FixedUpdate() {
