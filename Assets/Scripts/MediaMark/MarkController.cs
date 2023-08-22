@@ -29,6 +29,7 @@ public class MarkController : MonoBehaviour
     private ScoreMediaMark _score_script;
     private int _starting_lives;
     private int _invulframes;
+    private float _invultime = 0;
     private float _secondsSinceDeath;
 
     private bool _dead = false;
@@ -41,6 +42,8 @@ public class MarkController : MonoBehaviour
     public GameObject bulletDiePrefab;
     public int bulletAmount;
     public GameObject[] bullets;
+
+    public GameObject main;
 
     private int _rot_frame_border;
     private bool _reset_rot;
@@ -96,6 +99,7 @@ public class MarkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _invultime += Time.deltaTime;
         if(startFight && !_onceAfterStartFight) {
             _onceAfterStartFight = true;
             spriteRenderer.sprite = orange;
@@ -139,7 +143,7 @@ public class MarkController : MonoBehaviour
             if (_secondsSinceDeath >= 6.5)
             {
                 secondPhase.SetActive(true);
-                this.gameObject.SetActive(false);
+                main.GetComponent<DeactivateGameObject>().Disable();
             }
         }
     }
@@ -235,11 +239,13 @@ public class MarkController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Player" && _invulframes <= 0) {
+            
+        if (other.gameObject.tag == "Player" && _invultime <= 0.7f) {
             lives -= 1;
             audioHurt.Play();
             _score_script.score += 100;
-            _invulframes = 300;
+            //_invulframes = 240;
+            _invultime = 0;
             _plusHundred_framecounter = 100;
         }
     }

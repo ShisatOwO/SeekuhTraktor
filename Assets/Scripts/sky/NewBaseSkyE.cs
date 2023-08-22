@@ -9,7 +9,7 @@ public class NewBaseSkyE : MonoBehaviour
     public Vector3 speed = new Vector3(0, 0, 0);
     public float speedFloat = 7;
     public Vector3 spawnPosition;
-    public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
+    //public Vector3 applyScoreDifficulty = new Vector3(0f,0f,0f);
 
     
     public Transform spawnObjLeft;
@@ -27,6 +27,8 @@ public class NewBaseSkyE : MonoBehaviour
 
     public int spotInArray = 0;
     public int direction = 0;
+
+
     
     protected void Start()
     {
@@ -66,17 +68,17 @@ public class NewBaseSkyE : MonoBehaviour
                 break;
             }
         }*/
-        direction = Random.Range(0,4);
+        /*direction = Random.Range(0,4);
         switch (direction) {
             case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
             case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
             case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
             case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
             default: Debug.Log("LOL"); break;
-        }
+        }*/
 
         //Debug.Log(spawnPosition + " " + direction);
-        _trans.position = spawnPosition;
+        //_trans.position = spawnPosition;
 
     }
 
@@ -89,16 +91,23 @@ public class NewBaseSkyE : MonoBehaviour
         spawnObjDown = GameObject.Find("GenParent/genDown").GetComponent<Transform>();
         _trans = gameObject.GetComponent<Transform>();
         
+
+
+    }
+
+    public void ActivateEnemy() {
+        print("activated");
         switch (direction) {
-            case 0:  speed = new Vector3 (speedFloat, 0f, 0f); break;
+            /*case 0:  speed = new Vector3 (speedFloat, 0f, 0f); break;
             case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); break;
             case 2:  speed = new Vector3 (0f, speedFloat, 0f); break;
-            case 3:  speed = new Vector3 (0f, -speedFloat, 0f); break;
+            case 3:  speed = new Vector3 (0f, -speedFloat, 0f); break;*/
+            case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
+            case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
+            case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
+            case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
             default: Debug.Log("LOL"); break;
         }
-
-        OverrideSpawnPosition();
-
         _trans.position = spawnPosition;
 
     }
@@ -154,16 +163,17 @@ public class NewBaseSkyE : MonoBehaviour
         direction = 2;
         spawnPosition = spawnObjDown.position;
     }
-    public void OverrideSpawnPosition() {
-        if (spawnPosition == new Vector3(0f,0f,0f)) {
-            direction = Random.Range(0,4);
-            switch (direction) {
-            case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
-            case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
-            case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
-            case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
-            default: Debug.Log("LOL"); break;
-            }
-        }     
-    }
+    
+    /*public void OverrideSpawnPosition() {
+        //if (spawnPosition == new Vector3(0f,0f,0f)) {
+        direction = Random.Range(0,4);
+        switch (direction) {
+        case 0:  speed = new Vector3 (speedFloat, 0f, 0f); spawnPosition = spawnObjLeft.position; break;
+        case 1:  speed = new Vector3 (-speedFloat, 0f, 0f); spawnPosition = spawnObjRight.position; break;
+        case 2:  speed = new Vector3 (0f, speedFloat, 0f); spawnPosition = spawnObjUp.position; break;
+        case 3:  speed = new Vector3 (0f, -speedFloat, 0f); spawnPosition = spawnObjLeft.position; break;
+        default: Debug.Log("LOL"); break;
+        }
+        //}     
+    }*/
 }

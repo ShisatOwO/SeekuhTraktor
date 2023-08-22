@@ -1776,12 +1776,12 @@ MonoBehaviour:
   - {fileID: 839540247}
   - {fileID: 1984767472}
   - {fileID: 1226382776}
-  numberOfBullets: 170
+  numberOfBullets: 350
   bulletPrefab: {fileID: 6128201396126087428, guid: ad1b04408d5662d03ad2f9e6a10d1bb9, type: 3}
-  spawnIntervall: 0.15
+  spawnIntervall: 0.1
   numberOfTails: 50
   tailPrefab: {fileID: 4997557608782046833, guid: 0c64bff8882ee1804956c5602f4d9bbd, type: 3}
-  tailSpawnIntervall: 0.27
+  tailSpawnIntervall: 0.21
   player: {fileID: 222292371}
   blindness: {fileID: 555588910}
   lives: {fileID: 1066729836}
@@ -5677,7 +5677,7 @@ Transform:
   m_GameObject: {fileID: 555588910}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -1.1, z: 0.03}
-  m_LocalScale: {x: 3.012902, y: 3.012902, z: -0.30116326}
+  m_LocalScale: {x: 3.3, y: 3.3, z: -0.30116326}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 222292375}
@@ -6770,7 +6770,7 @@ MonoBehaviour:
   dialogLine: '@keine Ursache'
   characterPortrait: {fileID: 21300000, guid: 37bf8b8f85a75404690913b7925ff97b, type: 3}
   characterPortraitDisplay: {fileID: 215126665}
-  audio: {fileID: 8300000, guid: 6a7a43402839b4086ba865ad24325d54, type: 3}
+  audio: {fileID: 8300000, guid: ea6dd31e0a7196c4a81142e37643ddcc, type: 3}
   nextLine: {fileID: 231723189}
   charDelay: 0.1
   wordDelay: 0.15
@@ -7478,7 +7478,6 @@ GameObject:
   - component: {fileID: 750741726}
   - component: {fileID: 750741725}
   - component: {fileID: 750741724}
-  - component: {fileID: 750741728}
   - component: {fileID: 750741729}
   m_Layer: 5
   m_Name: EndTextBox
@@ -7577,19 +7576,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750741722}
   m_CullTransparentMesh: 1
---- !u!114 &750741728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750741722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a052317bdad484dabc5ba72de82096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RaketenTraktor: {fileID: 222292371}
 --- !u!114 &750741729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7602,6 +7588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c911f6fb8395d4055a06238912fbeece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fromFunction: 0
   gameObj: {fileID: 740797138}
 --- !u!1001 &758535091
 PrefabInstance:
@@ -13726,6 +13713,7 @@ GameObject:
   - component: {fileID: 1427761895}
   - component: {fileID: 1427761894}
   - component: {fileID: 1427761893}
+  - component: {fileID: 1427761896}
   m_Layer: 0
   m_Name: Main
   m_TagString: Main
@@ -13872,6 +13860,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1427761896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427761892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c911f6fb8395d4055a06238912fbeece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromFunction: 1
+  gameObj: {fileID: 1685637767}
 --- !u!1001 &1433580192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16541,6 +16543,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  main: {fileID: 1427761892}
 --- !u!4 &1687344134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3453586837422911003, guid: ad1b04408d5662d03ad2f9e6a10d1bb9, type: 3}
@@ -19548,6 +19551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c911f6fb8395d4055a06238912fbeece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fromFunction: 0
   gameObj: {fileID: 740797138}
 --- !u!4 &2086490109 stripped
 Transform:

@@ -21,10 +21,11 @@ public class BoundEndController : TextLine
 
     public override void speak() {
         //RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
-        right.GetComponent<BoundEnd>().Activate();
+        /*right.GetComponent<BoundEnd>().Activate();
         left.GetComponent<BoundEnd>().Activate();
         top.GetComponent<BoundEnd>().Activate();
-        bottom.GetComponent<BoundEnd>().Activate();
+        bottom.GetComponent<BoundEnd>().Activate();*/
+
         CutsceneBullets.gameObject.SetActive(true);
         hideThisTextbox.SetActive(false);
         _started = true;
@@ -41,6 +42,7 @@ public class BoundEndController : TextLine
             left.GetComponent<BoundEnd>().DeActivate();
             top.GetComponent<BoundEnd>().DeActivate();
             bottom.GetComponent<BoundEnd>().DeActivate();
+            RaketenTraktor.gameObject.GetComponent<PlayerRocket>().movementAllowed = false;
             CutsceneBullets.flee();
             this.gameObject.SetActive(false);
         }

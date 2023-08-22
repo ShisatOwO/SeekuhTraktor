@@ -5,6 +5,7 @@ using System.Linq;
 
 public class SkyPoolerGen : MonoBehaviour
 {
+    public AnimationCurve scoreDifficulty;
     public GameObject[] tier1Enemys;
     public GameObject[] tier2Enemys;
     public GameObject[] tier3Enemys;
@@ -14,7 +15,7 @@ public class SkyPoolerGen : MonoBehaviour
     public float applyScoreDifficulty = 0f;
     public float applyRandomDifficulty = 0f;
 
-    private GameObject justSpawned;
+    public GameObject justSpawned;
 
 
 
@@ -156,18 +157,21 @@ public class SkyPoolerGen : MonoBehaviour
             //indexOfSpawnObj = 4;
             //g = _tier2.GetSiblingPool(tier2Enemys[4].name + "(Clone)").RequestPeek();
 
+            justSpawned = null;
 
             Enable(CheckIfEnemySpawnIsFair(g));
-
-            int randoInt = Random.Range(-1,4);
+            //print(justSpawned);
+            int randoInt = Random.Range(0,4);
+            //print(randoInt);
             switch(randoInt) {
-            case 0: justSpawned.SendMessage("SetDirLeft"); break;
-            case 1: justSpawned.SendMessage("SetDirRight"); break;
-            case 2: justSpawned.SendMessage("SetDirUp"); break;
-            case 3: justSpawned.SendMessage("SetDirDown"); break;
-        }
+                case 0: justSpawned.SendMessage("SetDirLeft"); break;
+                case 1: justSpawned.SendMessage("SetDirRight"); break;
+                case 2: justSpawned.SendMessage("SetDirUp"); break;
+                case 3: justSpawned.SendMessage("SetDirDown"); break;
 
-        justSpawned = null;
+            justSpawned.GetComponent<NewBaseSkyE>().ActivateEnemy();
+
+        }
         
 
             //Feststellen wann der nächste Gegner spawnt
@@ -181,11 +185,12 @@ public class SkyPoolerGen : MonoBehaviour
     }
 
     void GenerateNextSpawnBorder() {
-        _squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt-4500) / 38.72f);
+        //_squareRootScoreApply = (float)(Mathf.Sqrt(_mainVars.scoreInt-4500) / 38.72f);
         //Debug.Log("sqaureRootMultiplier: " + _squareRootScoreApply);
-        applyScoreDifficulty = _squareRootScoreApply;
+        //applyScoreDifficulty = _squareRootScoreApply;
+        applyScoreDifficulty = scoreDifficulty.Evaluate((float)_mainVars.scoreInt/10000f);
         ApplyRandomDifficultyFunction(); 
-        spawnRateBorder = spawnRate - applyScoreDifficulty + applyRandomDifficulty;
+        spawnRateBorder = spawnRate + applyScoreDifficulty + applyRandomDifficulty;
     }
 
     void ApplyRandomDifficultyFunction() {
@@ -198,8 +203,8 @@ public class SkyPoolerGen : MonoBehaviour
 
         //newObjToSpawn will return in this function and get requested. Wenn nix unfair ist gilt newObjToSpawn = objAboutToBeSpawned
         GameObject newObjToSpawn = objAboutToBeSpawned;
-        newObjToSpawn = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestObj();
-        justSpawned = newObjToSpawn;
+        justSpawned = _tier1.GetSiblingPool(tier1Enemys[indexOfSpawnObj].name + "(Clone)").RequestObj();
+        newObjToSpawn = justSpawned;
         return newObjToSpawn;
 
     }

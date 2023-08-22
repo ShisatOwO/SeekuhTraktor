@@ -119,7 +119,7 @@ public class NewGenerate : MonoBehaviour
 	
 	protected void FixedUpdate()
 	{	
-		if(_mainVars.scoreInt <= 6000) {
+		if(_mainVars.scoreInt <= 6666) {
 			if(Time.time - _time >= spawnRateBorder)
 			{
 				int allowed_tiers = 1;
