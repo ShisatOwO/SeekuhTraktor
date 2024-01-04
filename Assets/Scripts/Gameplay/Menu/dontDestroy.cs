@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class dontDestroy : MonoBehaviour
 {
+    public bool startAudio = true;
     public AudioClip standard;
 	public AudioClip cursed;
 	public AudioClip pianoIntensifies;
@@ -43,7 +44,7 @@ public class dontDestroy : MonoBehaviour
 
 
         DontDestroyOnLoad(this.gameObject);
-        audio.Play();
+        if(startAudio) audio.Play();
 
         if (Application.platform == RuntimePlatform.Android)
         {

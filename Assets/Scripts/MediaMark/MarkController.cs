@@ -7,7 +7,8 @@ public class MarkController : MonoBehaviour
     public Sprite red;
     public Sprite orange;
     public Sprite green;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer headSprite;
+    public GameObject mouth;
 
     public int bulletThatSpawnsEmAll;
 
@@ -58,13 +59,19 @@ public class MarkController : MonoBehaviour
     private int _count_bullets = 0;
 
     private int _dead_frame_counter;
+
+
+    private bool _rotateMouth = false;
+    private bool happy = true;
+    private float currentMouthRotation = 0;
+    private float mouthRotationSpeed;
     // Start is called before the first frame update
 
 
     void Start()
     {
         _onceAfterStartFight = false;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        headSprite = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         _plusHundred_framecounter = 0;
         audioHurt = sfxHurt.GetComponent<AudioSource>();
         audioShoot = sfxShoot.GetComponent<AudioSource>();
@@ -102,7 +109,7 @@ public class MarkController : MonoBehaviour
         
         if(startFight && !_onceAfterStartFight) {
             _onceAfterStartFight = true;
-            spriteRenderer.sprite = orange;
+            headSprite.sprite = orange;
         }
         if(startFight && !_dead) {
             _invultime += Time.deltaTime;
@@ -122,6 +129,12 @@ public class MarkController : MonoBehaviour
                 _dead = true;
                 Die();
             }
+        }
+
+        if(_invultime <= 1f) {
+            happy = false;
+        } else {
+            happy = true;
         }
 
         if (_dead) {
@@ -147,6 +160,8 @@ public class MarkController : MonoBehaviour
                 main.GetComponent<DeactivateGameObject>().Disable();
             }
         }
+
+        RotateMouth();
     }
 
 
@@ -197,13 +212,13 @@ public class MarkController : MonoBehaviour
 
                     switch(bullets[_count_bullets+1].tag) {
                         case "MediaBullet":
-                            spriteRenderer.sprite = orange;
+                            headSprite.sprite = orange;
                             break;
                         case "Enemy":
-                            spriteRenderer.sprite = red;
+                            headSprite.sprite = red;
                             break;
                         case "MediaBulletHeal":
-                            spriteRenderer.sprite = green;
+                            headSprite.sprite = green;
                             break;
                     }
                     //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
@@ -220,13 +235,13 @@ public class MarkController : MonoBehaviour
 
                 switch(bullets[_count_bullets+1].tag) {
                     case "MediaBullet":
-                        spriteRenderer.sprite = orange;
+                        headSprite.sprite = orange;
                         break;
                     case "Enemy":
-                        spriteRenderer.sprite = red;
+                        headSprite.sprite = red;
                         break;
                     case "MediaBulletHeal":
-                        spriteRenderer.sprite = green;
+                        headSprite.sprite = green;
                         break;
                 }
                 //_shoot_border -= 1/Mathf.Exp(_count_bullets+1);
@@ -244,6 +259,8 @@ public class MarkController : MonoBehaviour
         if (other.gameObject.tag == "Player" && _invultime >= 1f) {
             lives -= 1;
             audioHurt.Play();
+            if(happy) happy = false; if(!happy) happy = true;
+            _rotateMouth = true;
             _score_script.score += 100;
             //_invulframes = 240;
             _invultime = 0;
@@ -258,8 +275,35 @@ public class MarkController : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
         for (int i = 0; i < bullets.Length; i++) {
-            bullets[i].SetActive(false);
-            
+            bullets[i].SetActive(false);   
         }
     }
+
+    void RotateMouth() {
+
+        mouthRotationSpeed = 10f;
+
+        if(_rotateMouth && happy && currentMouthRotation > 0) {
+            mouth.transform.Rotate(0f, 0f, -mouthRotationSpeed);
+            currentMouthRotation -= mouthRotationSpeed;
+
+        } else if (_rotateMouth && happy && currentMouthRotation <= 0)
+        {
+            currentMouthRotation = 0;
+            mouth.transform.rotation = headSprite.transform.rotation;
+            _rotateMouth = false;
+        }
+
+        if(_rotateMouth && !happy && currentMouthRotation < 180) {
+            mouth.transform.Rotate(0f, 0f, mouthRotationSpeed);
+            currentMouthRotation += mouthRotationSpeed;
+        } else if (_rotateMouth && happy && currentMouthRotation >= 180)
+        {
+            currentMouthRotation = 180;
+            mouth.transform.rotation = headSprite.transform.rotation;
+            mouth.transform.Rotate(0f, 0f, 180f);
+            _rotateMouth = false;
+        }
+    }
+
 }

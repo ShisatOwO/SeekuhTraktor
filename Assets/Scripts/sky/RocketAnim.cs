@@ -11,6 +11,8 @@ public class RocketAnim : TextLine
     private bool _startAnim = false;
 	public Transform trans;
     public GameObject Textbox;
+    public GameObject SkipBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class RocketAnim : TextLine
     public override void speak()
     {
         Textbox.SetActive(false);
+        SkipBox.SetActive(false);
         //characterPortraitDisplay.sprite = characterPortrait;
         _startAnim = true;
         //Textbox = GameObject.Find("TextBox");

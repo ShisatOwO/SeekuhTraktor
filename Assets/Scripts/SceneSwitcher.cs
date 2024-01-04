@@ -10,4 +10,6 @@ public class SceneSwitcher : MonoBehaviour
     public void toSceneHighscore() {SceneManager.LoadScene("HighscoreAfterGame");}
     public void toSceneHighscoreMenu() {SceneManager.LoadScene("HighscoreFromMenu");}
     public void toSceneHallOFame() {SceneManager.LoadScene("HallOFame");}
+    public void toMarkDebug() {SceneManager.LoadScene("MediaMark");}
+    
 }

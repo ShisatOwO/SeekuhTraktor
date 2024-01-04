@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class live_handler : MonoBehaviour
 {
+    public bool markFight;
     private Vars _vars;
     
     public GameObject live1;
@@ -30,6 +31,7 @@ public class live_handler : MonoBehaviour
                 if (!live2.activeSelf) {
                     
                     PlayerPrefs.SetInt("ScoreSceneOverdub", _vars.scoreInt);
+                    if(markFight) GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Play();
                     SceneManager.LoadScene("HighscoreAfterGame");
 
                     /*if (!live1.activeSelf) {

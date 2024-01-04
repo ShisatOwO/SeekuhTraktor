@@ -31,6 +31,8 @@ namespace Dialog
       private Text text;
       private bool finished;
       private bool answered;
+      private bool stopped = false;
+      private bool active = false;
 
       public TextLine() : base() 
       {
@@ -59,7 +61,7 @@ namespace Dialog
         sectionWordDelay = wordDelay * textScrollSpeed;
         sectionSentenceDelay = sentenceDelay * textScrollSpeed;
         sectionPauseDelay = pauseDelay * textScrollSpeed;
-        
+        active = true;
         StartCoroutine(_writer());
       }
 
@@ -71,18 +73,23 @@ namespace Dialog
         {
           foreach(TimedCharacter c in this)
           {
-            text.text += c.character;
-          
-            if (soundManager != null && c.character != "" && c.character != " ")
-            {
-              soundManager.playOnceExclusive(audio);
+            if(!stopped) {
+              text.text += c.character;
+            
+              if (soundManager != null && c.character != "" && c.character != " ")
+              {
+                soundManager.playOnceExclusive(audio);
+              }
+              yield return c.waitTime;
             }
-         
-            yield return c.waitTime;
+
+            else yield break;
+            
           }
         }
        
         finished = true;
+        active = false;
       }
 
       private void Start()
@@ -92,7 +99,7 @@ namespace Dialog
 
       public void Update()
       {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Return))
         {
           if (finished && !answered && nextLine != null)
           {
@@ -100,12 +107,37 @@ namespace Dialog
             nextLine.speak();
             this.enabled = false;
           }
-          
+
           else if (finished)
           {
             answered = true;
+            active = false;
           }
+
+
+          /*else
+          {
+            finished = true;
+            answered = true;
+
+            StopCoroutine(_writer());
+
+            text.text = "";
+            //nextLine.speak();
+            //this.enabled = false;
+          }*/
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && active || Input.GetKeyDown(KeyCode.RightShift) && active)
+        {
+          stopped = true;
+          text.text = "";
+          active = false;
+          nextLine.speak();
+          this.enabled = false;
+        }
+
+
       }
       
   }

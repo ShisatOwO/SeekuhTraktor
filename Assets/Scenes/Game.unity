@@ -2215,8 +2215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e2973971e0d1bea98cdba1ba54324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugWidth: 1920
-  debugHeight: 1080
+  debugWidth: 1280
+  debugHeight: 720
   ratio: 0
 --- !u!1 &1100860032
 GameObject:
@@ -2668,6 +2668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16477f26fe92a4a2bb3b73fd5e13f26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  markFight: 0
   live1: {fileID: 236458191}
   live2: {fileID: 172399355}
   live3: {fileID: 1122962804}
